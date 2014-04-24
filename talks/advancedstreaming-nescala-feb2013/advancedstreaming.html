@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+
+	<title>Advanced stream processing</title>
+	
+	<!-- Required stylesheet -->
+	<link rel="stylesheet" href="core/deck.core.css">
+	
+	<!-- Extension CSS files go here. Remove or add as needed. -->
+	<link rel="stylesheet" href="extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="extensions/status/deck.status.css">
+	<link rel="stylesheet" href="extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="extensions/scale/deck.scale.css">
+	<link rel="stylesheet" href="extensions/highlight.js/styles/tomorrow.css">
+	<!-- Required Modernizr file -->
+	<script src="modernizr.custom.js"></script>
+  <script src="extensions/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+	<!-- Style theme. More available in /themes/style/ or create your own. -->
+	<!-- <link rel="stylesheet" href="themes/style/web-2.0.css"> -->
+	<link rel="stylesheet" href="themes/style/swiss.css">
+	
+	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+	<link rel="stylesheet" href="themes/transition/horizontal-slide.css">
+</head>
+<body class="deck-container">
+
+<!-- Begin slides. Just make elements with a class of slide. -->
+
+<section class="slide">
+  <h2>Advanced stream processing</h2>
+  <h3>Parallelism, nondeterminism, and distributed programming</h3>
+  <p>Paul Chiusano, @pchiusano, manning.com/bjarnason</p>
+</section>
+
+<section class="slide">
+	<h2>Disclaimer / shameless plug</h2>
+  <div class="slide">
+  <h3>... for a kindler, gentler introduction see chapter 15 of FP in Scala: <a href="http://manning.com/bjarnason">manning.com/bjarnson</a></h3>
+  <h3> Book half off today, discount code: scalawkd5</h3>
+  </div>
+</section>
+
+<section class="slide">
+	<h2><code>Process1</code>: a 1-input stream processor</h2>
+  <pre><code class="scala" 
+>sealed trait Process1[I,O]</code></pre>
+<pre class="slide"><code class="scala"
+>case class Halt[I,O]() extends Process1[I,O]</code></pre>
+  <pre class="slide"><code class="scala" 
+>case class Emit[I,O](
+    head: Seq[O], 
+    tail: Process1[I,O] = Halt[I,O]()) 
+  extends Process1[I,O]</code></pre>
+<pre class="slide"><code class="scala"
+>case class Await[I,O](
+    recv: I => Process1[I,O], 
+    fallback: Process1[I,O] = Halt[I,O]()) 
+  extends Process1[I,O]</code></pre>
+</section>
+
+<section class="slide">
+	<h2><code>Process1</code> definitions</h2>
+  <pre><code class="ruby" 
+>def sum: Process1[Double,Double] = {
+  def go(acc: Double): Process1[Double,Double] = 
+    Await((d: Double) => Emit(Seq(d+acc), go(d+acc))) 
+  go(0.0)
+}</code></pre>
+  <pre><code class="ruby" 
+>scala> sum(Stream(1.0, 2.0, 3.0, 4.0)).toList
+val res0: List(1.0, 3.0, 6.0, 10.0)
+</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Driving a <code>Process1[I,O]</code></h2>
+  <pre><code class="scala" 
+>def apply(s: Stream[I]): Stream[O] = this match {
+  case Halt() => Stream()
+  case Await(recv, fallback) => s match {
+    case h #:: t => recv(h)(t) 
+    case _ => fallback(s) // Stream is empty
+  }
+  case Emit(h,t) => h.toStream append t(s)
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h2><code>Process1[I,O]</code>: the <code>List[O]</code> view</h2>
+  <pre><code class="ruby" 
+>def ++(p: => Process1[I,O]): Process1[I,O]
+def flatMap[O2](f: O => Process1[I,O2]): Process1[I,O2]
+def map[O2](f: O => O2): Process1[I,O2]
+</code></pre>
+  <pre class="slide"><code class="ruby" 
+>def repeat: Process1[I,O]
+def filter[I](f: I => Boolean): Process1[I,I]
+def take[I](n: Int): Process1[I,I]
+...</code></pre>
+</section>
+
+<section class="slide">
+	<h2><code>Process1[I,O]</code>: the <code>I => O</code> view</h2>
+  <pre class="slide"><code class="ruby" 
+>def lift[I,O](f: I => O): Process1[I,O] = 
+  Await((i: I) => Emit(Seq(f(i)))) repeat
+</code></pre>
+  <pre class="slide"><code class="ruby" 
+>def |>[O2](p2: Process1[O,O2]): Process1[I,O2]
+</code></pre>
+</section>
+
+<section class="slide">
+	<h2><code>Process1</code> example</h2>
+  <pre class="slide"><code class="ruby" 
+>val lineCounter: Process1[String,Int] = 
+  filter(!_.startsWith("//")) |> 
+  filter(!_.trim.isEmpty) |> 
+  lift(_ => 1.0) |> 
+  sum |> 
+  lift(_ toInt)</code></pre>
+<pre class="slide"><code class="ruby" 
+>val prog: ??? = lines("Main.scala") |> lineCounter
+</code></pre>
+</section>
+
+<section class="slide">
+<h1>Generalizing <code>Process1</code></h2>
+</section>
+
+<section class="slide">
+	<h2>Motivation</h2>
+  <pre><code class="ruby" 
+>case class Await[I,O](
+    recv: I => Process1[I,O], 
+    finalizer: Process1[I,O] = Halt[I,O]()) 
+  extends Process1[I,O]</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Abstracting over the context</h2>
+  <pre><code class="ruby" 
+>case class Await[F[_],A,O](
+  req: F[A], recv: A => Process[F,O],
+  fallback: Process[F,O],
+  onError: Process[F,O]) extends Process[F,O]
+</code></pre>
+</section>
+
+<section class="slide">
+	<h2>The full <code>Process</code> type</h2>
+  <pre><code class="ruby" 
+>trait Process[F[_],O]
+
+case class Await[F[_],A,O](
+  req: F[A], recv: A => Process[F,O],
+  fallback: Process[F,O],
+  onError: rocess[F,O]) extends Process[F,O]
+
+case class Emit[F[_],O](
+  head: Seq[O], 
+  tail: Process[F,O]) extends Process[F,O]
+
+case class Halt[F[_],O]() extends Process[F,O]</code></pre>
+</section>
+
+<section class="slide">
+	<h2>The List-like operations work the same!</h2>
+  <pre><code class="ruby" 
+>def ++(p: => Process[F,O]): Process[F,O]
+def flatMap[O2](f: O => Process[F,O2]): Process[F,O2]
+def map[O2](f: O => O2): Process[F,O2]
+def repeat: Process[F,O2]</code></pre>
+</section>
+
+<section class="slide">
+	<h2><code>Process1</code> is a <code>Process</code></h2>
+  <pre class="slide"><code class="ruby" 
+>case class Is[I]() {
+  sealed trait f[X]
+  case object Get extends f[I]
+}
+def Get[I] = Is[I]().Get
+
+type Process1[I,O] = Process[Is[I]#f, O]</code></pre>
+<pre class="slide"><code
+>Await(Get[Int], 
+      (i: Int) => Emit(Seq(i+1))).repeat</code></pre>
+</section>
+
+<section class="slide">
+	<h2><code>Process1</code> is a <code>Process</code></h2>
+  <pre><code class="ruby" 
+>trait Process[F[_],O] {
+  ...
+  def |>[O2](p2: Process1[O,O2]): Process[F,O2]
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h2><code>Tee</code>: a two-input <code>Process</code></h2>
+  <pre><code class="ruby" 
+>case class T[I,I2]() {
+  sealed trait f[X] 
+  case object L extends f[I]
+  case object R extends f[I2]
+}
+type Tee[I,I2,O] = Process[T[I,I2]#f, O]</code></pre>
+</section>
+
+<section class="slide">
+	<h2><code>Tee</code>: a two-input <code>Process</code></h2>
+  <pre><code class="ruby" 
+>def zipWith[O,O2,O3](f: (O,O2) => O3): Tee[O,O2,O3] = 
+  awaitL[O,O2,O3](o => 
+  awaitR         (o2 => emitT(f(o,o2)))).repeat
+</code></pre>
+<pre class="slide"><code class="ruby" 
+>trait Process[F[_],O] {
+  ...
+  def tee[O2,O3](p2: Process[F,O2])(
+                 t: Tee[O,O2,O3]): Process[F,O3]
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Effectful sources</h2>
+  <pre class="slide"><code class="scala" 
+>type Source[O] = Process[IO,O]</code></pre>
+  <pre class="slide"><code class="scala" 
+>case class Await[A,O](
+  req: IO[A],       // or Future[A] 
+  recv: A => Process[O],
+  ..</code></pre>
+</section>
+
+<section class="slide">
+<h2>Effectful sources</h2>
+<pre><code class="scala" 
+>trait Partial[F[_]] { 
+  def attempt[A](a: F[A]): F[Either[Throwable,A]]
+  def fail[A](t: Throwable): F[A]
+}
+
+// indicates normal termination
+case object End extends Exception
+
+implicit class Source[F[_]:Monad:Partial, O](
+    src: Process[F,O]) {
+  def collect: F[IndexedSeq[O]] = ...  
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Examples of effectful sources</h2>
+  <pre><code class="ruby" 
+>def lines(filename: String): Process[IO, String]
+
+def rows(query: PreparedStatement): Process[IO, Row]
+
+def resource[R,O](
+  acquire: IO[R])(
+  release: R => IO[Unit],
+  step: R => IO[Either[Throwable,O]]): Process[IO,O]</code></pre>
+</section>
+ 
+<section class="slide">
+	<h2>Effectful sinks and channels</h2>
+  <pre class="slide"><code class="ruby" 
+>type Sink[F[_],O] = Process[F,O => F[Unit]]</code></pre>
+<pre class="slide"><code class="ruby"
+>val fileIn: Process[IO,String] = ... 
+val fileOut: Process[IO, String => IO[Unit]] = ... // Sink[IO,String]
+val pipe: Process[IO,IO[Unit]] = 
+  (fileIn zipWith fileOut)((line,write) => write(line))</code></pre>
+<pre class="slide"><code class="ruby"
+>def eval[F[_],O](p: Process[F, F[O]]): Process[F,O] = 
+  p match { case Emit(h,t) => 
+    Await(h, hEval => Emit(hEval, eval(t)) }</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Effectful sinks and channels</h2>
+<pre class="slide"><code class="ruby"
+>val convert: Process[IO,Unit] = 
+  lines("fahrenheit.txt") |> 
+  filter(!_.startsWith("#")) |> 
+  lift(fahrenheitToCelsius) to fileW("celsius.txt")
+
+type Channel[F[_],I,O] = Process[F, I => F[O]]
+
+trait Process[F[_],O] { ...
+  def to[O2](p2: Channel[F,O,O2]): Process[F,O2] =
+    eval { (this zipWith p2)((o,f) => f(o)) }</code></pre>
+</section>
+
+<section class="slide">
+<h1>Nondeterminism</h2>
+</section>
+
+<section class="slide">
+	<h2>The usefulness of nondeterminism</h2>
+  <pre><code class="ruby" 
+>def zipWith[O,O2,O3](f: (O,O2) => O3): Tee[O,O2,O3] = 
+   awaitL[O,O2,O3](o => 
+   awaitR         (o2 => emitT(f(o,o2)))).repeat</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Representing nondeterminism explicitly</h2>
+  <pre><code class="ruby" 
+>case class Y[I,I2]() {
+  sealed trait f[X]
+  case object A extends f[I]
+  case object B extends f[I2]
+  case object AB extends f[Either[I,I2]]
+}
+type Wye[I,I2,O] = Process[Y[I,I2]#f, O]</code></pre>
+</section>
+
+<section class="slide">
+	<h2><code>zipWith</code>, revisited</h2>
+  <pre><code class="ruby" 
+>def zipWithY[O,O2,O3](f: (O,O2) => O3): Wye[O,O2,O3] = 
+  awaitAB[O,O2,O3] {
+    case Right(o2) => awaitA(o => emitY(f(o,o2))) 
+    case Left(o) => awaitB(o2 => emitY(f(o,o2)))
+  } repeat</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Interpreting nondeterminism</h2>
+  <pre><code class="ruby" 
+>trait Nondeterminism[F[_]] {
+  def choose[A,B](a: F[A], b: F[B]): 
+    F[(A, F[B]) Either (F[A], B) ]
+}</code></pre>
+  <pre class="slide"><code class="ruby" 
+>trait Nondeterminism {
+  def choose[A,B](a: Future[A], b: Future[B]): 
+    Future[(A, Future[B]) Either (Future[A], B) ]
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Interpreting nondeterminism</h2>
+  <pre><code class="ruby" 
+>trait Process[F[_],O] {
+  def wye[O2,O3](
+      p2: Process[F,O2])(
+      y: Wye[O,O2,O3])(
+      implicit F: Nondeterminism[F]): Process[F,O3]
+  ...
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h1>Distributed execution</h1>
+</section>
+
+<section class="slide">
+	<h2>Conclusion</h2>
+  <h3>Credits: Rúnar Bjarnason, Dan Doel, Ed Kmett</h3>
+  <h3>Machines library, by Ed Kmett: github.com/ekmett/machines/</h3>
+  <h3>Scala port, by Rúnar and Dan: github.com/runarorama/scala-machines</h3>
+  <h3><a href="http://manning.com/bjarnason">manning.com/bjarnson</a>, discount code: scalawkd5</h3>
+  <h3 class="slide">Coming soon to <code>scalaz</code></h3>
+</section>
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="jquery-1.7.2.min.js"></script>
+<script src="core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="core/deck.core.js"></script>
+<script src="extensions/hash/deck.hash.js"></script>
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

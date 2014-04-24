@@ -1,0 +1,10 @@
+name: Paul Chiusano's blog
+url: http://pchiusano.github.io
+
+pygments: true
+markdown: kramdown
+kramdown:
+  input: GFM
+  fenced_code_blocks: true
+  
+paginate: 5

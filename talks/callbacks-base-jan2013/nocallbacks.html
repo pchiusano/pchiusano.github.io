@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+
+	<title>I/O as a type</title>
+	
+	<!-- Required stylesheet -->
+	<link rel="stylesheet" href="core/deck.core.css">
+	
+	<!-- Extension CSS files go here. Remove or add as needed. -->
+	<link rel="stylesheet" href="extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="extensions/status/deck.status.css">
+	<link rel="stylesheet" href="extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="extensions/scale/deck.scale.css">
+	<link rel="stylesheet" href="extensions/highlight.js/styles/tomorrow.css">
+	<!-- Required Modernizr file -->
+	<script src="modernizr.custom.js"></script>
+  <script src="extensions/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+	<!-- Style theme. More available in /themes/style/ or create your own. -->
+	<!-- <link rel="stylesheet" href="themes/style/web-2.0.css"> -->
+	<link rel="stylesheet" href="themes/style/swiss.css">
+	
+	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+	<link rel="stylesheet" href="themes/transition/horizontal-slide.css">
+</head>
+<body class="deck-container">
+
+<!-- Begin slides. Just make elements with a class of slide. -->
+
+<section class="slide">
+  <h2>I/O as a type</h2>
+  <h3>... and how to do asynchronous I/O without callbacks</h3>
+  <p>Paul Chiusano, @pchiusano</p>
+</section>
+
+<section class="slide">
+	<h2>An ordinary imperative program... </h2>
+  <pre><code 
+>// a pure function
+def fahrenheitToCelsius(f: Double): Double = 
+  (f - 32) * 5.0/9.0
+
+// Ordinary code with side effects
+def converter: Unit = {
+  println("Enter a temperature in degrees fahrenheit: ")
+  val d = readLine.toDouble
+  println(fahrenheitToCelsius(d))
+}</code></pre>
+<pre><code class="no-highlight" 
+>> Enter a temperature in degrees fahrenheit: 80
+26.6667</code></pre>
+</section>
+
+<section class="slide">
+  <h2>Types aren't very descriptive...</h2>
+  <ul>
+    <li><code>readLine: String</code></li>
+    <li><code>println: String => Unit</code></li>
+    <li><code>converter: Unit</code></li>
+  </ul>
+</section>
+
+<section class="slide">
+	<h2>Modeling external effects</h2>
+  <pre><code 
+>trait IO[+A] {
+  def map[B](f: A => B): IO[B]
+  def flatMap[B](f: A => IO[B]): IO[B]
+}
+
+val ReadLine: IO[String] = ???
+def PrintLine(line: String): IO[Unit] = ???
+
+def converter: IO[Unit] = for {
+  _ <- PrintLine("Enter a temperature in degrees fahrenheit: ")
+  d <- ReadLine.map(_.toDouble)
+  _ <- PrintLine(fahrenheitToCelsius(d).toString)
+} yield ()</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Modeling external effects</h2>
+  <pre><code 
+>trait IO[+A] { self => // give name for `this` pointer
+  def run: A 
+  def map[B](f: A => B): IO[B] = 
+    new IO[B] { def run = f(self.run) } // `self` refs outer `IO` 
+  def flatMap[B](f: A => IO[B]): IO[B] = 
+    new IO[B] { def run = f(self.run).run }
+}
+object IO {
+  def apply[A](a: => A) = new IO[A] { def run = a }
+  val ReadLine: IO[String] = IO { readLine }
+  def PrintLine(line: String): IO[Unit] = IO { println(line) }
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h1>Benefit 1</h1>
+</section>
+
+<section class="slide">
+	<h1>Benefit 2</h1>
+</section>
+
+<section class="slide">
+	<h2>Benefit 2 (cont)</h2>
+  <pre><code 
+>object IO extends Monad[IO] { ... }
+
+val echo: IO[Unit] = ReadLine.flatMap(PrintLn)
+val readInt: IO[Int] = ReadLine.map(_.toInt)
+val prompts: IO[Unit] = converter.replicateM_(5)
+val lines: IO[List[String]] = ReadLine.replicateM(10)
+</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Benefit 2 (cont)</h2>
+  <pre><code 
+>def converter: IO[Unit] = IO {
+  println("Enter a temperature in degrees fahrenheit: ")
+  val d = readLine.toDouble
+  println(fahrenheitToCelsius(d))
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h1>Benefit 3</h1>
+</section>
+
+<section class="slide">
+	<h2><code>IO</code>, revisted</h2>
+  <pre><code 
+>trait IO[+A] { 
+  def run: A 
+  ... 
+}
+
+def converter: IO[Unit] = for {
+  _ <- PrintLine("Enter a temperature in degrees fahrenheit: ")
+  d <- ReadLine.map(_.toDouble)
+  _   <- PrintLine(fahrenheitToCelsius(d).toString)
+} yield ()</code></pre>
+</section>
+
+<section class="slide">
+	<h2><code>IO</code>, revisted (cont)</h2>
+  <pre><code
+>trait IO[F[_], +A]
+case class Pure[F[_], +A](get: A) extends IO[F,A]
+case class Request[F[_], I, +A](
+    expr: F[I], 
+    receive: I => IO[F,A]) extends IO[F,A]
+</code></pre>
+</section>
+
+<section class="slide">
+	<h2>An example <code>F</code>: console access</h2>
+  <pre><code
+>trait Console[A]
+case object ReadLine extends Console[Option[String]]
+case class PrintLine(s: String) extends Console[Unit]
+
+def converter: IO[Console,Unit] = for {
+  _ <- PrintLine("Enter a temperature in degrees fahrenheit: ")
+  d <- ReadLine.map(_.map(_.toDouble))
+  _ <- when(d.isDefined) { PrintLine(fahrenheitToCelsius(d.get).toString) }
+} yield ()</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Running <code>IO</code> actions</h2>
+  <pre><code
+>trait Run[F[_]] { 
+  def apply[A](expr: F[A]): (A, Run[F]) 
+}
+
+object IO {
+  @annotation.tailrec
+  def run[F[_],A](R: Run[F])(io: IO[F,A]): A = io match {
+    case Pure(a) => a
+    case Request(expr,recv) =>
+      R(expr) match { case (e,r2) => run(r2)(recv(e)) }
+  }
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Running console actions</h2>
+  <pre><code
+>def RunConsoleMock(lines: List[String]) = new Run[Console] {
+  def apply[A](c: Console[A]) = c match {
+    case ReadLine => if (lines.isEmpty) (None, this) 
+                     else (Some(lines.head), RunConsoleMock(lines.tail))
+    case PrintLine(_) => ((), RunConsoleMock) // Ignored! 
+  }
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Can we run asynchronously?</h2>
+  <pre><code
+>trait IO[F[_], +A]
+case class Pure[F[_], +A](get: A) extends IO[F,A]
+case class Request[F[_], I, +A](
+    expr: F[I], 
+    receive: I => IO[F,A]) extends IO[F,A]
+
+object IO {
+  @annotation.tailrec
+  def run[F[_],A](R: Run[F])(io: IO[F,A]): A = io match {
+    case Pure(a) => a
+    case Request(expr,recv) =>
+      R(expr) match { case (e,r2) => run(r2)(recv(e)) }
+  }
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Can we run asynchronously? Yes.</h2>
+  <pre><code
+>trait RunAsync[F[_]] {
+  def apply[A](a: F[A]): Future[(A, RunAsync[F])]
+}
+object IO {
+  def run[F[_],A](R: RunAsync[F])(io: IO[F,A]): Future[A] = io match {
+    case Pure(a) => Future(a)
+    case Request(expr,recv) =>
+      R(expr) flatMap { case (e,r2) => run(r2)(recv(e)) }
+  }
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Can we run asynchronously? Yes. (cont)</h2>
+  <pre><code
+>class AsynchronousFileChannel {
+  ... 
+  def read[A](
+    buf: ByteBuffer, 
+    callback: (A, Int) => Unit): Unit // real API much more horrible
+}
+
+def read(f: AsynchronousFileChannel, nBytes: Int): Future[Array[Byte]] = {
+  val promise = concurrent.Promise[Array[Byte]]()
+  val buf = ByteBuffer.allocate(nBytes)
+  f.read(buf, (a: A, bytesRead: Int) => promise.success)
+  promise.future
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Another view on <code>runAsync</code></h2>
+  <pre class="slide"><code>IO[Console,A] => IO[Future,A]</code></pre>
+  <pre class="slide"><code
+>trait Trans[F[_], G[_]] {
+  def apply[A](f: F[A]): G[A]
+}
+
+def run[F[_],G[_],A](T: Trans[F,G])(G: Monad[G])(io: IO[F,A]): G[A] =
+  io match {
+    case Pure(a) => G.unit(a)  
+    case Request(expr,k) => 
+      G.flatMap (T(expr)) (e => run(T)(G)(k(e)))
+  }
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Ideas for I/O managers</h2>
+  <h3 class="slide">General idea: retain enough metadata to do optimizations</h3>
+  <h3 class="slide">Buffering + merging I/O operations</h3>
+  <h3 class="slide">Reordering operations that commute to improve locality</h3>
+  <h3 class="slide">Domain specific optimizations for particular <code>IO[F,A]</code></h3>
+</code></pre>
+</section>
+
+<section class="slide">
+	<h2>And yet...</h2>
+  <pre class="slide"><code
+>def converter: IO[Unit] = for {
+  _ <- PrintLine("Enter a temperature in degrees fahrenheit: ")
+  d <- ReadLine.map(_.toDouble)
+  _   <- PrintLine(fahrenheitToCelsius(d).toString)
+} yield ()</code></pre>
+</section>
+
+<section class="slide">
+	<h2>More resources</h2>
+  <h3>Chapter 13 of FP in Scala discusses this content in more detail: <a href="http://manning.com/bjarnason">manning.com/bjarnason</a></h3>
+  <h3>Upcoming talk at NE Scala Symposium discussing more composable APIs for I/O</h3>
+  <h3 class="slide">Questions?</h3>
+</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Appendix: stack usage</h2>
+  <h3>'Real' version requires trampolining</h3>
+</section>
+
+<section class="slide">
+	<h2>Appendix: other models of I/O</h2>
+  <h3><code>type IO[A] = RealWorld => (A, RealWorld)</code></h3>
+</section>
+
+
+<!-- End slides. -->
+
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="jquery-1.7.2.min.js"></script>
+<script src="core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="core/deck.core.js"></script>
+<script src="extensions/hash/deck.hash.js"></script>
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.min.css"/>
+    <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+    </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" media="print" href="reveal.js/css/print/pdf.css" />
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="an-introduction-to-scalaz-stream" class="slide level1">
+<h1>An introduction to scalaz-stream</h1>
+<p><em>Paul Chiusano, March 1, 2014</em></p>
+<p><span class="citation" data-cites="pchiusano">@pchiusano</span></p>
+<p>github.com/scalaz/scalaz-stream</p>
+<!--
+pandoc -f markdown -t revealjs -s scalaz-stream.markdown -V theme=solarized -o out.html
+-->
+
+</section>
+<section id="lets-go" class="slide level1">
+<h1>Let's go</h1>
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; <span class="kw">import</span> scalaz.<span class="fu">stream</span>.<span class="fu">Process</span>
+<span class="kw">import</span> scalaz.<span class="fu">stream</span>.<span class="fu">Process</span>
+
+scala&gt; Process(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)
+res0: Process[Nothing,Int] = Process(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</code></pre>
+<!--
+scalaz-stream is a streaming I/O library, built using scalaz. Goal is to provide a nice, compositional way of assembling complex programs that do IO, while making it easy to write resource-safe I/O code. Core data type in the library is called `Process`. Conceptually represents a stream, but a stream that may have to interpret effects of some type in order to continue emitting values. Here, first parameter is that effect type, `Nothing` in this case since we have a pure, in-memory `Process`, and `Int` is the output type.
+
+This is just the literal syntax for creating a `Process`.
+-->
+
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; <span class="kw">val</span> P = Process
+P: Process.<span class="fu">type</span> = Process$@3a62c6b7
+
+scala&gt; <span class="kw">val</span> xs = <span class="fu">P</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>) ++ P.<span class="fu">emit</span>(<span class="dv">4</span>) ++ P.<span class="fu">emitAll</span>(List(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>))
+xs: Process[Nothing,Int] = Process(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</code></pre>
+<!--
+Just going to alias the Process object for convenience.
+
+The Process type supports many of the same operations as lists, like append. This shows several different equivalent ways of emitting values - variadic syntax, emitting a single element, and emitting a `Seq` of values.
+-->
+
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; xs.<span class="fu">map</span>(_ + <span class="dv">1</span>).<span class="fu">take</span>(<span class="dv">4</span>)
+res1: Process[Nothing,Int] = Process(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
+
+scala&gt; xs.<span class="fu">zip</span>(xs)
+res2: Process[Nothing,(Int, Int)] =
+  Process((<span class="dv">1</span>,<span class="dv">1</span>), (<span class="dv">2</span>,<span class="dv">2</span>), (<span class="dv">3</span>,<span class="dv">3</span>), (<span class="dv">4</span>,<span class="dv">4</span>), (<span class="dv">5</span>,<span class="dv">5</span>), (<span class="dv">6</span>,<span class="dv">6</span>), (<span class="dv">7</span>,<span class="dv">7</span>))
+
+scala&gt; xs.<span class="fu">flatMap</span>(i =&gt; <span class="fu">P</span>(i,i))
+res3: Process[Nothing,Int] =
+  Process(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">7</span>)</code></pre>
+<!--
+We also get `map`, `flatMap`, `zip`, `filter`, and so on.
+-->
+
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; xs.&lt;tab&gt;
+++                append            asInstanceOf
+attempt           buffer            bufferAll
+bufferBy          causedBy          chunk
+chunkAll          chunkBy           chunkBy2
+cleanup           collect           collectFirst
+disconnect        drain             drop
+dropLast          dropLastIf        dropWhile
+evalMap           exists            fallback
+fby               filter            find
+flatMap           flush             fold
+fold1             fold1Map          fold1Monoid
+foldMap           foldMonoid        foldSemigroup
+forall            gatherMap         handle
+hardDisconnect    interleave        intersperse
+isHalt            isInstanceOf      kill
+killBy            last              map
+onComplete        onFailure         once
+orElse            partialAttempt    pipe
+reduce            reduceMap         reduceMonoid
+reduceSemigroup   repartition       repeat
+run               runFoldMap        runLast
+runLastOr         runLog            runStep
+scan              scan1             scan1Map
+scan1Monoid       scanMap           scanMonoid
+scanSemigroup     sleepUntil        split
+splitOn           splitWith         step
+stepOr            take              takeWhile
+tee               terminated        toString
+translate         trim              unemit
+until             when              window
+zip               zipWith           |&gt;
+|||</code></pre>
+<!--
+Lots of others too.
+
+So far these are just pure streams. Let's look at effectful streams next.
+-->
+
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; <span class="kw">import</span> scala.<span class="fu">concurrent</span>.<span class="fu">duration</span>.<span class="fu">_</span>
+<span class="kw">import</span> scala.<span class="fu">concurrent</span>.<span class="fu">duration</span>.<span class="fu">_</span>
+
+scala&gt; <span class="kw">val</span> fizz = P.<span class="fu">awakeEvery</span>(<span class="dv">3</span> seconds).<span class="fu">map</span>(_ =&gt; <span class="st">&quot;fizz&quot;</span>)
+fizz: Process[Task,String] = <span class="fu">Await</span>(&lt;task&gt;) ...</code></pre>
+<!--
+A stream which wakes up every 2 seconds to emit a value isn't a pure computation, since it is periodically executing this asynchronous task. This won't literally be sleeping a thread - it is submitting to a `ScheduledExecutorService`.
+
+Notice the request type is `Task`. This is a data type from scalaz, it's a 'better' I/O type with support for binding to asynchronous computations, also includes support for exception handling. The `fizz` stream is in the `Await` state, indicating that when run, it will wait for the result of some task before continuing.
+
+`fizz` represents an infinite stream.
+*/
+-->
+
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; <span class="kw">val</span> fizz2 = fizz.<span class="fu">take</span>(<span class="dv">2</span>)
+fizz2: Process[Task,String] = <span class="fu">Await</span>(&lt;task&gt;) ...</code></pre>
+<!--
+We have all the same operations on effectful streams as we do on pure ones.
+
+Note that nothing actually happens when calling these functions. The `Process` is a pure description of what needs to happen, not a running computation. Calling `fizz.take(2)` here is saying something like - 'return a new `Process` that, when run, runs `fizz` then terminates after `fizz` has emitted two elements'.
+-->
+
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; <span class="kw">val</span> t = fizz2.<span class="fu">map</span> { d =&gt; <span class="fu">println</span>(d); d }.<span class="fu">runLog</span>
+t: Task[IndexedSeq[String]] = Task@773f0cfd</code></pre>
+<!--
+Here's one way to 'run' a stream. using a side effect here to observe what's happening. `runlog` returns a single `task` that collects all the values emitted by the `process`.
+-->
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; t.<span class="fu">run</span>
+fizz <span class="co">// after 3 s</span>
+fizz <span class="co">// after 6 s</span>
+res7: IndexedSeq[String] = Vector(fizz, fizz)
+
+scala&gt; t.<span class="fu">run</span>
+fizz
+fizz
+res8: IndexedSeq[String] = Vector(fizz, fizz)</code></pre>
+<!--
+The `Task` is not a running computation. Nothing happens until we call `.run` on the `Task`. And because it is just a description, we can run it again. Unlike a `scala.concurrent.Future`, the computation is not used up. Having `Task` be a pure description is important - it means we can have one piece of code build a `Task`, and a completely different piece of code decide how to evaluate it (whether to do retries, what sort of timeout to use, etc).
+-->
+
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; <span class="kw">val</span> buzz = P.<span class="fu">awakeEvery</span>(<span class="dv">5</span> seconds).<span class="fu">map</span>(_ =&gt; <span class="st">&quot;buzz&quot;</span>)
+buzz: Process[Task,String] = <span class="fu">Await</span>(&lt;task&gt;) ...
+
+scala&gt; <span class="kw">val</span> fizzbuzz = fizz merge buzz
+fizzbuzz: Process[Task,String] = <span class="fu">Await</span>(&lt;task&gt;) ...
+
+scala&gt; fizzbuzz.<span class="fu">take</span>(<span class="dv">5</span>).<span class="fu">map</span>(println).<span class="fu">run</span>.<span class="fu">run</span>
+fizz <span class="co">// 3 sec</span>
+buzz <span class="co">// 5 sec</span>
+fizz <span class="co">// 6 sec</span>
+fizz <span class="co">// 9 sec</span>
+buzz <span class="co">// 10 sec</span></code></pre>
+<!--
+There are a number of functions for combining streams. Here's one. `fizz merge buzz` will emit a value whenever either `fizz` or `buzz` has a value available. This allows for unbounded nondeterminism. But we could easily write a generic combinator that does a 'bounded' merge, say, by making sure one stream does not get more than 10 elements ahead of the other.
+-->
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; <span class="kw">import</span> scalaz.<span class="fu">stream</span>.<span class="fu">tee</span>
+<span class="kw">import</span> scalaz.<span class="fu">stream</span>.<span class="fu">tee</span>
+
+scala&gt; <span class="kw">import</span> scalaz.<span class="fu">stream</span>.<span class="fu">wye</span>
+<span class="kw">import</span> scalaz.<span class="fu">stream</span>.<span class="fu">wye</span>
+
+scala&gt; <span class="kw">import</span> scalaz.<span class="fu">stream</span>.<span class="fu">process1</span>
+<span class="kw">import</span> scalaz.<span class="fu">stream</span>.<span class="fu">process1</span></code></pre>
+<!--
+Lots of other functions for combining and transforming streams. `tee` has deterministic functions for merging streams two at a time, `wye` has nondeterministic functions for the same, and `process1` has various single stream transformations.
+-->
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; process1.&lt;tab&gt;
+asInstanceOf      awaitOption       buffer
+bufferAll         bufferBy          chunk
+chunkAll          chunkBy           chunkBy2
+collect           collectFirst      drop
+dropLast          dropLastIf        dropWhile
+exists            feed              feed1
+filter            find              fold
+fold1             fold1Map          fold1Monoid
+foldMap           foldMonoid        foldSemigroup
+forall            id                init
+intersperse       isInstanceOf      last
+lastOr            lift              liftL
+liftR             liftY             multiplex
+record            reduce            reduceMap
+reduceMonoid      reduceSemigroup   repartition
+rethrow           scan              scan1
+scan1Map          scan1Monoid       scanMap
+scanMonoid        scanSemigroup     shiftRight
+skip              split             splitOn
+splitWith         stripNone         sum
+take              takeThrough       takeWhile
+terminated        toString          utf8Encode
+window</code></pre>
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; tee.&lt;tab&gt;
+asInstanceOf   feed1L         feed1R
+feedL          feedR          interleave
+isInstanceOf   passL          passR
+toString       until          when
+zip            zipAll         zipWith
+zipWithAll
+
+scala&gt; wye.&lt;tab&gt;
+asInstanceOf     attachL          attachR
+boundedQueue     drainL           drainR
+dynamic          dynamic1         echoLeft
+either           feed1            feed1L
+feed1R           feedL            feedR
+flip             haltL            haltR
+interrupt        isInstanceOf     liftL
+liftR            merge            timedQueue
+toString         unboundedQueue   yip
+yipL             yipWith          yipWithL</code></pre>
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; <span class="kw">import</span> scalaz.<span class="fu">stream</span>.<span class="fu">io</span>
+<span class="kw">import</span> scalaz.<span class="fu">stream</span>.<span class="fu">io</span>
+
+scala&gt; <span class="kw">val</span> lns = io.<span class="fu">linesR</span>(<span class="st">&quot;testdata/fahrenheit.txt&quot;</span>)
+lns: Process[Task,String] = <span class="fu">Await</span>(&lt;task&gt;) ...
+
+scala&gt; lns.<span class="fu">take</span>(<span class="dv">3</span>).<span class="fu">runLog</span>.<span class="fu">run</span>
+res12: IndexedSeq[String] = Vector(
+  <span class="st">&quot;// this file contains a list of temperatures in degrees fahrenheit &quot;</span>,
+  <span class="fl">18.0</span>,
+  <span class="fl">17.9</span>)</code></pre>
+<!--
+Here's an example of building a stream that does actual I/O. There are various other functions like `linesR` in the `io` package.
+
+The stream will handle resource management - the file will be opened when the stream consumer begins, and closed when the stream consumer finishes, whether due to normal termination or an exception.
+-->
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; <span class="kw">val</span> lns2 = lns.<span class="fu">onComplete</span> { P.<span class="fu">suspend</span> { <span class="fu">println</span>(<span class="st">&quot;--CLEANUP--&quot;</span>); P.<span class="fu">halt</span> }}
+lns2: Process[[x]Task[x],String] = <span class="fu">Await</span>(&lt;task&gt;) ...
+
+scala&gt; lns2.<span class="fu">take</span>(<span class="dv">2</span>).<span class="fu">runLog</span>.<span class="fu">run</span>
+--CLEANUP--
+res15: IndexedSeq[String] = Vector(
+  <span class="st">&quot;// this file contains a list of temperatures in degrees fahrenheit &quot;</span>,
+  <span class="fl">18.0</span>)</code></pre>
+<!--
+It's pretty easy to build resource safety, using the `onComplete` function, which works like `++` but is guaranteed to be run, even in the event of an exception of the first process. We typically will stick any cleanup / finalization type actions in an `onComplete`.
+
+Here just using a side effect to observe that it is indeed getting called, even when we terminate early, after reading just the first two lines of the file.
+-->
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; lns2.<span class="fu">take</span>(<span class="dv">3</span>).<span class="fu">map</span>(_.<span class="fu">toDouble</span>).<span class="fu">runLog</span>.<span class="fu">attemptRun</span>
+--CLEANUP--
+res16: scalaz.\/[Throwable,IndexedSeq[Double]] =
+  -\/(java.<span class="fu">lang</span>.<span class="fu">NumberFormatException</span>: For input string: <span class="st">&quot;// this file contains a list of temperatures in degrees fahrenheit&quot;</span>)</code></pre>
+<!--
+And we still get the cleanup action run, even when an exception occurs.
+-->
+
+</section>
+<section id="binding-to-asynchronous-sources" class="slide level1">
+<h1>Binding to asynchronous sources</h1>
+<!--
+scalaz-stream has various ways of binding to asynchronous computations. The most idiomatic way would be to bind to the asynchronous tasks used to produce individual elements of the stream. The way this works is we first wrap the asynchronous computation in `Task`, and then promote `Task` to a `Process`.
+-->
+
+</section>
+<section class="slide level1">
+
+<h2 id="creating-streams-asynchronously-tasks">Creating streams asynchronously (tasks)</h2>
+<pre class="sourceCode Scala"><code class="sourceCode scala"><span class="kw">def</span> <span class="fu">read</span>(callback: (Throwable \/ Array[Byte]) =&gt; Unit): Unit = ...
+
+<span class="kw">val</span> t: Task[Array[Byte]] = Task.<span class="fu">async</span> { read } <span class="co">// magic!</span>
+<span class="kw">val</span> t2: Task[Array[Byte]] = <span class="kw">for</span> {
+  bytes &lt;- t
+  moarBytes &lt;- t <span class="co">// `t` not a running computation!</span>
+} <span class="kw">yield</span> (bytes ++ moarBytes)</code></pre>
+<!--
+Here's a typical callback-y API. We have a function `read`, which rather than blocking and returning an `Array[Byte]`, accepts a callback that it will invoke with the `Array[Byte]` later. Using `Task.async`, we can bind to this. The types just work out here.
+
+Once we have `Task`, we get a straighforward monadic API - we can use `map`, `flatMap`, etc. Since `Task` is a pure value, reusing the same task will rerun it from start to finish. Thus `bytes` and `moarBytes` will invoke `read` TWICE. If you wish to share a resulting value, the correct way to do that is just by using `flatMap`, rather than sharing the underlying `Task`.
+-->
+
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala"><span class="kw">def</span> <span class="fu">read</span>(success: Array[Byte] =&gt; Unit, fail: Throwable =&gt; Unit): Unit = ...
+
+<span class="kw">val</span> t: Task[Array[Byte]] = Task.<span class="fu">async</span> { cb =&gt;
+  <span class="fu">read</span>(b =&gt; <span class="fu">cb</span>(<span class="fu">right</span>(b)), err =&gt; <span class="fu">cb</span>(<span class="fu">left</span>(b)))
+}
+<span class="kw">val</span> t2 = t.<span class="fu">flatMap</span>(b =&gt; <span class="fu">Task</span>(b)) <span class="co">// run rest of computation in a fresh logical thread</span></code></pre>
+<!--
+Another variation, this time an API that takes two callbacks, one for success, and one for failure. We again use `Task.async`.
+-->
+
+</section>
+<section class="slide level1">
+
+<pre><code>val t: Task[Array[Byte]] = ...
+val read1: Process[Task,Array[Byte]] = P.eval(f)
+val readAll: Process[Task,Array[Byte]] = read1.repeat</code></pre>
+<!--
+Once we have a `Task`, we can promote that to a `Process` using `Process.eval`. This will result in a stream that waits for that task then emits its result. If we want to do this repeatedly, we can use `.repeat`.
+-->
+
+</section>
+<section class="slide level1">
+
+<h2 id="creating-streams-asynchronously-queues">Creating streams asynchronously (queues)</h2>
+<pre class="sourceCode Scala"><code class="sourceCode scala"><span class="kw">import</span> scalaz.<span class="fu">stream</span>.<span class="fu">async</span>
+
+<span class="kw">val</span> (q, src) = async.<span class="fu">queue</span>[Int]
+
+<span class="co">// Thread 1</span>
+q.<span class="fu">enqueue</span>(<span class="dv">1</span>)
+q.<span class="fu">enqueue</span>(<span class="dv">2</span>)
+...
+q.<span class="fu">close</span>
+
+<span class="co">// Thread 2</span>
+src: Process[Task,Int]
+src.<span class="fu">take</span>(<span class="dv">10</span>).<span class="fu">to</span>(snk).<span class="fu">run</span></code></pre>
+<!--
+We don't always have access to the asynchronous action for fetching individual elements/chunks of the stream. Sometimes, we have just an asynchronous action that emits a series of elements. For this we can use a `scalaz.stream.async.queue`. We get a mutable `q` that can be used by the producer, and on the consumer side we get a `Process[Task,Int]`, which will emit the values placed in the queue by the consumer. We are using a queue to invert control, but the queue is fully nonblocking.
+-->
+
+</section>
+<section class="slide level1">
+
+<h2 id="creating-streams-asynchronously-signals">Creating streams asynchronously (signals)</h2>
+<pre class="sourceCode Scala"><code class="sourceCode scala"><span class="kw">import</span> scalaz.<span class="fu">stream</span>.<span class="fu">async</span>
+
+<span class="kw">val</span> alive = async.<span class="fu">signal</span>[Boolean]
+
+<span class="kw">val</span> now: Process[Task,Boolean] = alive.<span class="fu">continuous</span>
+<span class="kw">val</span> onChange: Process[Task,Boolean] = alive.<span class="fu">discrete</span>
+
+<span class="co">// Thread 1</span>
+alive.<span class="fu">set</span>(<span class="kw">true</span>).<span class="fu">run</span>
+..
+alive.<span class="fu">set</span>(<span class="kw">false</span>).<span class="fu">run</span>
+
+<span class="co">// Thread 2</span>
+alive.<span class="fu">discrete</span>.<span class="fu">take</span>(<span class="dv">10</span>).<span class="fu">map</span> ...</code></pre>
+<!--
+Likewise, we sometimes have a continuous value or event that may be updated asynchronously. We can create a `Signal[A]`, and set it in one thread, and respond to the discrete updates to that signal as a `Process` in another thread. There's also `Signal.continuous`, which is a continuous stream that is always defined to be the current value of the signal.
+-->
+</section>
+<section class="slide level1">
+
+<h2 id="creating-streams-asynchronously-actors">Creating streams asynchronously (actors)</h2>
+<pre class="sourceCode Scala"><code class="sourceCode scala"><span class="kw">import</span> scalaz.<span class="fu">concurrent</span>.<span class="fu">Actor</span>
+<span class="kw">case</span> <span class="kw">class</span> <span class="fu">M</span>(cb: Throwable \/ MoarBytes =&gt; Unit)
+
+<span class="kw">val</span> a = Actor.<span class="fu">actor</span>[M] { <span class="kw">case</span> <span class="fu">M</span>(cb) =&gt;
+  ...
+  <span class="kw">val</span> result = <span class="fu">reallyExpensiveOp</span>(r)
+  <span class="fu">cb</span>(result)
+}
+
+<span class="kw">val</span> t: Process[Task,MoarBytes] =
+  Process.<span class="fu">repeatEval</span>(Task.<span class="fu">async</span> { cb =&gt; a ! <span class="fu">M</span>(cb) })
+
+t.<span class="fu">filter</span>(_.<span class="fu">canHazBytes</span>).<span class="fu">map</span>(foo).<span class="fu">fold</span>(..)</code></pre>
+<!--
+Here's another example, binding to an actor-based API.
+-->
+</section>
+<section class="slide level1">
+
+<h2 id="questions">Questions?</h2>
+<!--
+https://github.com/scalaz/scalaz-stream/graphs/contributors
+-->
+
+<ul>
+<li>Credits: Rúnar Bjarnason, Ed Kmett, Dan Doel, Pavel Chlupacek, ...</li>
+<li>Also see, Ch 13 and 15 of FP in Scala: http://manning.com/bjarnason/</li>
+<li>https://github.com/scalaz/scalaz-stream</li>
+<li>Lots of stuff I didn't discuss</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="appendix">Appendix</h2>
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; <span class="kw">import</span> scalaz.<span class="fu">concurrent</span>.<span class="fu">Task</span>
+<span class="kw">import</span> scalaz.<span class="fu">concurrent</span>.<span class="fu">Task</span>
+
+scala&gt; <span class="kw">import</span> java.<span class="fu">util</span>.<span class="fu">concurrent</span>.<span class="fu">TimeoutException</span>
+<span class="kw">import</span> java.<span class="fu">util</span>.<span class="fu">concurrent</span>.<span class="fu">TimeoutException</span>
+
+scala&gt; :pa
+<span class="co">// Entering paste mode (ctrl-D to finish)</span>
+
+<span class="kw">def</span> atLeastEvery[A](rate: Process[Task,Any])(p: Process[Task,A]): Process[Task,A] =
+  rate.<span class="fu">either</span>(p).<span class="fu">pipe</span>(process1.<span class="fu">window</span>(<span class="dv">2</span>)).<span class="fu">flatMap</span> { w =&gt;
+    <span class="kw">if</span> (w.<span class="fu">forall</span>(_.<span class="fu">isLeft</span>)) P.<span class="fu">fail</span>(<span class="kw">new</span> TimeoutException)
+    <span class="kw">else</span> P.<span class="fu">emitAll</span> { w.<span class="fu">headOption</span>.<span class="fu">toList</span>.<span class="fu">filter</span>(_.<span class="fu">isRight</span>).<span class="fu">map</span>(_.<span class="fu">getOrElse</span>(???)) }
+  }</code></pre>
+<!--
+A cute example of a generic combinator - this fails the stream if it does not emit a value at the rate specified by the given `Process`. We merge the two streams and fail if we ever see two values in a row from the 'rate' stream.
+-->
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode Scala"><code class="sourceCode scala">scala&gt; <span class="kw">val</span> heartbeat = P.<span class="fu">awakeEvery</span>(<span class="dv">1</span> seconds)
+heartbeat: Process[Task,Duration] = <span class="fu">Await</span>(&lt;task&gt;) ...
+
+scala&gt; <span class="fu">atLeastEvery</span>(P.<span class="fu">awakeEvery</span>(<span class="dv">15</span> seconds))(heartbeat)
+res11: Process[Task,Duration] = <span class="fu">Await</span>(&lt;task&gt;) ...</code></pre>
+<!--
+An example of its use. This will fail if heartbeat ever takes longer than 15 seconds between elements.
+-->
+
+
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        theme: 'solarized', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+  </body>
+</html>
