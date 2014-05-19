@@ -21,15 +21,17 @@ __Alice:__ So what? It's the job of software, and UX, to make a more useful mode
 Here is a nicer model for information sharing, allowing for both producer-controlled limited sharing, and consumer-side filtering, transformation, and annotation. Separate from this, we can figure out a good UX for this model:
 
 * A producer of content selects a set of 'suggested consumers' for each piece of content. This content is made available to each of these consumers. In this model, producers do not _send_ content to consumers, they _suggest_ it.
-* Anyone may create a 'pipe', which acts as both a consumer and a producer. The identity pipe just republishes all suggested content with a set of consumers (public, a concrete set, etc), but an API allows for more interesting pipes that do filtering, transformation, etc. 
-* Suggested consumers 
+* Anyone may create a 'junction', which acts as both a consumer and a producer. The junction has a set of producers that it 'follows' and a set of consumers that it suggests. The identity junction follows 'All' and just republishes all content that any producers suggests to its output set of consumers (public, a concrete set, etc), but an API allows for more interesting junctions that do filtering, transformation, etc.
+* Anyone granted access to content, via a suggested consumption, may choose to republish it to one or more consumers.
 
 Here's an example of how this plays out:
 
-* Joe Sixpack, an economics researcher, posts some kitten photos publicly. By publicly, we mean that he suggests the 'Public' pipe associated with his account and identified by some URI as the consumer for his post.
-* Later, Joe posts an interesting econ paper, also to his public feed.
-* Carol, a kitten lover, reshares the kitten photo post to a 'Joe-Sixpack-Kittens' pipe and/or an 'Chicago-School-Econ-kitten-photos' pipe.
-* Joe, or anyone with access to the Joe Sixpack 'Public' pipe (anyone on the internet) reshares the econ paper post to a 'Joe-Sixpack-econ' pipe. It does not matter whether Joe creates this pipe or whether someone else does so.
-* Alice, an econ grad student, subscribes to only the 'Joe-Sixpack-econ' feed, which she merges into her main newsfeed. Alice
+* Joe Sixpack, an economics researcher, posts some kitten photos publicly. By publicly, we mean that he suggests the 'Public' junction associated with his account and identified by some URI as the consumer for his post.
+* Later, Joe posts an interesting econ paper, also to his public junction.
+* Carol, a kitten lover, reshares the kitten photo post to a 'Joe-Sixpack-Kittens' pipe and/or an 'Chicago-School-Econ-kitten-photos' junction.
+* Joe, or anyone with access to the Joe Sixpack 'Public' junction (anyone on the internet) reshares the econ paper post to a 'Joe-Sixpack-econ' junction. It does not matter whether Joe creates this junction or whether someone else does so.
+* Alice, an econ grad student, subscribes to only the output of the 'Joe-Sixpack-econ' junction, which she merges into her main newsfeed. Alice is spared having to sift through the kitten photos posted by Joe in her feed. Alice is also not forced into making an 'all-or-nothing' follow/no follow decision based on her perceived signal to noise ratio of Joe's public feed.
 
-The 'pipes' in this model function a bit like tags, but importantly, we don't (necessarily) rely on Joe to appropriately tag all his posts. Anyone with access to Joe's post may do this, and we can incorporate permissioning for access to the pipes.
+The 'junctions' in this model function a bit like tags, but importantly, we don't (necessarily) rely on Joe to appropriately tag all his posts. Any node in the network of junctions with access to Joe's post may do this, and the permissioning on the input side of junctions lets us construct public feeds, carefully curated restricted feeds, and everything in between.
+
+I believe it's fully possible to make a very nice UX for this model, and it's both simpler and more powerful than the model backing services like G+ and Facebook.
