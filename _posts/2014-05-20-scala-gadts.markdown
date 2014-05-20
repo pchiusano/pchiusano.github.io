@@ -1,5 +1,5 @@
 ---
-template: post
+layout: post
 title: Alternatives to GADTs in Scala
 categories: [fp, scala]
 ---
