@@ -35,3 +35,5 @@ Here's an example of how this plays out:
 The 'junctions' in this model function a bit like tags, but importantly, we don't (necessarily) rely on Joe to appropriately tag all his posts. Any node in the network of junctions with access to Joe's post may do this, and the permissioning on the input side of junctions lets us construct public feeds, carefully curated restricted feeds, and everything in between.
 
 I believe it's fully possible to make a very nice UX for this model, and it's both simpler and more powerful than the model backing services like G+ and Facebook.
+
+[Discuss on Twitter](https://twitter.com/pchiusano/status/468483806467719169)
