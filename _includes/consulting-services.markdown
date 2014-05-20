@@ -1,6 +1,6 @@
 ## Consulting services ##
 
-If your company is interested in getting help leveraging Scala and functional programming, please contact me about working together. Here's a broad summary of services I offer:
+If your company is interested in getting help leveraging Scala and functional programming, please [contact me](mailto:paul.chiusano@stage-n.com) about working together. Here's a broad summary of services I offer:
 
 * Scala programming for hire, with an eye toward writing compositional, testable, and performant code.
 * Functional design and implementation, at all levels, including system architecture, libraries and DSLs. I've been doing these things professionally for 5+ years.
