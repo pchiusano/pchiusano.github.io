@@ -1,8 +1,7 @@
 name: Paul Chiusano's blog
 url: http://pchiusano.github.io
 
-include: [consulting-services]
-
+permalink: /:month-:day-:year/:title.html
 pygments: true
 markdown: kramdown
 kramdown:
