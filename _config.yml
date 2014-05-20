@@ -1,6 +1,8 @@
 name: Paul Chiusano's blog
 url: http://pchiusano.github.io
 
+include: [consulting-services]
+
 pygments: true
 markdown: kramdown
 kramdown:
