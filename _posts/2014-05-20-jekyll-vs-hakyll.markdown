@@ -15,10 +15,8 @@ Okay, so it appears that while Jekyll by default passes appropriately named file
 
 Here's what that second solution looks like: 
 
-~~~
-{% capture my-include %}{% include foo.markdown %}{% endcapture %}
-{{ my-include | markdownify }}
-~~~
+    {% capture my-include %}{% include foo.markdown %}{% endcapture %}
+    {{ my-include | markdownify }}
 
 Good grief!
 
