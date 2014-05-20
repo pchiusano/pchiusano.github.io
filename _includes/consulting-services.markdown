@@ -1,3 +1,5 @@
+## Consulting services ##
+
 If your company is interested in getting help leveraging Scala and functional programming, please contact me about working together. Here's a broad summary of services I offer:
 
 * Scala programming for hire, with an eye toward writing compositional, testable, and performant code.
