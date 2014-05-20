@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Jekyll vs. Hakyll and the curse of magic implicit configuration
-categories: [fp]
+categories: [fp, haskell]
 ---
 
 This blog currently runs off GitHub pages and [Jekyll](http://jekyllrb.com/). It's convenient being able to produce posts directly in markdown and preview them in the browser, which I hope will encourage me to post more frequently. But Jekyll suffers from the curse of magic implicit configuration, in which control flow is obscured from the user and one must tweak rather unguessable configuration settings to achieve different effects.
