@@ -68,3 +68,5 @@ object Term {
 Now `Term` is parameterized on the algebra, and we can interpret the same term with different algebra instances to obtain different behaviors.
 
 Next time you're temped to define a new data type with case classes, think about what sort of pattern matching you really have to do in the interpreters. If it's normal, single-level pattern matching (a simple fold), consider using a tagless representation like the above.
+
+[Discuss on Twitter](https://twitter.com/pchiusano/status/468850172462497792)
