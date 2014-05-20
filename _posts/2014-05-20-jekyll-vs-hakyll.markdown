@@ -60,3 +60,5 @@ Now, I am not an expert in Hakyll, and I don't know all the 'nouns and verbs' be
 Likewise, while there is a lot of stuff happening in the `match posts/*` stanza, and I don't understand all of it, it's all normal Haskell functions, which have type signatures. If I want to figure out how to customize what happens at any particular stage, I just modify the control flow to be exactly what I want. I don't generally need to search through reams of documentation or google around.
 
 When you write libraries, don't obscure the control flow--leave the user in control of that. If there are common control flow patterns you wish to encapsulate, expose higher order functions for users to call if they want. Don't go down the path of having a fixed control flow skeleton, with magic implicit configuration for tweaking this skeleton.
+
+[Discuss on Twitter](https://twitter.com/pchiusano/status/468813321223680002)
