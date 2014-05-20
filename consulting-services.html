@@ -2,5 +2,5 @@
 layout: default
 ---
 
-{% include consulting-services.markdown %}
-{{ include.content | markdowify }}
+{% capture x %}{% include consulting-services.markdown %}{% endcapture %}
+{{ x | markdownify }}
