@@ -80,3 +80,5 @@ __Alice:__ Quite right! Sounds like a fun problem for me to think more about. If
 So it would seem we don't always need to track file or network I/O as an effect, or rather, what we track as an effect is very much dependent on the assumptions that we as programmers choose to make, and on some fundamental pieces of technology like the I/O model and I/O manager used by our language runtime. Just like we don't choose to track memory allocation as an effect (in part due to efficient GC in the runtime), perhaps it's the case that we don't always wish to track 'assumed immutable' file reads as an effect (given a smarter I/O manager).
 
 This was just a thought experiment. I'll leave the design of such an I/O manager as an exercise to the reader.
+
+[Discuss on Twitter](https://twitter.com/pchiusano/status/469131674807455745)
