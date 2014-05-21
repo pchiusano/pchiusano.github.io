@@ -23,7 +23,7 @@ In general, the advantage to _not_ tracking an effect is that, without any sort 
 map :: (a -> b) -> [a] -> [b]
 ~~~
 
-In Haskell, we may pass an `a -> b` which is lazy, and avoids evaluating the `a` it is given, or a strict `a -> b`. Both variants are useful, and in a strict language, we could in theory define two versions of `map`, one which takes a strict function, and another which takes a non-strict function. In practice, no one bothers with this sort thing in strict languages, so strict languages are often unnecessarily so, at a loss to modularity. Haskell gets this effect polymorphism 'for free', as a consequence of lumping both forced values and thunks into a single type.
+In Haskell, we may pass an `a -> b` which is lazy, and avoids evaluating the `a` it is given, or a strict `a -> b`. Both variants are useful, and in a strict language, we could in theory define two versions of `map`, one which takes a strict function, and another which takes a non-strict function. In practice, no one bothers with this sort thing in strict languages, so 'optionally lazy' strict languages are often unnecessarily strict, at a loss to modularity. Haskell gets this effect polymorphism 'for free', as a consequence of lumping both forced values and thunks into a single type and using pervasive nonstrictness by default.
 
 ### Should we always track file and network I/O as an effect? ###
 
