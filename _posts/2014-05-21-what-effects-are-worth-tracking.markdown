@@ -4,7 +4,7 @@ title: Is network I/O always an effect worth tracking?
 categories: [fp]
 ---
 
-One of the most important contributions of FP is the discipline that _effects which affect program meaning_ should be treated as values and explicitly sequenced. Following this discipline leads to a program which proceeds in two phases--in the first phase, first-class effects are built up and combined using pure functions, and in the second phase (the 'end of the universe'), these effects are interpreted in order to actually _do_ something.
+One of the most important contributions of FP is the discipline that _effects which affect program meaning_ should be treated as values and explicitly sequenced. Following this discipline leads to an architecture which splits programs into two phases--in the first phase, first-class effects are built up and combined using pure functions, and in the second phase (the 'end of the universe'), these effects are interpreted in order to actually _do_ something.
 
 What doesn't get said often enough is that while there are some standard choices, it's ultimately _up to us_ to decide what effects we want to consider part of our program's meaning. In all languages, there are some ambient effects allowed in 'pure' code, and we allow these effects because we don't choose to have them participate in our program's meaning:
 
