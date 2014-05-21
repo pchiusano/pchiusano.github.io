@@ -43,7 +43,7 @@ __Bob:__ I'm not entirely happy with that reasoning, but I'll grant you your poi
 
 __Alice:__ Yes, Bob?
 
-__Bob:__ You've forgotten that reading from a file uses a file handle, which are in limited in number by the OS! Therefore, in my opinion, file reads even from your so-called 'assumed to be immutable' files is is worth tracking as a typed effect.
+__Bob:__ You've forgotten that reading from a file uses a file handle, which are in limited in number by the OS! Therefore, in my opinion, file reads even from your so-called 'assumed to be immutable' files are worth tracking as a typed effect.
 
 __Alice:__ I'm glad you said 'in your opinion', because it is indeed an opinion and these are indeed choices. But actually, I don't _necessarily_ agree with you--one can imagine an OS in which file handles were no more scarce than memory. Or we could simply imagine a more sophisticated I/O manager which makes the underlying OS file handle scarcity irrelevant to the vast majority of programs. 
 
