@@ -20,3 +20,5 @@ Twitter has a few 'features' that helped lead to its adoption:
 In particular, these last two items meant that Twitter had a real niche. As silly as the service must have seemed when pitched as an idea, it filled a niche, and had the right combination of features to drive its adoption. Much later on, Twitter solved some hard technical problems that made it a nice platform for sharing realtime updates, but this was Twitter merely executing well enough in the niche it carved out for itself, following its adoption strategy.
 
 Was any of this intentional, or did Twitter just get lucky? I'd love to hear from some early-stage Twitter folks who were privy to its strategy discussions. For better or worse, Twitter is now the beneficiary of these network effects and competitors will have a difficult time displacing them.
+
+[Discuss on Twitter](https://twitter.com/pchiusano/status/469203807042564096)
