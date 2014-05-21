@@ -15,7 +15,7 @@ What doesn't get said often enough is that while there are some standard choices
 
 But we do track effects like file and network I/O, and certainly any mutation of in-memory data our program has access to.
 
-_Aside:_ Chapter 13 of [FP in Scala](manning.com/bjarnason) discusses some of these issues in more detail, and [Runar also has a nice post](http://blog.higher-order.com/blog/2012/09/13/what-purity-is-and-isnt/) that formed the starting point for that chapter.
+_Aside:_ Chapter 13 of [FP in Scala](http://manning.com/bjarnason) discusses some of these issues in more detail, and [Runar also has a nice post](http://blog.higher-order.com/blog/2012/09/13/what-purity-is-and-isnt/) that formed the starting point for that chapter.
 
 In general, the advantage to _not_ tracking an effect is that, without any sort of explicit effect polymorphism (for instance being parametric in the choice of monad), functions are more general, in particular higher order functions, which work for all possible combinations of the presence or absence of an effect. For instance, not tracking evaluation as an effect in Haskell means we avoid a combinatorial explosion of different functions (or lots of explicit effect polymorphism) for dealing with strictness and evaluation. My favorite example of this is the `map` function:
 
