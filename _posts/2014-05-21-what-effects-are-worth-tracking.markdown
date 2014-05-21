@@ -81,4 +81,4 @@ So it would seem we don't always need to track file or network I/O as an effect,
 
 This was just a thought experiment. I'll leave the design of such an I/O manager as an exercise to the reader.
 
-[Discuss on Twitter](https://twitter.com/pchiusano/status/469131674807455745)
+[Discuss on Twitter](https://twitter.com/pchiusano/status/469131674807455745) or [on Reddit](http://www.reddit.com/r/haskell/comments/265blu/must_file_and_network_io_always_live_in_the_io/).
