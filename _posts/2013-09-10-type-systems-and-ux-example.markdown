@@ -4,7 +4,7 @@ title: Why type systems matter for UX&#58; an example
 categories: [fp, ux, tech]
 ---
 
-I've written previously about the general [problems with the application-centric view of software](/2013-05-22/future-of-software.html">). Here I'm going to discuss a specific example. First, some background, from my earlier post:
+I've written previously about the general [problems with the application-centric view of software](/2013-05-22/future-of-software.html). Here I'm going to discuss a specific example. First, some background, from my earlier post:
 
 > Applications are bad enough in that they trap potentially useful building blocks for larger program ideas behind artificial barriers, but they fail at even their stated purpose of providing an 'intuitive' interface to whatever fixed set of actions and functionality its creators have imagined. Here is why: the problem is that for all but the simplest applications, there are <em>multiple contexts</em> within the application and there needs to be a cohesive story for how to present only 'appropriate' actions to the user and prevent nonsensical combinations <em>based on context</em>. This becomes serious business as the total number of actions offered by an application grows and the set of possible actions and contexts grows. As an example, if I just have selected a message in my <em>inbox</em> (this is a 'context'), the 'send' action should not be available, but if I am editing a draft of a message it should be. Likewise, if I have just selected some text, the 'apply Kodachrome style retro filter' action should not be available, since that only makes sense applied to a picture of some sort.
 >
