@@ -51,7 +51,7 @@ __Bob:__ Hmm, sounds magical. I'd like to hear more about how exactly this hypot
 
 __Alice:__ And at the end of the day, computation proceeds by a series of electrical impulses and produces the effect of little tiny dots on a screen being lit up and changing colors. Who cares? I'm talking about abstractions here. For purpose of this thought experiment, let's just imagine that such a thing exists such as to make worrying about the finite nature of file handles _irrelevant_. Then do still need to track reading the immutable file `/foo/bar/baz.bin`?
 
-__Bob:__ Okay I see where you're going with this. Although what about the fact that reading from a file, even an immutable one, has a higher possibility of failure and will certainly take longer than reading the same data from memory.
+__Bob:__ Okay I see where you're going with this. Although what about the fact that reading from a file, even an immutable one, has a higher possibility of failure and will certainly take longer than reading the same data from memory?
 
 __Alice:__ I'm going to just wait for you to think of what my answer will be to that remark.
 
