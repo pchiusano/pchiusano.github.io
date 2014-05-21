@@ -28,7 +28,7 @@ Here's an example of how this plays out:
 
 * Joe Sixpack, an economics researcher, posts some kitten photos publicly. By publicly, we mean that he suggests the 'Public' junction associated with his account and identified by some URI as the consumer for his post.
 * Later, Joe posts an interesting econ paper, also to his public junction.
-* Carol, a kitten lover, reshares the kitten photo post to a 'Joe-Sixpack-Kittens' pipe and/or an 'Chicago-School-Econ-kitten-photos' junction.
+* Carol, a kitten lover, reshares the kitten photo post to a 'Joe-Sixpack-Kittens' junction and/or an 'Chicago-School-Econ-kitten-photos' junction.
 * Joe, or anyone with access to the Joe Sixpack 'Public' junction (anyone on the internet) reshares the econ paper post to a 'Joe-Sixpack-econ' junction. It does not matter whether Joe creates this junction or whether someone else does so.
 * Alice, an econ grad student, subscribes to only the output of the 'Joe-Sixpack-econ' junction, which she merges into her main newsfeed. Alice is spared having to sift through the kitten photos posted by Joe in her feed. Alice is also not forced into making an 'all-or-nothing' follow/no follow decision based on her perceived signal to noise ratio of Joe's public feed.
 
