@@ -142,3 +142,5 @@ Though the post talks specifically about not creating our <em>programming langua
 So there you have it. The machines are no longer primary. End the tyranny of applications!
 
 If you like this post, you might enjoy <a href="/2013-09-10/type-systems-and-ux-example.html">this follow up</a>.
+
+_This post originally lived at [the old blog](http://pchiusano.blogspot.com/2013/05/the-future-of-software-end-of-apps-and.html)._
