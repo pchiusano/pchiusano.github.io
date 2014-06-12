@@ -102,7 +102,7 @@ We don't want `Expr` to have to commit to a particular set of primitives, nor a 
 eval :: (e -> R) -> (forall a . Expr e a) -> Expr e a -> R
 ~~~
 
-for some particular `R`. We've just deferred the question of how to interpret these `Ext` constructors to the caller of this `eval`. Code which builds up `Expr` can use normal abstraction to be polymorphic in the choice of caller, and it's `eval` and its caller gets to decide how these `Ext e` constructors get interpreted. The type `e` could be some initial encoding like `data Ext = Plus | Times` or some final encoding closer to the effect type used in `eval`, or anything in between. We're now done.
+for some particular `R`. We've just deferred the question of how to interpret these `Ext` constructors to the caller of this `eval`. Code which builds up `Expr` can use normal abstraction to be polymorphic in the choice of caller, and it's `eval` and its caller who get to decide how these `Ext e` constructors get interpreted. The type `e` could be some initial encoding like `data Ext = Plus | Times` or some final encoding closer to the effect type used in `eval`, or anything in between. We're done.
 
 If we wish to share code in the different evaluators, we just use the normal tools of abstraction to factor out common structure. The `Expr` algebra is simple enough, for instance, that we could write a more polymorphic evaluator, perhaps something like:
 
