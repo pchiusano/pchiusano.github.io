@@ -4,7 +4,7 @@ title: A very simple technique for making DSLs extensible
 categories: [fp]
 ---
 
-The heavyweight techniques for 'solving' the Expression Problem (Data types a la Carte and some of the syntactically lighter weight extensible effect variants that popped up recently) are sometimes way overkill. Using the usual tools of abstraction, we can often make our DSLs extensible without any fuss.
+The heavyweight techniques for 'solving' the Expression Problem (Data types a la Carte ([PDF](http://www.cs.ru.nl/~W.Swierstra/Publications/DataTypesALaCarte.pdf)) and some of the syntactically lighter weight extensible effect variants that [popped up recently](http://www.cs.indiana.edu/~sabry/papers/exteff.pdf)) are sometimes way overkill. Using the usual tools of abstraction, we can often make our DSLs extensible without any fuss.
 
 For illustration of this very simple technique (I hesitate to even call it that), I'll use an untyped lambda calculus with well-formedness of scoping enforced:
 
