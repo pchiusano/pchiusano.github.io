@@ -60,7 +60,7 @@ plus = Ext1 (\x -> Ext1 (\y -> Unit (x+y)))
 instance Monad Expr where ... 
 ~~~
 
-But this isn't ideal either, as we are being forced to commit to some set of effects for `Ext` when defining our data type, rather than deferring this decision to the interpreter. Let's look at such an interpreter. They might have signatures like:
+But this isn't ideal either, as we are being forced to commit to some set of effects for `Ext` when defining our data type, rather than deferring this decision to the interpreter. Let's look at some examples of such interpreters. They might have signatures like:
 
 ~~~ Haskell
 -- We take a closed expression
