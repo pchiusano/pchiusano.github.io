@@ -81,7 +81,9 @@ data Expr f a
   | Var a
 ~~~
 
-... then we now have the creator of `Expr` values being forced to choose what effects are allowed in `Ext`, rather than deferring that decision. Back when we had a `Plus` constructor for our primitives, such an interpreter was free to interpret those subterms into the effect of _its_ choosing. 
+... then we now have the creator of `Expr` values being forced to choose what effects are allowed in `Ext`, rather than deferring that decision. Back when we had a `Plus` constructor for our primitives, such an interpreter was free to interpret those subterms into the effect of _its_ choosing.
+
+Another thing lost is that our `Expr` data type is no longer a fully defunctionalized syntax tree---it contains Haskell functions which means we've lost the ability to do things like serialize `Expr` values and send them over a network, compile our DSL to run on the GPU, and so on.
 
 At this point, people usually start talking about 'The Expression Problem' and considering some pretty ugly, heavyweight solutions. Do we really need these pyrotechnics? Let's take a step back. Our original goal here was a lambda calculus with an extensible set of primitives, and an interpreter which could be defined without caring about the set of primitives chosen. All we have to do is simply have `Expr` abstract over the type of these primitives:
 
