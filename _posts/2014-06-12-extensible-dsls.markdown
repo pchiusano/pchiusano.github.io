@@ -54,7 +54,7 @@ data Expr a
   | Lam (Expr (Slot a))
   | Var a
 
-plus = Ext1 (\x -> Ext1 (\y -> Unit (x+y)))
+plus = Ext (\x -> Ext (\y -> Unit (x+y)))
 
 -- Possible once again, now that `a` is strictly in positive position
 instance Monad Expr where ... 
@@ -101,7 +101,7 @@ instance Monad (Expr e) where ...
 We don't want `Expr` to have to commit to a particular set of primitives, nor a particular set of effects when interpreting these primitives, so we simply abstract over the choice, using the `Ext e` constructor. An evaluator now becomes
 
 ~~~ Haskell
-eval :: (e -> R) -> (forall a . Expr e a) -> Expr e a -> R
+eval :: (e -> R) -> (forall a . Expr e a) -> R
 ~~~
 
 for some particular `R`. We've just deferred the question of how to interpret these `Ext` constructors to the caller of this `eval`. Code which builds up `Expr` can use normal abstraction to be polymorphic in the choice of `Ext` primitives, and it's `eval` and its caller who get to decide how these `Ext e` constructors get interpreted. The type `e` could be some initial encoding like `data Ext = Plus | Times` or some final encoding closer to the effect type used in `eval`, or anything in between. We're done.
@@ -128,6 +128,6 @@ Rather than talking about OO vs FP, I prefer to talk about initial vs final enco
 
 Going just a bit further, let's examine the above characterization a bit more. Are ADTs truly closed in any meaningful sense? They are closed in the sense that one cannot add cases to an ADT without recompiling the code, and updating all the code which pattern matches on that ADT. But why is that necessary? If we wish to 'add' cases to a data type, `E`, there is _often no need to update the `E` data type in place_. We can simply write a function from `E -> E2`, where `E2` can contain whatever additional cases or functionality we want. All the functions which were defined over `E` still work, without recompilation. If we notice common patterns between code that works with `E` and code that works with `E2`, we can abstract over these similarities using the normal tools of FP.
 
-Once again, some history is order. During the heyday of OO, when the Expression Problem seemed like a bigger deal, abstraction in FP was not as well-understood and some of the basic tools of abstraction that functional programmers take for granted were yet to be discovered. Thus, preserving the exact functions monomorphic on the original type `E` was seen as being Rather Important--data types were generally thought of as having bespoke APIs, and defining a new data type would require replicating this bespoke API. The more modern view is that there's very little new under the sun--data types generally fit into a handful of abstraction bins that functional programmers have discovered (or rediscovered from even earlier work in mathematics), and most of the surface area of a data type's API we now get for free by simply implementing the appropriate abstractions for our data types. Moreover, I think people tend to write more abstract functional code these days, remaining ignorant of concrete details until it is convenient to specify them (often at the outer layers of the program). These factors have conspired to make the Expression Problem increasingly a non-problem for working functional programmers. I cannot think of the last time I've truly been bitten by the Expression Problem in a way that didn't have a trivial 'solution' like what I gave above.
+Once again, some history is order. During the heyday of OO, when the Expression Problem seemed like a bigger deal, abstraction in FP was not as well-understood and some of the basic tools of abstraction that functional programmers take for granted were yet to be discovered. Thus, preserving the exact functions monomorphic on the original type `E` was seen as being Rather Important--data types were generally thought of as having bespoke APIs, and defining a new data type would require duplicating large swaths of this bespoke API. The more modern view is that there's very little new under the sun--data types generally fit into a handful of abstraction bins that functional programmers have discovered (or rediscovered from even earlier work in mathematics), and most of the surface area of a data type's API we now get for free by simply implementing the appropriate abstractions for our data types. Moreover, I think people tend to write more abstract functional code these days, remaining ignorant of concrete details until it is convenient to specify them (often at the outer layers of the program). These factors have conspired to make the Expression Problem increasingly a non-problem for working functional programmers. I cannot think of the last time I've truly been bitten by the Expression Problem in a way that didn't have a trivial 'solution' like what I gave above.
 
 That being said, a language with convenient support for anonymous union types with the natural subtyping relationship might make for an interesting type system. But practically speaking, this isn't holding FP back.
