@@ -46,7 +46,7 @@ Now for some remarks. One can view this scheme as an alternative to De Bruijn in
 (Lam (Lam (f v2 v1)) v1) -- De Bruijn representation
 ~~~
 
-Notice that the symbol `v1` does not have a consistent meaning within a particular lexical scope. In this scheme (Axelsson-Claesson naming, shall we call it?), a variable get a name based on the _depth_ of lambdas in lexical scope underneath the lambda we are introducing. This has the advantage that names have a consistent meaning in each lexical scope, which I find easier to read (and think about):
+Notice that the symbol `v1` does not have a consistent meaning within a particular lexical scope. In this scheme (Axelsson-Claesson naming, shall we call it?), a variable gets a name based on the _depth_ of lambdas in lexical scope underneath the lambda we are introducing. This has the advantage that names have a consistent meaning in each lexical scope, which I find easier to read (and think about):
 
 ~~~ Haskell
 \x -> (\y -> f x y) x
