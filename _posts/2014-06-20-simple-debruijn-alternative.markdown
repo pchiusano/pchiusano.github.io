@@ -43,14 +43,14 @@ Now for some remarks. One can view this scheme as an alternative to De Bruijn in
 
 ~~~ Haskell
 \x -> (\y -> f x y) x
-(Lam (Lam (f v2 v1)) v1) ~~~ De Bruijn representation
+(Lam (Lam (f v2 v1)) v1) -- De Bruijn representation
 ~~~
 
-Notice that the symbol `v1` does not have a consistent meaning within a particular lexical scope. In this scheme (Axelsson-Claesson indexing, shall we call it?), a variable get a name based on the _depth_ of lambdas in lexical scope underneath the lambda we are introducing. This has the advantage that names have a consistent meaning in each lexical scope, which I find easier to read (and think about):
+Notice that the symbol `v1` does not have a consistent meaning within a particular lexical scope. In this scheme (Axelsson-Claesson naming, shall we call it?), a variable get a name based on the _depth_ of lambdas in lexical scope underneath the lambda we are introducing. This has the advantage that names have a consistent meaning in each lexical scope, which I find easier to read (and think about):
 
 ~~~ Haskell
 \x -> (\y -> f x y) x
-\v2 -> (\v1 -> f v2 v1) v2 ~~~ The paper's representation
+\v2 -> (\v1 -> f v2 v1) v2 -- Axelsson-Claesson naming
 ~~~
 
 Thus, 'leaf' level lambdas get assigned a name of `1`, parents get assigned a parameter name of `2`, and so on. This way of naming has the added bonus of ensuring the productivity of the knot-tying program for picking a fresh variable in `lam`. We don't need to descend into the body of a lambda to find a variable that is free.
