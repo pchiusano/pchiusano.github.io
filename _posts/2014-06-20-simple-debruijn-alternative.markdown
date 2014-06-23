@@ -54,7 +54,7 @@ Notice that the symbol `v1` does not have a consistent meaning within a particul
 \v2 -> (\v1 -> f v2 v1) v2 -- Axelsson-Claesson naming
 ~~~
 
-Thus, 'leaf' level lambdas get assigned a name of `1`, parents get assigned a parameter name of `2`, and so on. This way of naming has the added bonus of ensuring the productivity of the knot-tying program for picking a fresh variable in `lam`. We don't need to descend into the body of a lambda to find a variable that is free.
+Thus, 'leaf' level lambda parameters get assigned a name of `1`, parents get assigned a parameter name of `2`, and so on. This way of naming has the added bonus of ensuring the productivity of the knot-tying program for picking a fresh variable in `lam`. We don't need to examine the value of each variable in the body to find a variable that is free. (Furthermore, as the code for `maxBV` above shows, we do not need to descend into the body of a lambda either---the lambda constructor effectively caches the computed lambda-depth of the body.)
 
 I don't think this replaces all the use cases of more heavyweight techniques for managing variable bindings, like using polymorphic recursion to ensure well-formedness, à la [bound](http://hackage.haskell.org/package/bound), but it's such a useful, simple idea that I'm already finding uses for it.
 
