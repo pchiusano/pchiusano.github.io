@@ -58,4 +58,6 @@ Thus, 'leaf' level lambda parameters get assigned a name of `1`, parents get ass
 
 I don't think this replaces all the use cases of more heavyweight techniques for managing variable bindings, like using polymorphic recursion to ensure well-formedness, à la [bound](http://hackage.haskell.org/package/bound), but it's such a useful, simple idea that I'm already finding uses for it.
 
+[Discuss on Reddit](http://www.reddit.com/r/haskell/comments/28vfd0/a_simple_alternative_to_de_bruijn_indexing_from/)
+
 [the paper]: http://www.cse.chalmers.se/~emax/documents/axelsson2013using.pdf
