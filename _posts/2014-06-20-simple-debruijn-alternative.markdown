@@ -11,9 +11,10 @@ The question posed by the paper: is it possible to provide a HOAS-like syntax, `
 ~~~ Haskell
 type Name = Integer -- anything ordered will do
 
-data Expr = Var Name
-          | App Expr Expr
-          | Lam Name Expr
+data Expr 
+  = Var Name
+  | App Expr Expr
+  | Lam Name Expr
 
 lam :: (Expr -> Expr) -> Expr
 lam f = ???
