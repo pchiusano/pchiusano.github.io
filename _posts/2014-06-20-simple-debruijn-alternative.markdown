@@ -4,7 +4,7 @@ title: A simple alternative to De Bruijn indexing, from ICFP 2013
 categories: [fp]
 ---
 
-There was a [functional pearl at ICFP 2013][the paper] by Axelsson and Claessen that introduced a deceptively simple, useful technique for dealing with variable bindings in DSLs. Without any heavy machinery, it gives us HOAS-like syntax for constructing terms of the DSL, while retaining a simple first-order representation. The 'library' they developed is about 15 lines of code. When it was presented at ICFP, the audience was stunned. IIRC, there were no questions, as everyone was clearly wondering _how the @^#$!! didn't I think of that?_. I waited for someone in the audience to point out during the Q&A that this technique was FP folklore discovered by Alonzo Church in the 30s, but not a peep.
+There was a [functional pearl at ICFP 2013][the paper] by Axelsson and Claessen that introduced a deceptively simple, useful technique for dealing with variable bindings in DSLs. Without any heavy machinery, it gives us HOAS-like syntax for constructing terms of the DSL, while retaining a simple first-order representation. The 'library' they developed is about 15 lines of code. When it was presented at ICFP, the audience was stunned. IIRC, there were no questions, as everyone was clearly wondering _how the @^#$!! didn't I think of that?_ I waited for someone in the audience to point out during the Q&A that this technique was FP folklore discovered by Alonzo Church in the 30s, but not a peep.
 
 The question posed by the paper: is it possible to provide a HOAS-like syntax, `lam :: Expr -> Expr` for creating binding forms in a DSL, without introducing heavy machinery like a global name supply, all while retaining a simple first-order ADT:
 
