@@ -47,11 +47,11 @@ Now for some remarks. One can view this scheme as an alternative to De Bruijn in
 (Lam (Lam (f v2 v1)) v1) -- De Bruijn representation
 ~~~
 
-Notice that the symbol `v1` does not have a consistent meaning within a particular lexical scope. In this scheme (Axelsson-Claesson naming, shall we call it?), a variable gets a name based on the _depth_ of lambdas in lexical scope underneath the lambda we are introducing. This has the advantage that names have a consistent meaning in each lexical scope, which I find easier to read (and think about):
+Notice that the symbol `v1` does not have a consistent meaning within a particular lexical scope. In this scheme (Axelsson-Claessen naming, shall we call it?), a variable gets a name based on the _depth_ of lambdas in lexical scope underneath the lambda we are introducing. This has the advantage that names have a consistent meaning in each lexical scope, which I find easier to read (and think about):
 
 ~~~ Haskell
 \x -> (\y -> f x y) x
-\v2 -> (\v1 -> f v2 v1) v2 -- Axelsson-Claesson naming
+\v2 -> (\v1 -> f v2 v1) v2 -- Axelsson-Claessen naming
 ~~~
 
 Thus, 'leaf' level lambda parameters get assigned a name of `1`, parents get assigned a parameter name of `2`, and so on. This way of naming has the added bonus of ensuring the productivity of the knot-tying program for picking a fresh variable in `lam`. We don't need to examine the value of each variable in the body to find a variable that is free. (Furthermore, as the code for `maxBV` above shows, we do not need to descend into the body of a lambda either---the lambda constructor effectively caches the computed lambda-depth of the body.)
