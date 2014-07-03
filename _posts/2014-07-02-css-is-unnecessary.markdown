@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CSS is unnecessary if your layout language has means of abstraction
+title: CSS is unnecessary given a layout language with means of abstraction and combination
 categories: [fp]
 ---
 
