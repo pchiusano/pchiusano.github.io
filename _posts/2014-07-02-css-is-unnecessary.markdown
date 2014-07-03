@@ -6,7 +6,7 @@ categories: [fp]
 
 > CSS, a language for specifying visual appearance on the web, is ... so complex that it has never been implemented correctly; yet, successive versions specify even more complexity. At the same time, it is so underpowered that many elementary graphic designs are impossible or prohibitively difficult, and context-sensitivity (or anything computational) must be addressed externally. Most CSS lore is dedicated to describing the tangles of brittle hacks needed to circumvent incompatibilities or approximate a desired appearance.
 >
-> _[Bret Victor](http://worrydream.com/) in [discussion of MagicInk](http://worrydream.com/MagicInk/#p255)_
+> _[Bret Victor](http://worrydream.com/), [discussion of MagicInk](http://worrydream.com/MagicInk/#p255)_
 
 I've recently been looking at various client-side development technologies, in particular [Elm](http://elm-lang.org/). As a functional programming language, Elm isn't terribly exciting, but something I enjoy about the language is that it provides a sane combinator library for describing layout, as opposed to the pile of hacks that is HTML+CSS and explicit DOM manipulation in Javascript. Elm's author [has stated](https://groups.google.com/forum/#!msg/elm-discuss/qRKBmKjTBpk/SjF1MyjjkxwJ) that this is _not a bug_, it's a feature. Elm provides the escape hatch if you need it, but it is entirely possible to use pure Elm for layout without giving a thought to the DOM.
 
