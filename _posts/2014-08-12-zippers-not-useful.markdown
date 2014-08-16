@@ -13,7 +13,7 @@ Zippers probably popularized (or originated) the more general idea of a "functio
 I'll look at two instances of this, each of illustrates a more general situation where zippers aren't really appropriate:
 
 * The first, XML/JSON parsing and serialization, is a case where even the general idea of a functional cursor simply isn't necessary at all.
-* The second, using zippers as the model for various editing UIs, is a use case where the general idea of zippers is relevant, but given the particulars we'd be better served by use of a _path_ type or something else more lens-like.
+* The second, using zippers as the model for various editing UIs, is a use case where the general idea of zippers is relevant, but given the particulars we'd be better served by use of a _path_ type or something else more lens-like. That is, the one-hole context model is _too limited_ for these cases.
 
 ### XML/JSON parsing and serialization
 
