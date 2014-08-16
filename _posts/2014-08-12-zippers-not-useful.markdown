@@ -43,7 +43,7 @@ On the serialization side, it's again much nicer to just work with `a -> Json`, 
 
 The general issue here is that neither parsing nor serialization really require the concept of a functional cursor _at all_. _Can_ it be done? Yes, of course. And there are even some nice libraries that happen to use zippers for these tasks. But _should_ it be done? Probably not.
 
-## As a model for some editing UI
+### As a model for some editing UI
 
 Another use case that people tend to suggest for zippers is graphical or command line UIs for editing, say, a file system tree.
 
@@ -68,7 +68,7 @@ More generally, it is somewhat artifical (and I'd argue bad UX design) to restri
 
 For building editable GUIs, we generally want some notion of a _path_, a function for looking up the value at a path, editing a value at that path, and a way of resolving screen positions to paths, say. That is, we want to deal with paths, rather than one-hole contexts. Paths can come equipped with an algebra for making relative movements, and they also give us a story for other things that prove difficult with zippers. In addition to allowing for more random access, paths give us a story for concurrent edits and batch updates. For instance, if we have two concurrent edits to our structure, at different paths, we can simply apply both edits, or even use [OT](http://en.wikipedia.org/wiki/Operational_transformation) to ensure the edits can be applied in either order to produce the same result. If paths are represented as some sort of list of path elements, then for batch updates, we can merge common prefixes into a trie for the batch, and avoid repeated work traversing our structure.
 
-### General remarks
+### Remarks
 
 One of my favorite quotes is Ian Malcolm from Jurassic Park:
 
