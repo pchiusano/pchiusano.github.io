@@ -14,9 +14,9 @@ New technologies can be vast improvements along one axis (starting fires efficie
 
 Time and time again in discussions of technology, I see unimaginative naysaying:
 
-* "You know, isn't it kind of archaic that we're storing programs as text files and running compilers in batch mode like it's still the punch card era? I think we could do better than that." "Text is KING. I'm not giving up Vim / Eclipse, and plus look at all the great tooling, like Git, that can be written in a language agnostic way! Plus, Smalltalk tried this, like 20 years ago, and it never took off."
-* "You know, if we don't have rampant side effects, it's easier to compose programs by sticking together smaller pieces. That seems like a good idea." "But I need fast, mutable data structures in like 2% of my code, therefore this justifies sprinkling side effects willy nilly throughout! Be pragmatic! The Real World™ has mutation!!! Also, databases."
-* "Static typing seems to help me catch mistakes while I'm writing the program. That seems useful, we should do more of that." "Oh gawd, you sound like one of those brainwashed J2EE developers. Sorry, I'm not writing `ArrayList<String> myList = new ArrayList<String>();`. Dynamic typing, DHH, and Agile FTW!!1!"
+* "You know, isn't it kind of archaic that we're storing programs as text files and running compilers in batch mode like it's still the punch card era? I think we could do better than that." __Response:__ "Text is KING. I'm not giving up Vim / Eclipse, and plus look at all the great tooling, like Git, that can be written in a language agnostic way! Plus, Smalltalk tried this, like 20 years ago, and it never took off."
+* "You know, if we don't have rampant side effects, it's easier to compose programs by sticking together smaller pieces. That seems like a good idea." __Response:__ "But I need fast, mutable data structures in like 2% of my code, therefore this justifies sprinkling side effects willy nilly throughout! Be pragmatic! The Real World™ has mutation!!! Also, databases."
+* "Static typing seems to help me catch mistakes while I'm writing the program. That seems useful, we should do more of that." __Response:__ "Oh gawd, you sound like one of those brainwashed J2EE developers. Sorry, I'm not writing `ArrayList<String> myList = new ArrayList<String>();`. Dynamic typing, DHH, and Agile FTW!!1!"
 
 Developing new technology means being open to seeing potential, and working to achieve it. _Don't be **that** guy!_
 
