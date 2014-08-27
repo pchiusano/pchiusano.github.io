@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Unimaginative naysaying
+title: Unimaginative naysaying in tech discussions
 categories: [fp]
 ---
 
