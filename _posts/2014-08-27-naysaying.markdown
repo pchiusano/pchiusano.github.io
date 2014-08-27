@@ -8,7 +8,7 @@ categories: [fp]
 > 
 > The Stranger explains he is from the Future and has come to speed along Alice and Bob's technological evolution. He demonstrates use of the blowtorch and has a roaring fire going within a minute or two. He explains how the torch works by burning a substance called __butane__.
 >
-> Bob's immediate response: "Look Stranger, I don't know who you are, but I don't like your elitist tone, and __I'm__ going to keep starting my fires by rubbing sticks together. If I start using your so-called 'blowtorch', it's going to be a real problem finding 'butane' fuel for it.
+> Bob's immediate response: "Look Stranger, I don't know who you are, but I don't like your elitist tone, and __I'm__ going to keep starting my fires by rubbing sticks together. If I start using your so-called 'blowtorch', it's going to be a real problem finding 'butane' fuel for it."
 
 New technologies can be vast improvements along one axis (starting fires efficiently), while simultaneously generating new _fun problems to solve_ along another axis (obtaining butane). Being optimistic and willing to solve these fun problems is how progress is made. Unimaginative naysaying like Bob focuses entirely on perceived negatives of new technology, taking the current state of the world as a given.
 
