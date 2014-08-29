@@ -114,7 +114,7 @@ eval :: Monad f => (e -> f r) -> (a -> f r) -> (r -> r -> f r) -> Expr e a -> f 
 
 The `r -> r -> f r` tells the interpreter how to interpret function application in the `r` domain, an we can go ahead and allow non-closed `Expr` values if we like.
 
-#### Final remarks ####
+#### <a id="remarks"/> Final remarks ####
 
 There is a place for fancy techniques, but ye good ol' abstraction and parametric polymorphism are often all that's needed. These basic tools, available to us all, provide the ability to arbitrarily shuffle around _where_ various decisions are made.
 
