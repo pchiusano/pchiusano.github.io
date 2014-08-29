@@ -68,7 +68,7 @@ More generally, it is somewhat artifical (and I'd argue bad UX design) to restri
 
 For building editable GUIs for some structure, we can build some notion of a _path_ into our structure, a function for looking up the value at a path, editing a value at that path, and a way of resolving screen positions to paths, say. Dealing with paths rather than one-hole contexts just works out nicer for these cases. Paths can come equipped with an algebra for making relative movements, so we don't lose any functionality that zippers provide, but they also give us a story for other things that prove difficult with zippers. In addition to allowing for random access, paths give us a story for concurrent edits, easily talking about multiple locations at once, and batch updates. For instance, if we have two concurrent edits to our structure, at different paths, we can simply apply both edits, or even use [OT](http://en.wikipedia.org/wiki/Operational_transformation) to ensure the edits can be applied in either order to produce the same result. Likewise, we can easily have multiple paths into the same structure, and implement operations like swapping subtrees and so forth quite simply. And if paths are represented as some sort of list of path elements, then for batch updates, we can merge common prefixes into a trie for the batch, and avoid repeated work traversing our structure.
 
-### Remarks
+### <a id="remarks"/> Remarks
 
 One of my favorite quotes is Ian Malcolm from Jurassic Park:
 
