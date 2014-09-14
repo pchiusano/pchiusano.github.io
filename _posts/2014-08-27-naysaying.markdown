@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Unimaginative naysaying in tech discussions
-categories: [fp]
+categories: [tech, fp]
 ---
 
 > It's the [early days of man](https://www.youtube.com/watch?v=U2iiPpcwfCA), a chilly day, and Alice and Bob are attempting to start a fire by rubbing sticks together. It's a struggle, on account of some freezing rain earlier in the day that's left the sticks damp. Suddenly, there is a brilliant flash of light, and a mysterious portal opens up next to Alice and Bob. A Stranger steps through carrying a __blowtorch__.
