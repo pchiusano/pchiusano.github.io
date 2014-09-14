@@ -19,10 +19,11 @@
       {% include header.html %}
       <section>
       <h1>{{ page.title }}</h1>
-      <p><i>tags:</i>
+      <p align="right"><i>
         {% for c in page.categories %}
         <a href="/{{c}}">{{c}}</a>&nbsp;
         {% endfor %}
+        </i>
       </p>
       {{content}}
       {% include comments.html %}
