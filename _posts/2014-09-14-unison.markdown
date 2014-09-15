@@ -4,7 +4,7 @@ title: A new project&#58; Unison
 categories: [fp, unison]
 ---
 
-In between consulting work, wrapping up [the book](manning.com/FunctionalProgramminginScala), and enjoying spending time with [my new daughter](https://twitter.com/pchiusano/status/511148899399389184), I've been doing some work on a new side project. I don't have anything to release just yet, but it's an exciting project for me and I decided I should start talking about it.
+In between consulting work, wrapping up [the book](http://manning.com/FunctionalProgramminginScala), and enjoying spending time with [my new daughter](https://twitter.com/pchiusano/status/511148899399389184), I've been doing some work on a new side project. I don't have anything to release just yet, but it's an exciting project for me and I decided I should start talking about it.
 
 The project is called *Unison*. What is it? I'm not quite sure how to describe it, really. The most narrow description would be that Unison is a new programming language. Another description would be that it's a distributed computing platform. Another description: it's a tool for creating highly interactive, user-customizable websites. Another description: it's a platform for teaching programming. Another description: it's an attempt to reduce programming to its exhilarating, creative essence. Another description: it's a reimagining of the Web a platform for sharing, linking, and most importantly *composing* data *and computations*.
 
