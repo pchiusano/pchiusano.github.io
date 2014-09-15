@@ -120,7 +120,7 @@ These are just silly examples, but real applications will have many more actions
 
 There is already a discipline with a coherent story for how to handle concerns of what actions are appropriate in what contexts: <em>type theory</em>. Which is why I now (half) jokingly introduce <em>Chiusano's 10th corollary</em>:
 
-> <em>Any sufficiently advanced user-facing program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of a real programming language and type system.</em><
+> <em>Any sufficiently advanced user-facing program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of a real programming language and type system.</em>
 
 Programming languages and type theory have largely solved the problem of how to constrain user actions to only 'appropriate' alternatives and present these alternatives to users in an exquisitely context-sensitive way. The fundamental contribution of a type system is to provide a compositional <em>language</em> for describing possible <em>forms</em> values can take, and to provide a fully generic program (the typechecker) for determining whether an action (a function) is applicable to a particular value (an argument to the function). Around this core idea we can build UI for autocompletion, perfectly appropriate context menus, program search, and so on. Type systems provide a striking, elegant solution to a problem that UX designers now solve in more ad hoc ways. These ad hoc methods don't scale and can never match what is possible when guided by an actual type system and the programming environment to go with it.
 
