@@ -5,7 +5,8 @@ categories: [econ, fp, tech, unison, ux]
 ---
 
 > The programmer, like the poet, works only slightly removed from pure thought-stuff. He builds his castles in the air, from air, creating by exertion of the imagination. Few media of creation are so flexible, so easy to polish and rework, so readily capable of realizing grand conceptual structures... Yet the program construct, unlike the poet's words, is real in the sense that it moves and works, producing visible outputs separate from the construct itself. […] The magic of myth and legend has come true in our time. One types the correct incantation on a keyboard, and a display screen comes to life, showing things that never were nor could be.
-> <em>Fred Brooks</em>
+>
+> *Fred Brooks*
 
 Have you noticed how applications accrete feature after feature but never seem quite capable of doing everything we want? Software is a profound technology <a href="http://online.wsj.com/article/SB10001424053111903480904576512250915629460.html">with enormous potential</a>, and we stifle this potential with an antiquated metaphor. That metaphor is <em>the machine</em>. Software is now organized into static machines called <em>applications</em>. These applications ("appliances" is a better word) come equipped with a fixed vocabulary of actions, speak no common language, and <a href="http://www.youtube.com/watch?v=faJ8N0giqzw">cannot be extended, composed, or combined</a> with other applications except with enormous friction. By analogy, what we have is a railway system where the tracks in each region are of differing widths, forcing trains and their cargo to be totally disassembled and then reassembled to transport anything across the country. As ridiculous as this sounds, this is roughly what we do at application boundaries: write explicit serialization and parsing code and lots of tedious (not to mention inefficient) code to deconstruct and reconstruct application data and functions.
 
