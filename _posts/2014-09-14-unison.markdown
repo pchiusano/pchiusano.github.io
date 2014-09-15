@@ -1,0 +1,13 @@
+---
+layout: nocomment-post
+title: A new project&#58; Unison
+categories: [fp, unison]
+---
+
+In between consulting work, wrapping up [the book](manning.com/FunctionalProgramminginScala), and enjoying spending time with [my new daughter](https://twitter.com/pchiusano/status/511148899399389184), I've been doing some work on a new side project. I don't have anything to release just yet, but it's an exciting project for me and I decided I should start talking about it.
+
+The project is called *Unison*. What is it? I'm not quite sure how to describe it, really. The most narrow description would be that Unison is a new programming language. Another description would be that it's a distributed computing platform. Another description: it's a tool for creating highly interactive, user-customizable websites. Another description: it's a platform for teaching programming. Another description: it's an attempt to reduce programming to its exhilarating, creative essence. Another description: it's a reimagining of the Web a platform for sharing, linking, and most importantly *composing* data *and computations*.
+
+I've been [rambling about some of these ideas for a while](/2013-05-22/future-of-software.html), but now I'm starting to *build* it. By revisiting foundational issues, I'm finding lots of possibilities are opening up. Some problems that were hard or unthinkable before have become much much easier (and other problems that have been "solved" in some fashion by existing tech now need to be addressed differently). The result doesn't quite fit existing categories. I'd probably call Unison a "programming platform", but it's also reimagining what programming *is*, and what computing is.
+
+I realize this must sound rather vague and perhaps quixotic, and I do very much look forward to sharing more details in the coming months! And when things get a little further along and I have something to demo, I'll also be open sourcing Unison, and I hope to convince other like-minded folks to help out. Until then, stay tuned!
