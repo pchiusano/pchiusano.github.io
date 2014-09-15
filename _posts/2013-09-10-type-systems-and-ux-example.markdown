@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why type systems matter for UX&#58; an example
-categories: [fp, ux, tech]
+categories: [fp, tech, unison, ux]
 ---
 
 I've written previously about the general [problems with the application-centric view of software](/2013-05-22/future-of-software.html). Here I'm going to discuss a specific example. First, some background, from my earlier post:
