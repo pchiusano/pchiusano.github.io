@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Capability-based snail mail and ending junk mail
-categories: [security, economics]
+categories: [security, econ]
 ---
 
 Here is a question: why should knowledge of my address grant anyone in the world (inlcuding both L.L. Bean and Unabombers) the capability to cause a physical artifact to be delivered to my place of residence? Moreover, anyone with knowledge of my address retains this capability until the end of time, at least until I move! If we were designing a physical delivery network from scratch today, in the age of software, is this really how we'd choose to set things up? Clearly not! Here is a proposal:
