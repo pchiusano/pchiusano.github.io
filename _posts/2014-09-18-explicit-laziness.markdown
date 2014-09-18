@@ -4,7 +4,7 @@ categories: [fp]
 title: An interesting variation on a strict by default language
 ---
 
-In [this old but relatively unknown paper by Tim Sheard](http://web.cecs.pdx.edu/~sheard/papers/ExplicitLazy.ps), he describes a pure language which is strict by default but optionally lazy. Sounds boring, but there's a twist: strictness is not tracked in the types, and there are a few annotations which make it possible to write code which is polymorphic in its strictness. This post is an exploration to see to what extent this addresses the problems with strict by default evaluation ([nicely covered by Lennart Augustsson](http://augustss.blogspot.com.br/2011/05/more-points-for-lazy-evaluation-in.html)).
+In [this old but relatively unknown paper by Tim Sheard](http://web.cecs.pdx.edu/~sheard/papers/ExplicitLazy.ps), he describes a pure language which is strict by default but optionally lazy. Sounds boring, but there's a twist: strictness is not tracked in the types, and there are a few annotations which make it possible to write code which is polymorphic in its strictness. This post is an exploration to see to what extent this addresses the problems with strict by default evaluation ([nicely covered by Lennart Augustsson](http://augustss.blogspot.com.br/2011/05/more-points-for-lazy-evaluation-in.html)). Summary: it helps a bit in some cases, but laziness still wins.
 
 Here's the entirety of Sheard's API:
 
