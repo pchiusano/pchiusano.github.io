@@ -39,7 +39,7 @@ fromMaybe a Nothing = a
 fromMaybe _ (Just a) = a
 ~~~
 
-And now the onus is on _callers_ to decide whether they way to pay for thunking the first argument:
+And now the onus is on _callers_ to decide whether to pay for thunking the first argument:
 
 ~~~
 -- blah : Maybe Int
