@@ -57,17 +57,26 @@ foldr f z [] = z
 foldr f z (h:t) = f h (lazy (foldr f z t))
 ~~~
 
-This isn't quite as nice a situation as `fromMaybe`. As library writer, we need to remember to supply the `lazy` annotation for the second argument of `f`, just in case `f` benefits from it. It would be interesting if we could somehow inspect _at runtime_ whether the _function_ is strict or lazy, and do a "thunkiness preserving" function application: 
+This isn't quite as nice a situation as `fromMaybe`. As library writer, we need to remember to supply the `lazy` annotation for the second argument of `f`, just in case `f` benefits from it. 
+
+***
+__Aside:__ It would be interesting if we could somehow inspect _at runtime_ whether the _function_ is strict or lazy, and do a "thunkiness preserving" function application: 
 
 ~~~ Haskell
 foldr :: (a -> b -> b) -> b -> [a] -> b
 foldr f z [] = z
 foldr f z (h:t) = f h `mimicf` foldr f z t
 
-mimicf : (a -> b) -> a -> b -- a macro
+-- not first class
+mimicf : (a -> b) -> a -> b
+mimicf = <magic>
 ~~~
 
-But let's keep going. One advantage to our definition of `foldr` is we don't need to _propagate_ the change out to functions like `mconcat` that might use `foldr`:
+Although it seems like we would want to make most function calls use `mimicf`!
+
+***
+
+One advantage to our definition of `foldr` is we don't need to _propagate_ the change out to functions like `mconcat` that might use `foldr`:
 
 ~~~ Haskell
 mconcat :: Monoid a => [a] -> a
@@ -78,6 +87,7 @@ This is an improvement in the sense that the signature of `mappend` does not nee
 
 ***
 __Aside:__ On the other hand, looking at `mconcat`, I think it is a little unfortunate that the strictness is not tracked at all in the types. The `foldr`-based implementation is only really likely to be appropriate for monoids which are lazy in their second parameter to `mappend`. For strict monoids, we probably want a version of `mconcat` based on `foldl'`.
+
 ***
 
 Let's now look at another example where things break down, `liftA2` specialized to `Maybe`:
@@ -128,4 +138,9 @@ foo' = lift2 (\_ a -> head a) h (blah Strict) -- `head a` does not benefit, so w
 
 We are just deferring the decision to the caller of `blah`. This is good, but now the writer of `blah` is in charge of abstracting `blah` in such a way that it can be used by different types of callers. This almost certainly won't happen as often as would be useful, and we get unnecessary strictness and loss of modularity as the result. Note that pervasive laziness gives us what we want for free.
 
-Any replacement for pervasive laziness needs a full story for how callees will defer to their (multiple callers) the decision of whether to produce a result (or any subexpressions of their result) strictly or lazily. And this sort of polymorphism in strictness needs to be something that happens by default, without the programmer having to anticipate the need or write special code with this in mind. Lacking this, we've lost something substantial in terms of modularity by using a strict by default language.
+Any replacement for pervasive laziness needs a full story for:
+
+* How callees will defer to their (multiple callers) the decision of whether to produce a result (or any subexpressions of their result) strictly or lazily. 
+* How function application can _respect the desired laziness_ of the function being called.
+
+This sort of polymorphism in strictness needs to be something that happens by default, without the programmer having to anticipate the need or write special code with this in mind. Lacking this, we've lost something substantial in terms of modularity by using a strict by default language.
