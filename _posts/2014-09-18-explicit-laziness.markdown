@@ -101,7 +101,7 @@ lift2 f (Just a) (Just b) = Just (f `mimic` a `mimic` b) -- don't force `a` and 
 
 Note that the order of the pattern matching means we are possibly non-strict in the second `Maybe`. So we can call `lift2 a (lazy reallyExpensive)` and avoid some useless work if `a` is `Nothing`. The use of `mimic` ensures we don't force `a` and `b` if they aren't already forced.
 
-So far this looks promising. But let's think about it some more. What if `f` "wants to be" nonstrict in its second arguments? For instance, suppose `f` is the `Cons` constructor in the type of infinite streams:
+So far this looks promising. But let's think about it some more. What if `f` "wants to be" nonstrict in its second argument? For instance, suppose `f` is the `Cons` constructor in the type of infinite streams:
 
 ~~~ Haskell
 data Stream a = Cons a (lazy (Stream a)) -- hypothetical syntax for declaring a new lazy data constructor
