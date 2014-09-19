@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: [fp, games]
+categories: [fp, gaming]
 title: The limits of procedural generation and lazy simulation in games
 ---
 
