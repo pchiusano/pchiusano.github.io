@@ -42,12 +42,43 @@ fromMaybe _ (Just a) = a
 And now the onus is on _callers_ to decide whether to pay for thunking the first argument:
 
 ~~~
--- blah : Maybe Int
+-- blah :: Maybe Int
 fromMaybe 1 blah -- don't bother thunking `1`, not worth it
 fromMaybe (lazy (reallyExpensiveFn x y z)) blah -- this time, we do care
 ~~~
  
 Importantly, `fromMaybe` does not need rewriting for callers to be able to make this decision after the fact. Not tracking strictness in the type essentially lets `fromMaybe` be polymorphic in its strictness, with the decision left up to the caller. This is an improvement over the usual situation in strict by default languages.
+
+Let's look at another example, `foldr`:
+
+~~~ Haskell
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr f z [] = z
+foldr f z (h:t) = f h (lazy (foldr f z t))
+~~~
+
+This isn't quite as nice a situation as `fromMaybe`. As library writer, we need to remember to supply the `lazy` annotation for the second argument of `f`, just in case `f` benefits from it. It would be interesting if we could somehow inspect _at runtime_ whether the _function_ is strict or lazy, and do a "thunkiness preserving" function application: 
+
+~~~ Haskell
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr f z [] = z
+foldr f z (h:t) = f h `mimicf` foldr f z t
+
+mimicf : (a -> b) -> a -> b -- a macro
+~~~
+
+But let's keep going. One advantage to our definition of `foldr` is we don't need to _propagate_ the change out to functions like `mconcat` that might use `foldr`:
+
+~~~ Haskell
+mconcat :: Monoid a => [a] -> a
+mconcat = foldr mappend mempty 
+~~~
+
+This is an improvement in the sense that the signature of `mappend` does not need to anticipate whether monoids will be strict or lazy. Anyone can supply a `Monoid` after the fact with a nonstrict `mappend`, and usefully use that monoid in `mconcat`. If strict and lazy values had different types, we necessarily need to correctly anticipate when laziness might be useful at _all_ places in the call graph. If even one function is overly strict, we can't reuse it!
+
+***
+__Aside:__ On the other hand, looking at `mconcat`, I think it is a little unfortunate that the strictness is not tracked at all in the types. The `foldr`-based implementation is only really likely to be appropriate for monoids which are lazy in their second parameter to `mappend`. For strict monoids, we probably want a version of `mconcat` based on `foldl'`.
+***
 
 Let's now look at another example where things break down, `liftA2` specialized to `Maybe`:
 
