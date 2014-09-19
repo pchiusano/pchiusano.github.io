@@ -141,6 +141,6 @@ We are just deferring the decision to the caller of `blah`. This is good, but no
 Any replacement for pervasive laziness needs a full story for:
 
 * How callees will defer to their (multiple callers) the decision of whether to produce a result (or any subexpressions of their result) strictly or lazily. 
-* How function application can _respect the desired laziness_ of the function being called.
+* How function application within a HOF can _respect the desired laziness_ of the function being called, without necessarily having to anticipate that it may receive a function which "wants to be" nonstrict.
 
 This sort of polymorphism in strictness needs to be something that happens by default, without the programmer having to anticipate the need or write special code with this in mind. Lacking this, we've lost something substantial in terms of modularity by using a strict by default language.
