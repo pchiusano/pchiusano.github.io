@@ -4,7 +4,9 @@ categories: [fp, unison]
 title: A very early demo of semantic program layout
 ---
 
-Unison programs are viewed and edited in the browser. The frontend (which does things like code layout) is being written in [Elm](elm-lang.org) which talks to a backend (which does things like typechecking) written in [Haskell](haskell.org). I posted <a href="/unison/demo.html" target="_blank">a quick demo</a> of some of the basic technology used for rendering Unison programs. Okay, so it's rather ugly, but try to see past that for a moment. Try resizing the browser window util the expression no longer fits on one line and navigating around using the mouse and/or arrow keys. Unfortunately, there's no editing capabilities just yet (soon!). 
+Unison programs are viewed and edited in the browser. The frontend (which does things like code layout) is being written in [Elm](elm-lang.org) which talks to a backend (which does things like typechecking) written in [Haskell](haskell.org). 
+
+I posted <a href="/unison/demo.html" target="_blank">a quick demo</a> of some of the basic technology used for rendering Unison programs. Okay, so it's rather ugly, but try to see past that for a moment. Try resizing the browser window util the expression no longer fits on one line and navigating around using the mouse and/or arrow keys. Unfortunately, there's no editing capabilities just yet (soon!). 
 
 The "raw" source might have looked something like this: 
 
