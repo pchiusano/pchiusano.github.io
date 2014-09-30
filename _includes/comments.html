@@ -2,7 +2,7 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'pchiusano'; // required: replace example with your forum shortname
-    var disqus_title = '{{page.title}}';
+    var disqus_title = '{{page.title | xml_escape }}';
     var disqus_url = 'http://pchiusano.github.io{{page.url}}';
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
