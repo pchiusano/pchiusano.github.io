@@ -25,3 +25,5 @@ With a little thought and imagination, all these fun problems are solvable. More
 * A semantic editor can be usable by children and newcomers to programming. Compiler errors (and runtime errors, due to programs being ill-typed) are a usability catastrophe. An editor which only allows creation of well-typed programs is like having bumpers on the bowling lanes! (Of course, understanding types and having a good mental model of how programs are evaluated is always going to be helpful if you are creating programs of any complexity)
 
 I'll say more about how the challenges of a semantic editor are being addressed in Unison in a later post.
+
+_Update:_ See [here](/2014-09-30/semantic-layout) for a very early demo of semantic program layout, and some further discussion.
