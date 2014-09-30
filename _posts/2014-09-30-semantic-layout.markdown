@@ -17,7 +17,7 @@ Although in Unison, there is no "raw source" in textual form, there is only the 
 A couple other things to point out:
 
 * Layout of the code is computed dynamically. As the available width shrinks, the layout engine decides whether to "break" expressions onto multiple lines. This breaking is semantic--we don't just break up expressions wherever they happen to hit the right edge.
-* Parenthesization is inserted automatically, only when necessary. Parenthesization uses information in metadata about operator precedence and operator fixity.
+* Parenthesization is inserted automatically, only when necessary, using metadata about operator precedence and operator fixity.
 * Navigation and selection is also semantic--it's only possible to select a region corresponding to a valid expression. Likewise for expanding, contracting, and moving the selection.
 * And in the near future, just about any aspect of this presentation will be customizable. If you want to view that list differently (perhaps using the traditional `[1,2,3..]` syntax), you can do so, and save this view as a first class value in the Unison system. 
 
