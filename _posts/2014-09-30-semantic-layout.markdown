@@ -9,7 +9,7 @@ Unison programs are viewed and edited in the browser. The frontend (which does t
 The "raw" source might have looked something like this: 
 
 ~~~ Haskell
-foo [0,1,2..20] (baz "hello world!") -- omitted the full list 
+foo [0,1,2..20] (baz "hello world!") -- omitted full list 
 ~~~
 
 Although in Unison, there is no "raw source" in textual form, there is only the syntax tree! Moreover, the syntax tree is "nameless"--terms like `foo` and `baz` are uniquely identified by a _nameless hash_ of their contents, and we store metadata (containing human-readable names, among other things) separately. But more on that in a later post.
