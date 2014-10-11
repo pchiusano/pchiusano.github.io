@@ -25,4 +25,4 @@ I want to close with one remark. Pinker clarifies here his statements on hedging
 
 Programmers in particular are obsessed with making sure that all relevant qualifications are added to any statements made by anyone, anywhere, at any time. Why? I suspect it's because programming is an activity in which one must be perfectly precise, to a degree not typical in day-to-day interactions. This need then carries over into many other arenas. But I wish we'd reflect honestly on whether this level of precision is really warranted in all cases and whether such precision always needs to be completely nailed down up front. Maybe we could all try to exercise a little "ordinary charity" and have a simple conversation sometimes.
 
-I don't have any concrete proposals and am unsure what to do about all this, but... er, I welcome your comments.
+Sadly, I don't have any concrete proposals and am unsure what to do about all this, but... er, I welcome your comments.
