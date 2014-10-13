@@ -1,6 +1,6 @@
 ---
 layout: nocomment-post
-labels: [culture, tech]
+categories: [culture, tech]
 title: The problematic culture of "Worse is Better"
 ---
 
