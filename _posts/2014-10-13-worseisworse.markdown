@@ -52,7 +52,7 @@ Not many people are aware that Richard Gabriel later distanced himself from his 
 
 I like to imagine that Gabriel, himself a Lisp programmer, was horrified by the cultural monster he'd helped create and the power he gave it by assigning it a name. Realizing what he'd done, the later essay made a vain attempt at putting the genie back in the bottle. But by then it was much too late. "Worse is Better" had become a cultural phenomenon. And over the next twenty five years, we saw the growth of the web, a prevailing culture of "Worse is Better", and a tendency to solve problems with the most myopic of time horizons.
 
-Discuss this article on Twitter: [#worseisworse](https://twitter.com/#worseisworse)
+Discuss it on Twitter: [#worseisworse](https://twitter.com/#worseisworse)
 
 [cd]: http://en.wikipedia.org/wiki/Creative_destruction
 [mpt]: http://en.wikipedia.org/wiki/Modern_portfolio_theory
