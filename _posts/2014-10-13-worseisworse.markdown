@@ -52,7 +52,7 @@ Not many people are aware that Richard Gabriel later distanced himself from his 
 
 I like to imagine that Gabriel, himself a Lisp programmer, was horrified by the cultural monster he'd helped create and the power he gave it by assigning it a name. Realizing what he'd done, the later essay made a vain attempt at putting the genie back in the bottle. But by then it was much too late. "Worse is Better" had become a cultural phenomenon. And over the next twenty five years, we saw the growth of the web, a prevailing culture of "Worse is Better", and a tendency to solve problems with the most myopic of time horizons.
 
-Despite the damage that's been done, it's never too late to change the cultural tide. A proposal: start using the hashtag [#worseisworse](https://twitter.com/#worseisworse) to call attention to the unexamined and unjustified culture of hacks and pragmatism that's become so prevalent. The tag can be inclusive--not so much about any particular choice of technology, as we all have opinions about what technologies are best and discussion and debate on these things is healthy. Instead, I want to use [#worseisworse](https://twitter.com/#worseisworse) to call attention to the general cultural practice of making obvious compromises in correctness or quality or avoiding consideration of revolutionary change, with vague sloganeering like "Worse is Better" as the justification. Perhaps if enough people make a stink, we can create our own cultural phenomenon, and one that actually points us in the right direction.
+Discuss this article on Twitter: [#worseisworse](https://twitter.com/#worseisworse)
 
 [cd]: http://en.wikipedia.org/wiki/Creative_destruction
 [mpt]: http://en.wikipedia.org/wiki/Modern_portfolio_theory
