@@ -22,15 +22,13 @@ Developing software is a form of investment management. When a company or an ind
 
 This investment management view also makes it clear that we may choose to invest in things not solely for future return, but because the investment itself has value to us. That is, "Worse is Better" thinking encourages the view that software is always a means to an end, rather than something with attributes we value for their own sake. It doesn't matter if something is ugly or a hack, the ends justify the means. Unpack this kind of thinking and see how ugly it really is. Do we really as an industry believe that how we write software and what software exists should be fully determined by optimizing the Bottom Line? Other professions, like medicine, the law, and engineering, have values and a professional ethic, where certain things are valued for their own sake. "Worse is Better" pushes us to accepting the idea that software is nothing more than a means to an end, and whatever hacks are needed to "get the job done" (whatever that means exactly) are justified.
 
-But we don't need to resort to philosophy to justify why we should make greater investment in the software tech we all use daily:
+But we don't need to resort to philosophy to justify why we should make greater investment in the software tech we all use daily. This "Worse is Better" culture is a large part of what's brought us to the current state, where programmers are awash in a sea of accidental complexity caused by the piling on of hack after hack, always to solve short term needs:
 
 <blockquote class="twitter-tweet" lang="en"><p>OH: &quot;Basically, no one seems to grasp that when stuff that&#39;s fundamental is broken, what you get is a combinatorial explosion of bullshit.&quot;</p>&mdash; Paul Chiusano (@pchiusano) <a href="https://twitter.com/pchiusano/status/401428683375661056">November 15, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <blockquote class="twitter-tweet" lang="en"><p>Eventually a software project becomes a small amount of useful logic hidden among code that copies data between incompatible JSON libraries</p>&mdash; Nat Pryce (@natpryce) <a href="https://twitter.com/natpryce/status/498248257622269952">August 9, 2014</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-This "Worse is Better" culture is a large part of what's brought us to the current state, where programmers are awash in a sea of accidental complexity caused by the piling on of hack after hack, always to solve short term needs.
 
 Even without getting philosophical, an earnest appraisal of our actual investment horizons and level of risk tolerance is often enough to justify some level of investment in "risky" new technology that can if successful improve in various ways on the status quo. The portfolio view is again helpful--even if we in general want to play it safe by investing in the software tech equivalent of government bonds, that does not justify making 0% of our portfolio risker investment in new foundational tech. The outcome of everyone solving their own narrow short-term problems and never really revisiting the solutions is the sea of accidental complexity we now operate in, and which we all recognize is a problem.
 
