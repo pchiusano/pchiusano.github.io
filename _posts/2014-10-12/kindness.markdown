@@ -1,0 +1,31 @@
+---
+title: In praise of universal warmth and kindness toward others in online discussions 
+layout: post
+categories: [culture, tech]
+---
+
+A little over a month ago, I started an experiment in being "exceedingly polite" to everyone I interacted with online:
+
+<blockquote class="twitter-tweet" lang="en"><p>Experiment: 1 mo trial period being exceedingly polite to everyone I interact w/ online, rather than a sarcastic ass 1/2 the time <a href="https://twitter.com/hashtag/politeweb?src=hash">#politeweb</a></p>&mdash; Paul Chiusano (@pchiusano) <a href="https://twitter.com/pchiusano/status/505448336653287424">August 29, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+I'm not sure how serious I was about it, but I did make a conscious effort to be more "polite". Though what does that mean exactly? Politeness is not a well-defined thing--it's a "mere" set of social conventions. For purposes of this post, I'd like to think of politeness as dimension separate from the actual content of the communication. There's *what* you are trying to say, and then there's *how* it is being said. Politeness is merely addressing the *how*.
+
+Sometimes, there are things that need saying that are bound to upset people (the *what*). But saying these things politely matters. Another way of stating it: politeness is acting ways that are no more off-putting than necessary given _what_ you are trying to communicate.
+
+If you have something to say, you owe it to yourself, the other party, and most importantly the *thing you are trying to convey* to communicate as politely, warmly, and generously as possible. Why? Several reasons:
+
+* _For yourself:_ There's never any real satisfaction to be gained by being even slightly vicious or unpleasant in response to a troll or just a person with whom you disagree. Any feelings of righteousness or satisfaction are fleeting, and any unpleasantness shown gets spewed right back at you many times over. A long, increasingly draining back and forth discussion results. Anyone who's spent any time online talking about things with people has been dragged into such a discussion. I've found I don't like how I feel when the conversation is done. 
+* _For the other person:_ It's a token of kindness and respect. Some people think of kindness and respect as something people must earn. If someone is trolling, acting like a jerk, or has done something wrong, why are you obligated to be nice in return? Well of course you aren't obligated, but being polite anyway (which admittedly takes conscious effort in some cases) is a nice way to be. I like the idea that everyone is entitled to these basic courtesies. Some perspective: on the web, debating tech, politics, etc, the other party is not a war criminal responsible for the deaths of innocent people, they're just an ordinary person deserving of basic courtesy.
+
+But importantly, showing politeness gives the other person, and anyone else observing the conversation *an unobstructed view of the underlying issues*, and hence the greatest chance of being influenced by what you have to say. When someone is being unpleasant or impolite, it's unfortunately easy to not see past that to the actual points being made. In theory, mere violation of some social conventions shouldn't justify dismissing what you have to say. In practice, seeing past these things requires conscious effort. By being polite, you are giving your ideas the greatest possible chance of being heard.
+
+I liken this idea to the nonviolent resistance practiced by leaders like MLK and Gandhi (bear with me, here). Not fighting back appeals to the humanity of the aggressors and observers and makes it crystal clear to any reasonable person who is in the wrong. Fighting back raises ambiguities--observers now must disentangle the events that transpired, who did what first, and it becomes possible for some to claim that the aggressor was acting reasonably to deal with a difficult situation.
+
+Likewise, being pleasant, warm, and generous in online discussions lets the other person and observers focus on the real issues and see your side clearly.
+
+And this gets to the heart of the matter. What are our goals? Is our goal the communication and exchange of ideas? Or are we just looking to vent, express frustration, feel good about ourselves, and validate our egos? If we're being honest, does *how* we communicate online reflect our actual goals and values? 
+
+This post is a reminder to myself to take this more seriously and to reflect on it regularly.
+
+I'll close with one more observation: writing on the web can sometimes compel people to write in a way that provokes attention (with flamebait titles, aggressive writing style, and so on) to get more readers. I plead guilty to this charge. But once your readers are there and reading, your best bet in convincing them of anything is actually a calm, well-reasoned argument rather than an angry rant.
