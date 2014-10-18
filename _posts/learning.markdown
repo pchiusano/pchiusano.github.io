@@ -1,6 +1,19 @@
 ---
 layout: post
-categories: [econ]
-title: Learning as a form of investment management, and what it implies about teaching
+categories: [culture, econ, education, fp]
+title: Learning as a form of investment management, and what it implies about teaching and learning
 ---
 
+In [my recent polemic on "Worse is Better"](2014-10-13/worseisworse), I stated that software development could be viewed as a form of investment management:
+
+> When a company or an individual develops a new feature, inserts a hack, hires too quickly without sufficient onboarding or training, or works on better infrastructure for software development (including new languages, tools, and the like), these are investments or the taking on of debt. Investments in software development bring risk (we don't know for certain if some tech we create or try to create will pan out), and potential returns. [Modern portfolio theory](http://en.wikipedia.org/wiki/Modern_portfolio_theory) states there is no optimal portfolio, but an _efficient frontier_ of optimal portfolios for each level of investor risk tolerance. In the same way, there is no *optimal* portfolio of software investment. Questions about whether an investment in new technology is justified therefore cannot be settled at the level of ideology or sloganeering. Actual analysis is needed, but "Worse is Better" pushes us unthinkingly toward the software portfolio consisting entirely of government bonds.
+
+That same lens applies to another subject, _teaching and learning_, and it has some interesting things to say, especially about _teaching_.
+
+How is learning like investment management? Well, if you decide to spend time learning a subject, you're expending limited resources (your time and energy) to acquire an asset---_future knowledge_. We might say that you are "paying for" future knowledge using the "currency" of your own time and energy, which isn't really much different than a portfolio manager purchasing a stock or bond for their portfolio. Like the portfolio manager, you have some expectation about the future value of this knowledge you're attempting to acquire. And like the portfolio manager, who can't know with certainty the future value of assets purchased, you are facing uncertainty as well---before learning a subject, you don't necessarily know what its value will be to you.
+
+There is a cultural tendency, _pragmatism_, to learn only what is deemed necessary and useful in the short term. On the one hand, we have the seemingly reasonable argument---why go to the trouble of learning something before it's clear you need it, and before it's clear it will be useful? But putting on our investment management hat, we can see that the same argument made for software investment applies here. Learning only obviously useful things when it's clear you need them is the analogue of the portfolio consisting entirely of government bonds. In the long term, devoting at least some of your portfolio to assets other than government bonds can yield much higher overall returns. And likewise, learning some subjects before you're sure you need them, and before society has definitively concluded the subjects are useful, is _eminently practical_. These riskier investments need not be the entirety of your learning portfolio, but making them some portion of your portfolio is entirely justified, _even if you have no interest in learning for its own sake_.
+
+So far so good. Now let's think about _teaching_. Teaching is also a form of investment management. In a curriculum, whether in book form or any other form, the teacher expends a limited resource (the learner's time, attention, and energy) to acquire an asset---_knowledge in the mind of the learner_. We might say that the teacher is buying knowledge for the learner, using the currency of the learner's time and attention. Once again, there is a cultural tendency to teach only what is deemed necessary and useful in the short term. On the one hand, we have the seemingly reasonable argument---why go to the trouble of teaching something difficult, before the learner really needs it, and before it's clear the learner will find it valuable?
+
+Everyone has an opinion about the way rich, deep subjects like functional programming should be taught. People argue about.
