@@ -1,0 +1,71 @@
+---
+layout: post
+categories: [culture, tech]
+title: Having a technical discussion without using labels or making it personal
+---
+
+I've been doing some thinking about how to have more civil and respectful discussions online. Most people would agree that direct personal attacks and insults are unwelcome, but many times people (perhaps unintentionally) end up insulting the other party or putting them on the defensive by _using labels that come with baggage_. The other party takes offense to use of these labels, perhaps responds by hurling a few labels of their own, and the conversation devolves into nastiness.
+
+What's sad is that when conversations like this devolve into nastiness, everyone is too busy responding to all the labels being tossed around to give the ideas themselves sufficient attention. But exchange of ideas is presumably the whole point of these conversations! Why are we arguing about labels when we actually are trying to have a discussion about something that actually matters?
+
+_Aside_: I consider myself guilty of many of the things I'm calling out in this post, so this post is as much a note to myself as it is a call for others to be better.
+
+Let's look at some examples.
+
+_"You're an idiot" "You're an asshole" etc._
+
+Just about everyone would agree statements like this have no place in civil discourse. We are taking a label with lots of connotations and directly assigning it to the other party. We should not be surprised if the other party responds with defensiveness and nastiness.
+
+The labels don't need to be the obvious ones like "asshole", "idiot", etc. For instance:
+
+_"You're not a real-world programmer" "You're an academic" "You're a FP fanatic" "You're unprincipled"_
+
+Obviously, these labels aren't as bad, but they come with baggage that many are uncomfortable with. Labels like this are often a way of placing a person or an idea in a little bin that can be ignored or dismissed without serious inspection. 
+
+There's generally no need to get both parties to agree on whether someone or something deserves a label like "idiotic", "dumb", "unprincipled", etc. What's the point? Is the goal to argue semantics about these labels, or have an actual discussion about something? These words come with too much baggage, and if the goal is communication about the issues, better to just avoid the labels and focus on the real points.
+
+Sometimes people do have fundamental differences in goals or values, but it's best to acknowledge those differences directly, when it's clear they exist, rather than slapping a label on the other party.
+
+_"That's an idiotic idea." "That's utter nonsense"_
+
+Some people might defend their right to make statements like this, by saying they are purely critiquing the idea, not the person saying it. But people are always at least a little bit attached to ideas they have in their head, so attaching any label ("idiotic") with baggage often carries some of that baggage over to the person themselves. Avoiding these labels whenever possible works better.
+
+A better thing to say is simply: "I don't agree with that statement for reasons X, Y, Z", or just "X, Y, Z", or "Can you clarify? Are you saying...?" Don't vehemently disagree with a claim before you're even sure you understand what's being said!
+
+Importantly, the point still gets across. Actually, it is _only_ the point that gets across. The goal of your response is not to get the other party to agree on whether the statement deserves a label, the point was to respond to the actual claims! Using a loaded label actually works _against_ the purpose of the discussion. So why are you using these labels?
+
+Likewise, if you're on the receiving end of comments like this, a very charitable interpretation of their remarks are that the other party simply disagrees strongly with what you are saying, not that you are being called an idiot. You can ask for clarification "Are you saying I'm an idiot?" which most people will backpedal from: "No, of course not, I just meant that I don't agree with what you just said.." And you can give them feedback that you didn't appreciate them calling an idea you put forth idiotic, even if they felt it was justified. Ask them if they can just say why they disagree without using these labels.
+
+Note that tossing out labels of your own "you're being a jerk", "how condescending of you", etc, just tends to exacerbate problems. When you feel insulted, it's easy to feel self-righteous and justified in assigning some unpleasant label to the other party, but if you manage to stay cool, it does help the situation. Importantly, it makes it clear to any reasonable observer who is in the wrong, and makes it easier for observers to step in an reinforce the feedback: "I also didn't like how you spoke to so-and-so, can you do a better job of that". This increases social pressure on the person being rude to change their behavior.
+
+In contrast, a long volley of people throwing rocks (labels like "idiotic", "jerk", or "rude" that carry baggage) back and forth at each other makes it hard to disentangle who is really at fault, and harder for others to know how to get involved. ("I see two people arguing and being generally pretty awful to each other... where to even begin??")
+
+_"You have no idea what you're talking about." "I'm not sure if you have enough experience to have an informed opinion about this."_
+
+Again, some people might feel statements like this are perfectly fine. If someone is making statements that seem misinformed, or they seem to not have experience with something they are criticizing, what's wrong with calling them out on it? But once again, these responses move the discussion away from the actual points and put the other party on the defensive.
+
+A better response is something like: "That's not true, because <evidence>". Note that calling a factual statement incorrect is not rude---its an important part of rigorous discourse. If people are afraid to make counterarguments, then the discussion can't progress. Throwing in a "I don't think that's true, because..." or "IMO, that's not true because" is not necessary, but it's a bit softer than flat out contradicting someone.
+
+And if you do get the impression that someone is uninformed and don't want to engage with them further, you can just exit the discussion politely: "I don't agree with a lot of what you're saying. We seem to be operating with fundamentally different premises. Let's just leave it at that for now."
+
+_"I'm very curious: where you got the idea that XYZ?"_
+
+This is a bit more subtle, but again the conversation is shifted away from the actual topic and becomes about the other person's psyche. Better to just say: "Can you elaborate on that?" or "I don't agree that XYZ, because of <explanation>". 
+
+This is also an instance of a hanging question. The person presumably has some internal reasons for asking the question but has delayed giving their own thoughts (that they disagree about XYZ or don't think XYZ is justified). The question is being asked without letting the other party where they are going with the questioning. Most people find this off-putting (just like most people find use of the Socratic method off-putting). Better to just state your thoughts directly, or at least give some indication of why you are asking the questions and let the other party opt in to how the discussion proceeds.
+
+_"You're confused."_
+
+Very often, when people use this label, it's because there is some disagreement about definitions for some of the terms being used in the discussion. When someone says something that doesn't make sense to you, assuming it's because *they* are confused (and telling them this) just isn't helpful. 
+
+Better to just ask them to clarify: "Are you saying that XYZ?" Or just state your counterargument directly. "I don't agree with XYZ, because of <reasons>"
+
+Note that the same thing gets accomplished as far as the actual points of the discussion. There's just no need to get the other party to agree on whether they deserve the "confused" label. And if the person really is "confused", keeping the focus on the actual points rather than on characterizing their mental state is a polite and respectful way to correct the confusion.
+
+### Remarks ###
+
+One of the things I keep coming back to is---what is the purpose of the conversation? Is it to exchange and discuss ideas, or is it to "win" an argument and make the other party feel inferior? Most people would say the former but still use loaded labels, often without really thinking about it. These labels work against our goals for the conversation.
+
+If you have a conversation with someone, keep it to the facts, ideas, and arguments. Don't worry about characterizing things with labels. Labels come with different connotations for different people, and getting everyone to agree on these connotations is often hopeless. But more importantly, it's not usually necessary!
+
+And if you really believe it is important to reach agreement on how a label applies to a particular idea or person, have it be a deliberate choice to introduce that label, rather than a habit or tic to sprinkle labels in conversation.
