@@ -44,13 +44,13 @@ _"You have no idea what you're talking about." "I'm not sure if you have enough 
 
 Again, some people might feel statements like this are perfectly fine. If someone is making statements that seem misinformed, or they seem to not have experience with something they are criticizing, what's wrong with calling them out on it? But once again, these responses move the discussion away from the actual points and put the other party on the defensive.
 
-A better response is something like: "That's not true, because <evidence>". Note that calling a factual statement incorrect is not rude---its an important part of meaningful discourse. If people are afraid to make counterarguments, then the discussion doesn't progress. Adding a hedge like a "I don't think that's true, because..." or "IMO, that's not true because" is not necessary, but it's a bit softer than flat out contradicting someone.
+A better response is something like: "That's not true, because XYZ". Note that calling a factual statement incorrect is not rude---its an important part of meaningful discourse. If people are afraid to make counterarguments, then the discussion doesn't progress. Adding a hedge like a "I don't think that's true, because..." or "IMO, that's not true because" is not necessary, but it's a bit softer than flat out contradicting someone.
 
 And if you do get the impression that someone is uninformed and you don't want to engage with them further, just exit the discussion politely: "I don't agree with a lot of what you're saying, but I don't want to keep trying to convince you. Let's just leave it at that for now."
 
 _"I'm very curious: where you got the idea that XYZ?"_
 
-This is a bit more subtle, but again the conversation is shifted away from the actual topic and becomes about the other person's psyche. Better to just say: "Can you elaborate on that?" or "I don't agree that XYZ, because of <explanation>". 
+This is a bit more subtle, but again the conversation is shifted away from the actual topic and becomes about the other person's psyche. Better to just say: "Can you elaborate on that?" or "I don't agree that XYZ, because of...". 
 
 This is also an instance of a hanging question. The person presumably has some internal reasons for asking the question but has delayed giving their own thoughts (that they disagree about XYZ or don't think XYZ is justified). The question is being asked without letting the other party where they are going with the questioning. Most people find this off-putting (just like most people find use of the Socratic method off-putting). Better to just state your thoughts directly, or at least give some indication of why you are asking the questions and let the other party opt in to how the discussion proceeds.
 
@@ -64,8 +64,8 @@ Note that the same thing gets accomplished as far as the actual points of the di
 
 ### Remarks ###
 
-One of the things I keep coming back to is: what is the purpose of the conversation? Is it to exchange and discuss ideas, or is it to "win" an argument and make the other party feel inferior? Most people would say the former but still use loaded labels, often without really thinking about it. These labels frequently work _against_ our goals for the conversation.
+One of the things I keep coming back to is: what is the purpose of the conversation? Is it to exchange and discuss ideas, or is it to vent or "win" an argument and make the other party feel inferior? Most people would say the former but still use loaded labels, often without really thinking about it. These labels frequently work _against_ our goals for the conversation.
 
 If you have a conversation with someone, keep it to the facts, ideas, and arguments. Don't worry about characterizing things with labels. Labels come with different connotations for different people, and getting everyone to agree on these connotations is often hopeless. But more importantly, it's not usually necessary! 
 
-And if you really believe it is important to reach agreement on how a label applies to a particular idea or person, have it be a deliberate choice to introduce labels, rather than a habit or tic to sprinkle them in conversation.
+And if you really believe it is important to reach agreement on how some label applies to a particular idea or person, have it be a deliberate choice to introduce the label, rather than a habit or tic to sprinkle them in conversation.
