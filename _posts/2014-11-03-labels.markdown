@@ -8,7 +8,7 @@ I've been doing some thinking about how to have more civil and respectful discus
 
 What's sad is that when conversations like this devolve, everyone is too busy responding to all the labels being tossed around to give the ideas themselves sufficient attention. But exchange of ideas is presumably the whole point of these conversations! Why are we arguing about labels when we actually are trying to have a discussion about something that actually matters?
 
-_Aside_: I consider myself guilty of many of the things I'm calling out in this post, so this post is as much a note to myself as it is a call for others to be better.
+__Aside:__ _I consider myself guilty of many of the things I'm calling out in this post, so this post is as much a note to myself as it is a call for others to be better._
 
 Let's look at some examples.
 
@@ -16,7 +16,7 @@ _"You're an idiot" "You're an asshole" etc._
 
 Just about everyone would agree statements like this have no place in civil discourse. We are taking a label with lots of connotations and directly assigning it to the other party. We should not be surprised if the other party responds with defensiveness and nastiness.
 
-The labels don't need to be the obvious ones like "asshole", "idiot", etc. For instance:
+But the labels don't need to be the obvious ones like "asshole", "idiot", etc. For instance:
 
 _"You're not a real-world programmer" "You're an academic" "You're a FP fanatic" "You're unprincipled"_
 
