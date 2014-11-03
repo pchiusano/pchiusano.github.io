@@ -48,7 +48,7 @@ A better response is something like: "That's not true, because XYZ". Note that c
 
 And if you do get the impression that someone is uninformed and you don't want to engage with them further, just exit the discussion politely: "I don't agree with a lot of what you're saying, but I don't want to keep trying to convince you. Let's just leave it at that for now."
 
-_"I'm very curious: where you got the idea that XYZ?"_
+_"I'm very curious: where did you get the idea that XYZ?"_
 
 This is a bit more subtle, but again the conversation is shifted away from the actual topic and becomes about the other person's psyche. Better to just say: "Can you elaborate on that?" or "I don't agree that XYZ, because of...". 
 
