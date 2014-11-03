@@ -6,7 +6,7 @@ title: Having a technical discussion without using labels or making it personal
 
 I've been doing some thinking about how to have more civil and respectful discussions online. Most people would agree that direct personal attacks and insults are unwelcome, but many times people (perhaps unintentionally) end up insulting the other party or putting them on the defensive by _using labels that come with baggage_. The other party takes offense to use of these labels, perhaps responds by hurling a few labels of their own, and the conversation devolves into nastiness.
 
-What's sad is that when conversations like this devolve into nastiness, everyone is too busy responding to all the labels being tossed around to give the ideas themselves sufficient attention. But exchange of ideas is presumably the whole point of these conversations! Why are we arguing about labels when we actually are trying to have a discussion about something that actually matters?
+What's sad is that when conversations like this devolve, everyone is too busy responding to all the labels being tossed around to give the ideas themselves sufficient attention. But exchange of ideas is presumably the whole point of these conversations! Why are we arguing about labels when we actually are trying to have a discussion about something that actually matters?
 
 _Aside_: I consider myself guilty of many of the things I'm calling out in this post, so this post is as much a note to myself as it is a call for others to be better.
 
