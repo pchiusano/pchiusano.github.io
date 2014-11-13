@@ -62,7 +62,7 @@ Elm.Main.make = function (_elm) {
                        }();
                     }();}
                _E.Case($moduleName,
-               "between lines 97 and 101");
+               "between lines 95 and 99");
             }();
          });
          return A2($Signal._op["~"],
@@ -187,7 +187,7 @@ Elm.Main.make = function (_elm) {
       full),
       $Unison$Term.Lit($Unison$Term.Style(s)));
    };
-   var expr1 = A2(ap,
+   var expr3 = A2(ap,
    A2(cell,
    function1(A2($Unison$Term.Lam,
    0,
@@ -196,9 +196,6 @@ Elm.Main.make = function (_elm) {
                               ,$Unison$Term.Var(0)])))),
    $Unison$Term.Ref("answer")),
    $Unison$Term.Lit($Unison$Term.Number(42.0)));
-   var expr3 = A2($Unison$Term.Lam,
-   1,
-   A2($Unison$Term.Lam,0,expr1));
    var rgbTerm = F3(function (r,
    g,
    b) {
@@ -280,7 +277,7 @@ Elm.Main.make = function (_elm) {
                   case "Nothing":
                   return $Maybe.Nothing;}
                _E.Case($moduleName,
-               "between lines 119 and 123");
+               "between lines 117 and 121");
             }();
          });
          return A2($Signal._op["~"],
@@ -301,7 +298,7 @@ Elm.Main.make = function (_elm) {
                   case "Nothing":
                   return $Graphics$Element.empty;}
                _E.Case($moduleName,
-               "between lines 127 and 130");
+               "between lines 125 and 128");
             }();
          });
          return A3($Signal.lift2,
@@ -333,7 +330,6 @@ Elm.Main.make = function (_elm) {
                       ,h1: h1
                       ,body: body
                       ,full: full
-                      ,expr1: expr1
                       ,expr3: expr3
                       ,resolvedPath: resolvedPath
                       ,terms: terms
