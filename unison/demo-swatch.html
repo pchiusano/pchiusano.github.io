@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html><head><meta charset="UTF-8"><title>Main</title><script type="text/javascript" src="/usr/local/share/elm/compiler/elm-runtime.js"></script><script type="text/javascript" src="include/fonts.js"></script><script type="text/javascript">Elm.Main = Elm.Main || {};
+<html><head><meta charset="UTF-8"><title>Main</title><script type="text/javascript" src="elm/elm-runtime.js"></script><script type="text/javascript" src="include/fonts.js"></script><script type="text/javascript">Elm.Main = Elm.Main || {};
 Elm.Main.make = function (_elm) {
    "use strict";
    _elm.Main = _elm.Main || {};
@@ -62,7 +62,7 @@ Elm.Main.make = function (_elm) {
                        }();
                     }();}
                _E.Case($moduleName,
-               "between lines 96 and 100");
+               "between lines 97 and 101");
             }();
          });
          return A2($Signal._op["~"],
@@ -187,15 +187,50 @@ Elm.Main.make = function (_elm) {
       full),
       $Unison$Term.Lit($Unison$Term.Style(s)));
    };
-   var expr = A2(ap,
+   var expr1 = A2(ap,
    A2(cell,
    function1(A2($Unison$Term.Lam,
    0,
-   verticalPanel(_L.fromArray([h1("Answer to The Ultimate Question of Life, the Universe, and Everything...")
+   verticalPanel(_L.fromArray([h1("The Answer to The Ultimate Question of Life, the Universe, and Everything...")
                               ,body("")
                               ,$Unison$Term.Var(0)])))),
    $Unison$Term.Ref("answer")),
    $Unison$Term.Lit($Unison$Term.Number(42.0)));
+   var expr3 = A2($Unison$Term.Lam,
+   1,
+   A2($Unison$Term.Lam,0,expr1));
+   var rgbTerm = F3(function (r,
+   g,
+   b) {
+      return A2($Unison$Term.App,
+      A2($Unison$Term.App,
+      A2($Unison$Term.App,
+      A2($Unison$Term.App,
+      $Unison$Term.Lit($Unison$Term.Builtin("Color.rgba")),
+      $Unison$Term.Lit($Unison$Term.Number($Basics.toFloat(r)))),
+      $Unison$Term.Lit($Unison$Term.Number($Basics.toFloat(g)))),
+      $Unison$Term.Lit($Unison$Term.Number($Basics.toFloat(b)))),
+      $Unison$Term.Lit($Unison$Term.Number(1.0)));
+   });
+   var nums = function () {
+      var f = function (x) {
+         return $Unison$Term.Lit($Unison$Term.Number($Basics.toFloat(x)));
+      };
+      return $Unison$Term.Lit($Unison$Term.Vector($Array.fromList(A2($List.map,
+      f,
+      _L.range(0,15)))));
+   }();
+   var expr = A2($Unison$Term.App,
+   A2($Unison$Term.App,
+   $Unison$Term.Ref("foo"),
+   nums),
+   A2($Unison$Term.App,
+   $Unison$Term.Ref("baz"),
+   A2(ap,
+   A2(ap,
+   $Unison$Term.Lit($Unison$Term.Builtin("View.cell")),
+   $Unison$Term.Lit($Unison$Term.Builtin("View.swatch"))),
+   A3(rgbTerm,230,126,34))));
    var terms = $Signal.constant(expr);
    var main = function () {
       var scene = F3(function (l,
@@ -205,8 +240,15 @@ Elm.Main.make = function (_elm) {
          $Graphics$Element.down,
          _L.fromArray([$Graphics$Element.layers(_L.fromArray([$Elmz$Layout.element(l)
                                                              ,selection]))
+                      ,A2($Graphics$Element.spacer,
+                      1,
+                      100)
                       ,$Unison$Styles.codeText(_L.append("Path: ",
-                      $String.show(scope)))]));
+                      $String.show(A2($Maybe.map,
+                      function (_) {
+                         return _.focus;
+                      },
+                      scope))))]));
       });
       var terms = $Signal.constant(expr);
       var rendered = A2($Signal._op["~"],
@@ -242,7 +284,7 @@ Elm.Main.make = function (_elm) {
                   case "Nothing":
                   return $Maybe.Nothing;}
                _E.Case($moduleName,
-               "between lines 118 and 122");
+               "between lines 119 and 123");
             }();
          });
          return A2($Signal._op["~"],
@@ -263,7 +305,7 @@ Elm.Main.make = function (_elm) {
                   case "Nothing":
                   return $Graphics$Element.empty;}
                _E.Case($moduleName,
-               "between lines 126 and 129");
+               "between lines 127 and 130");
             }();
          });
          return A3($Signal.lift2,
@@ -279,46 +321,11 @@ Elm.Main.make = function (_elm) {
       highlightLayer),
       scope);
    }();
-   var rgbTerm = F3(function (r,
-   g,
-   b) {
-      return A2($Unison$Term.App,
-      A2($Unison$Term.App,
-      A2($Unison$Term.App,
-      A2($Unison$Term.App,
-      $Unison$Term.Lit($Unison$Term.Builtin("Color.rgba")),
-      $Unison$Term.Lit($Unison$Term.Number($Basics.toFloat(r)))),
-      $Unison$Term.Lit($Unison$Term.Number($Basics.toFloat(g)))),
-      $Unison$Term.Lit($Unison$Term.Number($Basics.toFloat(b)))),
-      $Unison$Term.Lit($Unison$Term.Number(1.0)));
-   });
-   var nums = function () {
-      var f = function (x) {
-         return $Unison$Term.Lit($Unison$Term.Number($Basics.toFloat(x)));
-      };
-      return $Unison$Term.Lit($Unison$Term.Vector($Array.fromList(A2($List.map,
-      f,
-      _L.range(0,15)))));
-   }();
-   var expr1 = A2($Unison$Term.App,
-   A2($Unison$Term.App,
-   $Unison$Term.Ref("foo"),
-   nums),
-   A2($Unison$Term.App,
-   $Unison$Term.Ref("baz"),
-   A2(ap,
-   A2(ap,
-   $Unison$Term.Lit($Unison$Term.Builtin("View.cell")),
-   $Unison$Term.Lit($Unison$Term.Builtin("View.swatch"))),
-   A3(rgbTerm,230,126,34))));
-   var expr3 = A2($Unison$Term.Lam,
-   1,
-   A2($Unison$Term.Lam,0,expr1));
    _elm.Main.values = {_op: _op
                       ,nums: nums
                       ,rgbTerm: rgbTerm
                       ,ap: ap
-                      ,expr1: expr1
+                      ,expr: expr
                       ,cell: cell
                       ,panel: panel
                       ,function1: function1
@@ -330,7 +337,7 @@ Elm.Main.make = function (_elm) {
                       ,h1: h1
                       ,body: body
                       ,full: full
-                      ,expr: expr
+                      ,expr1: expr1
                       ,expr3: expr3
                       ,resolvedPath: resolvedPath
                       ,terms: terms
@@ -2944,6 +2951,21 @@ Elm.Unison.Styles.make = function (_elm) {
       $Graphics$Element.absolute(thickness)),
       e));
    });
+   var swatch = function (c) {
+      return A2($Graphics$Element.flow,
+      $Graphics$Element.down,
+      _L.fromArray([A2($Graphics$Element.spacer,
+                   1,
+                   2)
+                   ,A3(outline,
+                   $Color.black,
+                   1,
+                   A2($Graphics$Element.color,
+                   c,
+                   A2($Graphics$Element.spacer,
+                   12,
+                   12)))]));
+   };
    var selection = F2(function (l,
    r) {
       return function () {
@@ -3055,14 +3077,6 @@ Elm.Unison.Styles.make = function (_elm) {
       code,
       $Text.toText(s)));
    };
-   var swatch = function (c) {
-      return A3(outline,
-      $Color.black,
-      1,
-      A2($Graphics$Element.color,
-      c,
-      contain(codeText("  "))));
-   };
    var blank = codeText("_");
    var numericLiteral = function (s) {
       return $Text.leftAligned(A2($Text.style,
@@ -3080,7 +3094,7 @@ Elm.Unison.Styles.make = function (_elm) {
    var h1 = {_: {}
             ,bold: false
             ,color: $Color.black
-            ,height: $Maybe.Just(72)
+            ,height: $Maybe.Just(60)
             ,italic: false
             ,line: $Maybe.Nothing
             ,typeface: _L.fromArray(["Lato"
