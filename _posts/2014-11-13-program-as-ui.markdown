@@ -12,7 +12,7 @@ That is how we typically think of things, but there's another perspective---the 
 
 This probably doesn't make much sense, so I'm hoping a few demonstrations will clarify. Please excuse the ugliness of these UIs (which is "easy" to fix) and try to see through to the underlying ideas.
 
-__Aside:__ This perspective, of the program as UI, is something Conal Elliott also talks about in [his work on Tangible Functional Programming](http://www.youtube.com/watch?v=faJ8N0giqzw)).
+__Aside:__ This perspective, of the program as UI, is something Conal Elliott also talks about in [his work on Tangible Functional Programming](http://www.youtube.com/watch?v=faJ8N0giqzw).
 
 First, let's look at [this page](/unison/demo-swatch-raw.html). This is a semantic layout of a Unison expression. As before, try shrinking the width of the page down until the expression no longer fits horizontally---the expression will automatically rewrap. Parentheses are inserted automatically where needed, and you can also manipulate the selection with the mouse or the arrow keys. Notice the text below, which shows a representation of the current selected _path_. That is a path into a Unison expression. The exact representation of paths isn't important; what is important is that these paths give us all we need to be able to make edits to our expression.
 
