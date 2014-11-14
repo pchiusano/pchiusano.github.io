@@ -29,7 +29,7 @@ answer _ = False
 
 Rather than rendering `answer 42` in its _source_ form, we have annotated our syntax tree to indicate that we'd like the function `answer` to render itself differently. Specifically, we've supplied a function `Panel -> Panel`, which tells where the argument to the function `answer` should be placed, and what its surrounding visual context should be in the layout. Notice again that we still have the path information needed to support editing.
 
-Here's an exerpt of the API used:
+Here's an excerpt of the API used:
 
 ```Haskell
 cell : View a -> a -> a -- special form which controls how the value is rendered, ignored at runtime
