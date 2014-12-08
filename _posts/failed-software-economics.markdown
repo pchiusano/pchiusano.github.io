@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The failed economics of our software commons, and what you can about it
+title: The failed economics of our software commons, and what you can about it right now
 categories: [econ, tech]
 ---
 
