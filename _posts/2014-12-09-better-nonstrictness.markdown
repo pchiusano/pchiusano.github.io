@@ -29,7 +29,7 @@ whnf (App f x) = case whnf f of
 
 ```
 
-So, notice that lambdas (the `Await` constructor), when taking an argument, _indicate to the caller whether the argument should be passed strictly or nonstrictly_. The idea being that if a function is going to evaluate an argument anyway, it might as well have the caller evaluate that argument. In Haskell, callers always (modulo static stricness analysis) pass arguments thunked. So, arguments are received one at a time and we are propagating strictness information to the caller (and possibly to their caller). This is nice for higher-order functions, because they can propagate this stricness also. I hypothesized that the problem with `foldl` was that it was simply not propagating the strictness of the binary folding function it receives.
+So, notice that lambdas (the `Await` constructor), when taking an argument, _indicate to the caller whether the argument should be passed strictly or nonstrictly_. The idea being that if a function is going to evaluate an argument anyway, it might as well have the caller evaluate that argument. In Haskell, callers always (modulo static stricness analysis) pass arguments thunked. Here, arguments are received one at a time and we are propagating strictness information to the caller (and possibly to their caller). This is nice for higher-order functions, because they can propagate this stricness also. I hypothesized that the problem with `foldl` was that it was simply not propagating the strictness of the binary folding function it receives.
 
 Here's an implementation of `foldl` using `Runtime` ([full gist][]). Obviously, it's pretty ugly writing out `Runtime` values directly, rather than compiling to `Runtime` but stick with me for now:
 
