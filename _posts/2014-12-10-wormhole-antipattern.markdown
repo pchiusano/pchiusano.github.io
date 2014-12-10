@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Avoiding sinks and wormholes to better separate view from interactivity in UI programming
+title: A nice, purely functional alternative to sinks and wormholes in UI programming
 categories: [fp, unison]
 ---
 
