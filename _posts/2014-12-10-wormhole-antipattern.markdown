@@ -33,7 +33,7 @@ Now that you're hopefully convinced this is a bad idea, what can we do about it?
 
 The key observation, which is not new, is that a view should be solely responsible for rendering itself statically, while retaining enough information to resolve mouse or touch positions to meaningful values and doing the reverse lookup of resolving values to regions. This lets us add any interactivity we want _after the fact, without having to modify the view_. The view and controller are entirely decoupled, and we can take the same view and layer on different types of interactivity after the fact. How awesome is that?
 
-Here's a sketch of an API ([full gist](https://gist.github.com/pchiusano/ba958c70ebaf535aa805)).
+Here's a sketch of an API ([full gist](https://gist.github.com/pchiusano/ba958c70ebaf535aa805)):
 
 ```
 embed : a -> Element -> Layout a
