@@ -20,6 +20,8 @@ subscribe : Channel a -> Signal a -- obtain the signal of values sent through th
 
 In `dropDown`, the `a -> Message` is our sink. Each time the user changes the selected item, that function will be called to produce a `Message`, which is conceptually an `(a, Channel a)`. Producing such a value has no side effects much like producing `IO` actions in Haskell, but when the UI is actually running, Elm will handle actually sending the `a` to its destination. The value sent appears as if by magic on the other side of the channel for anyone who calls `subscribe`. This is what I call the wormhole antipattern. I prefer the term "wormhole" to "channel", as it's suggestive of the discontinuity in control flow that comes with using this technique to structure UI updates.
 
+__Update:__ A reader on reddit [pointed me to some FRP literature in which 'wormhole' has a specific technical meaning](http://www.reddit.com/r/haskell/comments/2ozi90/paul_chiusano_a_nice_purely_functional/cms9d07). I wasn't aware of it when writing the post, which just uses the term 'wormhole' colloquially.
+
 The pattern is bad for several reasons:
 
 * Using wormholes/sinks means giving up on the straightforward control flow of the functional style. Instead, we have the same sort of "spooky action at a distance" seen in imperative programming. Values sent to a wormhole pop out in a completely different part of the program, without the programmer having to make dependencies explicit. This makes reasoning about code extremely difficult, for the same reason that programming with explicit callbacks or gotos is difficult.
