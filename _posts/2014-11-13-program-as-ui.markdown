@@ -8,7 +8,7 @@ In [an earlier post](/2014-09-30/semantic-layout), I showed a demo of semantic p
 
 We typically think of programs as being represented by their textual form. If we want to produce a UI, we write a program *whose output* is some sort of renderable graphical object---perhaps a pile of HTML/CSS/JS. Let's consider this a form of compilation from our program to our graphical object, `G`. Like most forms of compilation, changes to the compiled output can't be trivially reflected back into our source program. As a result, we tend to think of edits and interactivity on `G` as _being distinct from the activity of editing our program_. Put another way, we think of interaction with a UI as being a fundamentally different activity than programming.
 
-That is how we typically think of things, but there's another perspective---the UI *is* a program. We don't write a program to produce a UI, we write a program that *is* a UI. That is, the UI is simply a specific kind of rendering of a program, and interacting with the UI is, quite literally, programming. I don't mean that it's analogous to programming, I mean that it *is* programming.
+That is how we typically think of things, but there's another perspective---the UI *is* a program. We don't write a program to produce a UI, we write a program that *is* a UI. That is, the UI is simply a specific kind of rendering of a program, and interacting with the UI is, quite literally, programming. I don't mean that it's analogous to programming, I mean that it *is* programming, in the sense that the user's interaction with the UI is directly mapped to edits of an underlying program.
 
 This probably doesn't make much sense, so I'm hoping a few demonstrations will clarify. Please excuse the ugliness of these UIs (which is "easy" to fix) and try to see through to the underlying ideas.
 
@@ -20,7 +20,7 @@ Something that's rather unfortunate about this view is that we have a portion of
 
 So far, this is only a little interesting. For any _closed_ expression (one without any free variables), it's easy to imagine how we can select an alternate rendering that interprets the expression in some graphical way. Being able to embed these graphical views in our program rendering while retaining editability is snazzy, and sometimes helpful, but it still feels like regular programming.
 
-Going a step further, we can control not just how closed expressions are rendered, but also how _functions_ are rendered. Have a look at [this page](/unison/demo-42.html). What are we looking at? Well, it's a normal (albeit ugly) web page. It's also a rendering of the expression `answer 42`, where answer is perhaps defined as:
+Going a step further, we can control not just how closed expressions are rendered, but also how _function application_ is rendered. Have a look at [this page](/unison/demo-42.html). What are we looking at? Well, it's a normal (albeit ugly) web page. It's also a rendering of the expression `answer 42`, where answer is perhaps defined as:
 
 ```Haskell
 answer 42 = True
