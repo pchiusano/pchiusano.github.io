@@ -10,8 +10,6 @@ I'm very much looking forward to sharing updates with you here, and I'll open so
 
 Also, I'd be interested to hear from folks in the comments who have attempted something similar---taking time off from "real" work to try working on something experimental and/or crazy. How did it go, what did you learn? Any tips, pointers, advice, or encouragement? This is new territory for me.
 
-Since this limited time is so precious to me, I'll be spending much less time on social media and blogging about random stuff unrelated to Unison.
-
 With that said, here's the tentative roadmap. The overall goal: get to a point where I can actually show a compelling demo that exercises all the Unison components. I'm calling this Milestone 0 (M0). It's more important to me to have the "story worked out" and have the minimum viable product (MVP) for each component. Details and sophistication for each of the components can be filled in later, and I'll only block progress on technical issues that have wide-ranging effects on overall architecture.
 
 * _Feb:_ focus on the Unison editor, a browser-based semantic editor for editing, interacting with, and viewing Unison programs. A lot of this is implemented; a lot of it isn't yet. I'm expecting this to be most of the first month of work. I'm placing a lot of effort on it because it's the biggest unknown for me. But I'd rather reduce scope on the editor and have something working end-to-end by end of Feb. 
