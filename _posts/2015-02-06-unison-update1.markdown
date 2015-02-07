@@ -72,7 +72,7 @@ asyncUpdate : (Signal req -> Signal (model -> model))
 asyncUpdate eval actions req0 model0 = ...
 ```
 
-It feels a bit ad hoc, but it wraps up what I suspect is a pretty common pattern of interpreting a signal of actions which will be used to update some model, some of which may "on the side" generate requests which must be run asynchronously while other actions come in. The first argument, `eval`, is the stream transformer which (may) issue asynchronous requests and use the results to update the model. But the function has no opinion on whether these are actually web requests, or something faked with a time delay and some pure logic locally. The current demo is running using the following function as the `eval` argument:
+It feels a bit ad hoc, but it wraps up what I suspect is a pretty common pattern of interpreting a signal of actions which will be used to update some model, some of which may "on the side" generate requests which must be run asynchronously while other actions come in. The first argument, `eval`, is the signal transformer which (may) issue asynchronous requests and use the results to update the model. But the function has no opinion on whether these are actually web requests, or something faked with a time delay and some pure logic locally. The current demo is running using the following function as the `eval` argument:
 
 ```Elm
 search : Sink Field.Content -> Signal () -> Signal Request -> Signal (Model -> Model)
