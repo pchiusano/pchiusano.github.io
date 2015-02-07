@@ -92,8 +92,6 @@ Not very exciting, but I can easily swap in something that actually contacts the
 
 This post is getting pretty long, so I'll call it quits here. Next week I'll be hooking this editing layer up to the real Unison node and typechecker. Stay tuned! As always I welcome your comments.
 
-[DEMO][]
-
 [DEMO]: /unison/editor0.html
 [jurassic]: http://www.imdb.com/title/tt0107290/quotes?item=qt1464414
 [last week]: /2015-01-30/unison-update0.html
