@@ -39,11 +39,11 @@ In a semantic editor, here's a possible keysequence which reproduces this:
 
     f (grr "Alice" 42) (p q r
 
-Notice that it looks the same, but we need not spell out all our identifiers, and we don't bother closing the final paren. If `foo` is the only valid completion, then `<space>` can accept this completion, add another argument, and begin editing that argument. Unlike raw text editing, where typing `f` may refer to some as yet undeclared identifier (which would not typecheck!), in a semantic editor the user simply cannot reference a nonexistent identifier, so there is no need to force the user to disambiguate whether they meant to do that or not?
+Notice that it looks the same, but we need not spell out all our identifiers, and we don't bother closing the final paren. If `foo` is the only valid completion, then `<space>` can accept this completion, add another argument, and begin editing that argument. Unlike raw text editing, where typing `f` may refer to some as yet undeclared identifier (which would not typecheck!), in a semantic editor the user simply cannot reference a nonexistent identifier, so there is no need to force the user to disambiguate whether they meant to do that or not.
 
-In this model, parentheses are more like navigational cues only---they tell the editor where to apply edits but aren't part of the document. They are displayed only if actually necessary, based on precedence information stored as separate metadata.
+In this model, parentheses are more like navigational cues---they tell the editor where to apply edits but aren't part of the document. They are displayed only if actually necessary, based on precedence information stored as separate metadata.
 
-The other model I've experimented with is simply getting rid of parentheses entirely. Instead, one uses the arrow keys or `<hjkl>` to navigate, and there are two actions to accept and continue, one indicated by `<space>` and another indicated by `<shift+space>`. Say `<space>` accepts the current completion and advances to the next _sibling_ of the current node, and `<shift+space>` accepts the current completion and adds a new _child_ to the current node and moves the editing cursor to _that_.
+The other model I've experimented with is simply getting rid of parentheses to control editing entirely. Instead, one uses the arrow keys or `<hjkl>` to navigate, and there are two actions to accept and continue, one indicated by `<space>` and another indicated by `<shift+space>`. Say `<space>` accepts the current completion and advances to the next _sibling_ of the current node, and `<shift+space>` accepts the current completion and adds a new _child_ to the current node and moves the editing cursor to _that_.
 
 That might not make much sense, so see [this demo][DEMO]. Here are some notes:
 
