@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html><head><meta charset="UTF-8"><meta name=viewport content="width=device-width, initial-scale=1"><title>Unison.Editor</title><style>html,head,body { padding:0; margin:0; }
+<html><head><meta charset="UTF-8"><title>Unison.Editor</title><style>html,head,body { padding:0; margin:0; }
 body { font-family: calibri, helvetica, arial, sans-serif; }</style><script type="text/javascript">var Elm = Elm || { Native: {} };Elm.Array = Elm.Array || {};
 Elm.Array.make = function (_elm) {
    "use strict";
@@ -4100,7 +4100,7 @@ Elm.Elmz.Signal.make = function (_elm) {
                   case "Nothing":
                   return $List.head(_L.fromArray([]));}
                _U.badCase($moduleName,
-               "between lines 158 and 161");
+               "between lines 169 and 172");
             }();
          });
          var boolRight = A2($Signal._op["<~"],
@@ -4172,12 +4172,12 @@ Elm.Elmz.Signal.make = function (_elm) {
                                            ,_1: $Maybe.Nothing};}
                                  break;}
                             _U.badCase($moduleName,
-                            "between lines 173 and 176");
+                            "between lines 184 and 187");
                          }();
                        case "Nothing": return b;}
                     break;}
                _U.badCase($moduleName,
-               "between lines 171 and 176");
+               "between lines 182 and 187");
             }();
          });
          return A3(mergeWith,
@@ -4229,7 +4229,7 @@ Elm.Elmz.Signal.make = function (_elm) {
                     chan,
                     _v12._1);}
                _U.badCase($moduleName,
-               "on line 141, column 52 to 63");
+               "on line 152, column 52 to 63");
             }();
          },
          bs)));
@@ -4290,7 +4290,7 @@ Elm.Elmz.Signal.make = function (_elm) {
                     _v16._1,
                     b) : z;}
                _U.badCase($moduleName,
-               "on line 115, column 23 to 48");
+               "on line 126, column 23 to 48");
             }();
          });
          return A3($Signal.foldp,
@@ -4327,10 +4327,10 @@ Elm.Elmz.Signal.make = function (_elm) {
                             _v20._0,
                             _v20._1));}
                        _U.badCase($moduleName,
-                       "between lines 122 and 124");
+                       "between lines 133 and 135");
                     }();}
                _U.badCase($moduleName,
-               "between lines 122 and 124");
+               "between lines 133 and 135");
             }();
          });
          return A4(foldpWhen,
@@ -4360,7 +4360,7 @@ Elm.Elmz.Signal.make = function (_elm) {
                     b);
                   case "Nothing": return z;}
                _U.badCase($moduleName,
-               "between lines 97 and 100");
+               "between lines 108 and 111");
             }();
          });
          return A3($Signal.foldp,
@@ -4394,10 +4394,10 @@ Elm.Elmz.Signal.make = function (_elm) {
                             _v28._0,
                             _v28._1));}
                        _U.badCase($moduleName,
-                       "between lines 106 and 109");
+                       "between lines 117 and 120");
                     }();}
                _U.badCase($moduleName,
-               "between lines 106 and 109");
+               "between lines 117 and 120");
             }();
          });
          return A4(foldpBetween,
@@ -4493,6 +4493,33 @@ Elm.Elmz.Signal.make = function (_elm) {
          s));
       }();
    });
+   var doubleWithin = F2(function (within,
+   s) {
+      return function () {
+         var f = F2(function (t1,t2) {
+            return function () {
+               switch (t1.ctor)
+               {case "Just":
+                  return _U.cmp(t2 - t1._0,
+                    within) < 0 ? true : false;
+                  case "Nothing": return false;}
+               _U.badCase($moduleName,
+               "between lines 73 and 76");
+            }();
+         });
+         var ts = A2($Signal.map,
+         $Basics.fst,
+         $Time.timestamp(s));
+         return $Signal.map($Basics.always({ctor: "_Tuple0"}))(A2($Signal.keepIf,
+         $Basics.identity,
+         false)(A3($Signal.map2,
+         f,
+         A2(delay,
+         $Maybe.Nothing,
+         A2($Signal.map,$Maybe.Just,ts)),
+         ts)));
+      }();
+   });
    var transitionsBy = F2(function (same,
    s) {
       return function () {
@@ -4505,7 +4532,7 @@ Elm.Elmz.Signal.make = function (_elm) {
                     cur);
                   case "Nothing": return true;}
                _U.badCase($moduleName,
-               "between lines 226 and 229");
+               "between lines 237 and 240");
             }();
          });
          return A3($Signal.map2,
@@ -4522,7 +4549,7 @@ Elm.Elmz.Signal.make = function (_elm) {
    }));
    var count = function (a) {
       return A3($Signal.foldp,
-      F2(function (_v38,n) {
+      F2(function (_v40,n) {
          return function () {
             return n + 1;
          }();
@@ -4574,12 +4601,12 @@ Elm.Elmz.Signal.make = function (_elm) {
          actions,
          responseActions);
          var step = F2(function (action,
-         _v43) {
+         _v45) {
             return function () {
-               switch (_v43.ctor)
+               switch (_v45.ctor)
                {case "_Tuple2":
                   return function () {
-                       var $ = action(_v43._1),
+                       var $ = action(_v45._1),
                        req = $._0,
                        model$ = $._1;
                        return {ctor: "_Tuple2"
@@ -4629,6 +4656,7 @@ Elm.Elmz.Signal.make = function (_elm) {
                              ,count: count
                              ,delay: delay
                              ,downs: downs
+                             ,doubleWithin: doubleWithin
                              ,during: during
                              ,choose: choose
                              ,changed: changed
@@ -11525,6 +11553,177 @@ Elm.Native.Time.make = function(elm) {
   };
 
 };
+Elm.Native = Elm.Native || {};
+Elm.Native.Touch = {};
+Elm.Native.Touch.make = function(localRuntime) {
+
+    localRuntime.Native = localRuntime.Native || {};
+    localRuntime.Native.Touch = localRuntime.Native.Touch || {};
+    if (localRuntime.Native.Touch.values) {
+        return localRuntime.Native.Touch.values;
+    }
+
+    var Signal = Elm.Signal.make(localRuntime);
+    var List = Elm.Native.List.make(localRuntime);
+    var Utils = Elm.Native.Utils.make(localRuntime);
+
+    function Dict() {
+        this.keys = [];
+        this.values = [];
+
+        this.insert = function(key,value) {
+            this.keys.push(key);
+            this.values.push(value);
+        };
+        this.lookup = function(key) {
+            var i = this.keys.indexOf(key)
+            return i >= 0 ? this.values[i] : {x:0,y:0,t:0};
+        };
+        this.remove = function(key) {
+            var i = this.keys.indexOf(key);
+            if (i < 0) return;
+            var t = this.values[i];
+            this.keys.splice(i,1);
+            this.values.splice(i,1);
+            return t;
+        };
+        this.clear = function() {
+            this.keys = [];
+            this.values = [];
+        };
+    }
+    
+    var root = Signal.constant([]),
+    tapTime = 500,
+    hasTap = false,
+    tap = {_:{},x:0,y:0},
+    dict = new Dict();
+
+    function touch(t) {
+        var r = dict.lookup(t.identifier);
+        var point = Utils.getXY(t);
+        return {
+            _ : {},
+            id: t.identifier,
+            x : point._0,
+            y : point._1,
+            x0: r.x,
+            y0: r.y,
+            t0: r.t
+         };
+    }
+
+    var node = localRuntime.isFullscreen()
+        ? document
+        : localRuntime.node;
+
+    function start(e) {
+        var point = Utils.getXY(e);
+        dict.insert(e.identifier, {
+            x: point._0,
+            y: point._1,
+            t: localRuntime.timer.now()
+        });
+    }
+    function end(e) {
+        var t = dict.remove(e.identifier);
+        if (localRuntime.timer.now() - t.t < tapTime) {
+            hasTap = true;
+            tap = {
+                _: {},
+                x: t.x,
+                y: t.y
+            };
+        }
+    }
+
+    function listen(name, f) {
+        function update(e) {
+            for (var i = e.changedTouches.length; i--; ) {
+                f(e.changedTouches[i]);
+            }
+            var ts = new Array(e.touches.length);
+            for (var i = e.touches.length; i--; ) {
+                ts[i] = touch(e.touches[i]);
+            }
+            localRuntime.notify(root.id, ts);
+            e.preventDefault();
+        }
+        localRuntime.addListener([root.id], node, name, update);
+    }
+
+    listen("touchstart", start);
+    listen("touchmove", function(_){});
+    listen("touchend", end);
+    listen("touchcancel", end);
+    listen("touchleave", end);
+
+    var mouseID = -1;
+    function move(e) {
+        var point = Utils.getXY(e);
+        for (var i = root.value.length; i--; ) {
+            if (root.value[i].id === mouseID) {
+                root.value[i].x = point._0;
+                root.value[i].y = point._1;
+                localRuntime.notify(root.id, root.value);
+                break;
+            }
+        }
+    }
+    localRuntime.addListener([root.id], node, "mousedown", function down(e) {
+        node.addEventListener("mousemove", move);
+        e.identifier = mouseID;
+        start(e);
+        root.value.push(touch(e));
+        localRuntime.notify(root.id, root.value);
+    });
+    localRuntime.addListener([root.id], document, "mouseup", function up(e) {
+        node.removeEventListener("mousemove", move);
+        e.identifier = mouseID;
+        end(e);
+        for (var i = root.value.length; i--; ) {
+            if (root.value[i].id === mouseID) {
+                root.value.splice(i, 1);
+                --mouseID;
+                break;
+            }
+        }
+        localRuntime.notify(root.id, root.value);
+    });
+    localRuntime.addListener([root.id], node, "blur", function blur(e) {
+        node.removeEventListener("mousemove", move);
+        if (root.value.length > 0) {
+            localRuntime.notify(root.id, []);
+            --mouseID;
+        }
+        dict.clear();
+    });
+
+    function dependency(f) {
+        var sig = A2( Signal.map, f, root );
+        root.defaultNumberOfKids += 1;
+        sig.defaultNumberOfKids = 0;
+        return sig;
+    }
+
+    var touches = dependency(List.fromArray);
+
+    var taps = function() {
+        var sig = dependency(function(_) { return tap; });
+        sig.defaultNumberOfKids = 1;
+        function pred(_) {
+            var b = hasTap;
+            hasTap = false;
+            return b;
+        }
+        var sig2 = A3( Signal.keepIf, pred, {_:{},x:0,y:0}, sig);
+        sig2.defaultNumberOfKids = 0;
+        return sig2;
+    }();
+
+    return localRuntime.Native.Touch.values = { touches: touches, taps: taps };
+
+};
 Elm.Native.Transform2D = {};
 Elm.Native.Transform2D.make = function(elm) {
 
@@ -12718,6 +12917,42 @@ Elm.Time.make = function (_elm) {
                       ,timestamp: timestamp
                       ,delay: delay};
    return _elm.Time.values;
+};Elm.Touch = Elm.Touch || {};
+Elm.Touch.make = function (_elm) {
+   "use strict";
+   _elm.Touch = _elm.Touch || {};
+   if (_elm.Touch.values)
+   return _elm.Touch.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   _P = _N.Ports.make(_elm),
+   $moduleName = "Touch",
+   $Native$Touch = Elm.Native.Touch.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $Time = Elm.Time.make(_elm);
+   var taps = $Native$Touch.taps;
+   var touches = $Native$Touch.touches;
+   var Touch = F6(function (a,
+   b,
+   c,
+   d,
+   e,
+   f) {
+      return {_: {}
+             ,id: c
+             ,t0: f
+             ,x: a
+             ,x0: d
+             ,y: b
+             ,y0: e};
+   });
+   _elm.Touch.values = {_op: _op
+                       ,Touch: Touch
+                       ,touches: touches
+                       ,taps: taps};
+   return _elm.Touch.values;
 };Elm.Transform2D = Elm.Transform2D || {};
 Elm.Transform2D.make = function (_elm) {
    "use strict";
@@ -12814,6 +13049,7 @@ Elm.Unison.Editor.make = function (_elm) {
    $Signal = Elm.Signal.make(_elm),
    $String = Elm.String.make(_elm),
    $Time = Elm.Time.make(_elm),
+   $Touch = Elm.Touch.make(_elm),
    $Unison$Explorer = Elm.Unison.Explorer.make(_elm),
    $Unison$Hash = Elm.Unison.Hash.make(_elm),
    $Unison$Metadata = Elm.Unison.Metadata.make(_elm),
@@ -12900,7 +13136,7 @@ Elm.Unison.Editor.make = function (_elm) {
               }));
             case "Nothing": return model;}
          _U.badCase($moduleName,
-         "between lines 179 and 187");
+         "between lines 180 and 188");
       }();
    });
    var movement = F2(function (d2,
@@ -12931,7 +13167,7 @@ Elm.Unison.Editor.make = function (_elm) {
                  model);
               }();}
          _U.badCase($moduleName,
-         "between lines 125 and 132");
+         "between lines 126 and 133");
       }();
    });
    var norequest = function (model) {
@@ -12965,7 +13201,7 @@ Elm.Unison.Editor.make = function (_elm) {
                  model));
               }();}
          _U.badCase($moduleName,
-         "between lines 109 and 114");
+         "between lines 110 and 115");
       }();
    });
    var request = function (model) {
@@ -12983,7 +13219,7 @@ Elm.Unison.Editor.make = function (_elm) {
                    ,_0: $Maybe.Nothing
                    ,_1: model};}
          _U.badCase($moduleName,
-         "between lines 88 and 90");
+         "between lines 89 and 91");
       }();
    };
    var panelHighlight = function (model) {
@@ -13003,7 +13239,7 @@ Elm.Unison.Editor.make = function (_elm) {
                case "Nothing":
                return A2($Elmz$Layout.Pt,0,0);}
             _U.badCase($moduleName,
-            "between lines 208 and 212");
+            "between lines 209 and 213");
          }();
          var availableWidth = A2($Basics.max,
          A2($Maybe.withDefault,
@@ -13161,7 +13397,7 @@ Elm.Unison.Editor.make = function (_elm) {
                case "Nothing":
                return $Graphics$Element.empty;}
             _U.badCase($moduleName,
-            "between lines 301 and 305");
+            "between lines 302 and 306");
          }();
          return $Graphics$Element.layers(_L.fromArray([$Elmz$Layout.element(model.layouts.panel)
                                                       ,highlight
@@ -13220,7 +13456,7 @@ Elm.Unison.Editor.make = function (_elm) {
                case "Nothing":
                return $Basics.identity;}
             _U.badCase($moduleName,
-            "between lines 198 and 201");
+            "between lines 199 and 202");
          }();
          var layouts = model.layouts;
          var layout = pin(origin)(function () {
@@ -13238,7 +13474,7 @@ Elm.Unison.Editor.make = function (_elm) {
                                                       ,rootMetadata: $Unison$Metadata.anonymousTerm});
                case "Nothing": return layout0;}
             _U.badCase($moduleName,
-            "between lines 190 and 197");
+            "between lines 191 and 198");
          }());
          return explorerRefresh(function () {
             var _v21 = model.scope;
@@ -13254,7 +13490,7 @@ Elm.Unison.Editor.make = function (_elm) {
                                   layouts)]],
                  model);}
             _U.badCase($moduleName,
-            "between lines 201 and 203");
+            "between lines 202 and 204");
          }());
       }();
    });
@@ -13288,14 +13524,14 @@ Elm.Unison.Editor.make = function (_elm) {
                               model));
                             case "Nothing": return model;}
                          _U.badCase($moduleName,
-                         "between lines 138 and 143");
+                         "between lines 139 and 144");
                       }();
                     case "Nothing": return model;}
                  _U.badCase($moduleName,
-                 "between lines 136 and 143");
+                 "between lines 137 and 144");
               }();}
          _U.badCase($moduleName,
-         "between lines 135 and 143");
+         "between lines 136 and 144");
       }();
    });
    var close = F2(function (origin,
@@ -13361,7 +13597,7 @@ Elm.Unison.Editor.make = function (_elm) {
                             case "Nothing":
                             return norequest(closeExplorer(model));}
                          _U.badCase($moduleName,
-                         "between lines 102 and 106");
+                         "between lines 103 and 107");
                       }();
                     case "Nothing":
                     return function () {
@@ -13378,13 +13614,13 @@ Elm.Unison.Editor.make = function (_elm) {
                             case "Nothing":
                             return norequest(model);}
                          _U.badCase($moduleName,
-                         "between lines 99 and 102");
+                         "between lines 100 and 103");
                       }();}
                  _U.badCase($moduleName,
-                 "between lines 98 and 106");
+                 "between lines 99 and 107");
               }();}
          _U.badCase($moduleName,
-         "between lines 98 and 106");
+         "between lines 99 and 107");
       }();
    });
    var enter = F3(function (snk,
@@ -13414,7 +13650,7 @@ Elm.Unison.Editor.make = function (_elm) {
                         m2)};
               }();}
          _U.badCase($moduleName,
-         "between lines 248 and 254");
+         "between lines 249 and 255");
       }();
    });
    var setSearchbox = F5(function (sink,
@@ -13577,7 +13813,11 @@ Elm.Unison.Editor.make = function (_elm) {
                    ,_0: 15
                    ,_1: 15};
       var inputs = {_: {}
-                   ,clicks: $Mouse.clicks
+                   ,clicks: A2($Signal.merge,
+                   $Mouse.clicks,
+                   A2($Elmz$Signal.doubleWithin,
+                   $Time.second,
+                   $Touch.taps))
                    ,deletes: A2($Signal.map,
                    $Basics.always({ctor: "_Tuple0"}),
                    $Elmz$Signal.ups($Keyboard.isDown(68)))
@@ -13585,7 +13825,17 @@ Elm.Unison.Editor.make = function (_elm) {
                    $Basics.always({ctor: "_Tuple0"}),
                    $Elmz$Signal.ups($Keyboard.enter))
                    ,modifier: $Keyboard.shift
-                   ,mouse: $Mouse.position
+                   ,mouse: A2($Signal.merge,
+                   $Mouse.position,
+                   A2($Signal.map,
+                   function (_v45) {
+                      return function () {
+                         return {ctor: "_Tuple2"
+                                ,_0: _v45.x
+                                ,_1: _v45.y};
+                      }();
+                   },
+                   $Touch.taps))
                    ,movements: $Elmz$Movement.d2$($Keyboard.arrows)
                    ,origin: origin
                    ,searchbox: $Signal.channel($Graphics$Input$Field.noContent)
