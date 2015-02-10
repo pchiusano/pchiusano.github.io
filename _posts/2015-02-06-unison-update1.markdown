@@ -75,15 +75,15 @@ asyncUpdate eval actions req0 model0 = ...
 It feels a bit ad hoc, but it wraps up what I suspect is a pretty common pattern of interpreting a signal of actions which will be used to update some model, some of which may "on the side" generate requests which must be run asynchronously while other actions come in. The first argument, `eval`, is the signal transformer which (may) issue asynchronous requests and use the results to update the model. But the function has no opinion on whether these are actually web requests, or something faked with a time delay and some pure logic locally. The current demo is running using the following function as the `eval` argument:
 
 ```Elm
-search : Sink Field.Content -> Signal () -> Signal Request -> Signal (Model -> Model)
-search searchbox queries reqs =
+search : Sink Field.Content -> Signal Request -> Signal (Model -> Model)
+search searchbox reqs =
   let containsNocase sub overall = String.contains (String.toLower sub) (String.toLower overall)
       possible = ["Alice", "Alicia", "Bob", "Burt", "Carol", "Carolina", "Dave", "Don", "Eve"]
       matches query = List.filter (containsNocase query) possible
-      go _ _ model = -- our logic is pure, ignore the request
+      go _ model = -- our logic is pure, ignore the request
         let possible = matches (Explorer.getInputOr Field.noContent model.explorer).string
         in updateExplorerValues searchbox (List.map Terms.str possible) model
-  in Time.delay (200 * Time.millisecond) (Signal.map2 go queries reqs)
+  in Time.delay (200 * Time.millisecond) (Signal.map go reqs)
 ```
 
 Not very exciting, but I can easily swap in something that actually contacts the real Unison node over HTTP. I just have to swap out this one function!
