@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: [fp,unison]
-title: Unison update 2: connecting the editor to the node
+title: Unison update 2&colon; connecting the editor to the node
 ---
 
 As I mentioned in [week 0](/2015-01-30/unison-update0.html), the Unison node is written in Haskell and has an implementation of the Unison language, its typechecker, and any primitive functions. It exposes an API over HTTP. [Last week](/2015-02-06/unison-update1.html), I worked on some of the Unison editor interactions, but I was working somewhat in a vaccum since the editor wasn't yet connected to the Unison node. I spent this week actually getting the editor and the node talking to each other, and refining the node API a bit in the process.
@@ -19,6 +19,8 @@ In raw text editing, it's necessary to disambiguate references with explicit imp
 * Upon opening a node to edit, we search local scope based on the search query.
 * If the search query starts with `"?"` we include global scope as well. If the number of matches is too high, we display only the count.
 
-Notice that unlike using Hoogle "manually", we don't have to enter the type, since the editor knows the type of the current edit location and can supply that information for us! Thus, we just focus on specifying whatever metadata we'd like to search by.
+Notice that unlike using something like Hoogle "manually", we don't have to enter the type, since the editor knows the type of the current edit location and can supply that information for us! Thus, we just focus on specifying whatever metadata we'd like to search by.
 
 There are some further refinements to this basic interaction to improve the ability to quickly refine our search. I'll discuss these in a later post.
+
+Looking forward to next week!
