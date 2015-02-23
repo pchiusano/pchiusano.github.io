@@ -6,11 +6,7 @@ title: Unison update 3&colon; connecting the editor to the node (continued)
 
 I didn't get a chance to put together a post on Friday, but I made some decent progress. Here's a short recording of an editing session:
 
-<video id="explorer-video" width="640" height="360" preload controls>
-	<source src="unison/unison-explorer.mov" />
-	<source src="unison/unison-explorer.ogg" />
-	<source src="unison/unison-explorer.m4v" />
-</video>
+<iframe src="//player.vimeo.com/video/120408656" width="500" height="413" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/120408656">Demo of Unison explorer</a> from <a href="https://vimeo.com/user37722330">Paul Chiusano</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 A few notes about what's happening here:
 
