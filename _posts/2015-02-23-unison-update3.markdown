@@ -6,7 +6,7 @@ title: Unison update 3&colon; connecting the editor to the node (continued)
 
 I didn't get a chance to put together a post on Friday, but I made some decent progress. Here's a short recording of an editing session:
 
-<iframe src="//player.vimeo.com/video/120408656" width="500" height="413" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/120408656">Demo of Unison explorer</a> from <a href="https://vimeo.com/user37722330">Paul Chiusano</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+<iframe src="/unison/unison-explorer.html" width="500" height="413" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 A few notes about what's happening here:
 
