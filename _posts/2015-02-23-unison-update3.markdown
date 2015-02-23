@@ -6,7 +6,7 @@ title: Unison update 3&colon; connecting the editor to the node (continued)
 
 I didn't get a chance to put together a post on Friday, but I made some decent progress. Here's a short recording of an editing session:
 
-<iframe src="/unison/unison-explorer.html" width="500" height="413" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="/unison/unison-explorer.html" width="516" height="426" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 A few notes about what's happening here:
 
