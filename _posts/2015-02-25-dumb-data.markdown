@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: [fp, unison]
-title: Keep your data types dumb, and layer on properties after the fact
+title: Keep your data types dumb, layer on properties after the fact
 ---
 
 When programming in a language with a nice type system, you often have the option of defining 'smart' data types which bake some invariant in as an index of the data type. But sometimes, it can be better to keep your data types dumb, and layer on invariants _after the fact_. The lesson generalizes, but I'll show an example---well-formed lambda calculus terms:
