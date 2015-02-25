@@ -1,0 +1,83 @@
+---
+layout: post
+categories: [fp, unison]
+title: Keep your data types dumb, and layer on properties after the fact
+---
+
+When programming in a language with a nice type system, you often have the option of defining 'smart' data types which bake some invariant in as an index of the data type. But sometimes, it can be better to keep your data types dumb, and layer on invariants _after the fact_. The lesson generalizes, but I'll show an example---well-formed lambda calculus terms:
+
+```Haskell
+data Slot a = Bound | Free a -- equivalent to `Maybe`
+
+data Expr a -- `a` is the type of free variables in this expression
+  = Unit
+  | Ap (Expr a) (Expr a)
+  | Lam (Expr (Slot a)) -- this is key
+  | Var a
+
+var1 :: Expr (Slot a)
+var1 = Var Bound
+
+identity :: Expr a
+identity = Lam var1
+```
+
+This is an example of the 'baked  in' variety of data type. `Expr a` is polymorphically recursive---when we descend into the `Lam` constructor, the type of free variables is wrapped in another `Slot`.
+
+What's nice about this approach is that whether an expression has free variables, and what their 'depth' is, is now information tracked in the type. Functions like capture-avoiding substitution can be given the very precise signature:
+
+```Haskell
+bind :: Expr a -> (a -> Expr b) -> Expr b -- Yep, `Expr` is also a monad!
+```
+
+Short of doing something extremely silly like duplicating a random subterm, it is almost impossible to implement this function incorrectly in a way that typechecks.
+
+__Aside:__ We can give `Monad Expr`, with `return = Var`, and `(>>=) = bind`! See [the bound library](https://hackage.haskell.org/package/bound).
+
+Sounds great, right? We get some very strong static guarantees and lots of help from the typechecker in writing our code. We can't, for instance, accidentally introduce a subterm with an ill-formed free variable reference. 
+
+But the situation is more nuanced. Whenever we bake some property into a data type, we're now obligated to articulate to the compiler precisely how this property is affected _by all functions which manipulate the data type_. Sometimes these proofs will be easy (for instance, `bind` is quite natural, the 'proof' just falls out of the obvious implementation); in other cases, the proof may require serious contortions or restructuring of our programs. Sometimes, the simplest implementation of a function is one which temporarily breaks an invariant, then restores it, but these implementations can become _more painful_ when the invariant is baked in. Are the benefits worth it? The answer: _it depends_. How likely are the bugs being prevented by additional typing, what is the expected cost of finding and fixing such bugs, and to what extent is the extra typing information helpful in guiding development?
+
+__Aside:__ To be clear, I am very glad that people are working on making such proofs more convenient to specify, and I encourage this good work!!
+
+#### The best of both worlds
+
+Rather than making an 'all or nothing' decision about whether to track typing information, we can sometimes get away with using a dumb underlying representation, with a _typed wrapper_:
+
+```Haskell
+data Expr 
+  = Unit 
+  | Ap Expr Expr 
+  | Lam Expr
+  | Var Int -- debruijn index
+
+newtype Scoped a = Scoped { unscope :: Expr } -- constructor hidden
+
+-- Only a closed expression may be promoted to `Scoped`
+scoped :: Expr -> Maybe (Scoped a)
+scoped = ...
+
+var1 :: Scoped (Slot a)
+var1 = Var 1
+
+app :: Scoped a -> Scoped a -> Scoped a
+app (Scoped f) (Scoped x) = Scoped (Ap f x)
+
+lam :: Scoped (Slot a) -> Scoped a
+lam (Scoped body) = Scoped (Lam body)
+
+weaken :: Scoped a -> Scoped (Slot a)
+weaken (Scoped s) = Scoped (go 1 s)
+  where
+    go depth e = case e of
+      Var v -> if v >= depth then Var (v + 1) else e
+      App f arg -> App (go depth f) (go depth arg)
+      Lam body -> Lam (go (depth + 1) body)
+      Unit -> Unit
+
+-- etc
+```
+
+We can use view patterns and pattern synonyms to recover most or all of the syntax from the previous 'baked in' data type.
+
+The bottom line; we don't have to choose all or nothing. For usages where we want and are will to pay the cost of static guarantees, we can use the indexed version of our type, `Scoped`. For places where we decide this isn't worth it, we can continue to use the raw, dumb data type.
