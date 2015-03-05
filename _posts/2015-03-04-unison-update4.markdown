@@ -12,8 +12,8 @@ There are a number of additional editor interactions shown here:
 
 * In the explorer, typing a space followed by an operator accepts the current completion and opens a fresh explorer with the operator prefilled. You can see this in the video, where `1 +` becomes `(+) 1 _`.
 * In the explorer, typing two spaces accepts the current completion and moves the explorer to the right. You can see this in the video.
-* Typing 's' steps (linking + 1 beta reduction) the selected expression.
-* Typing 'e' evaluates the selected expression (to weak head normal form).
+* Typing 's' _steps_ (linking + 1 beta reduction) the selected expression.
+* Typing 'e' _evaluates_ the selected expression (to weak head normal form).
 * Global search is now enabled by default in the explorer. In the video, I look up the `identity` function.
 * Notice that the completions are aware of the admissible type. When we go to fill in the second argument to `+`, we see the fully saturated version of `(+)`, applied to two arguments, `_ + _`.
 
