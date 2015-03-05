@@ -6,7 +6,7 @@ title: Unison update 4&#58; more editor interactions
 
 Here's a video of the latest progress. Watch me write the expression `1 + 1`, then evaluate it!! Further explanation below.
 
-<iframe src="/unison/unison-update4-movie.html" width="400" height="570" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="/unison/unison-update4-movie.html" width="420" height="570" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 There are a number of additional editor interactions shown here:
 
@@ -31,7 +31,7 @@ I think there's a lot more work that could be done to improve fluidity, but alre
 
 When the explorer shows terms which are ill-typed but which match the query, this is the closest we get to a 'compile error' when writing code in Unison. When your compiler is run in batch mode, the question of what information to display in the compile errors is very important. What if we miss giving some information that's relevant to fixing the error? Thus compilers like GHC will often dump out a screenful of text for even very simple errors. There's also entire lines of research devoted to the question of how to minimize error messages, make them maximally informative (see type error slicing), and so on.
 
-In Unison, we don't need to decide what information is relevant in an "error message" because the user can explore their program interactively. You are shown the type of your search result, the admissible type, the current type, and the types of all local variables, which is often enough to make it clear how to modify your code. But if you desire more information, you you can navigate around to get the types of any related expressions you care about, and this can be done very quickly. The question of 'what information to display in the compile error' becomes irrelevant! There are no compile errors, and the user can extract the information they deem relevant _interactively_.
+In Unison, we don't need to decide what information is relevant in an "error message" because the user can explore their program interactively. You are shown the type of your search result, the admissible type, the current type, and the types of all local variables, which is often enough to make it clear how to modify your code. But if you desire more information, you can navigate around to get the types of any related expressions you care about, and this can be done very quickly. The question of 'what information to display in the compile error' becomes irrelevant! There are no compile errors, and the user can extract the information they deem relevant _interactively_.
 
 Here's a question: should the name of the identity function be `id` or `identity`? Maybe you have some opinions about this. In Unison, we can actually store _both_ names in the metadata associated with the term, and the search will return a term if any of the names match the search query. Regardless of our choice, it's not an additional _typing_ burden to have a longer name---the programmer can type `id` followed by two spaces to accept `identity` (or `id`, `<enter>`, etc). Name resolution is always type-directed, and the user specifies the minimum information necessary to disambiguate.
 
