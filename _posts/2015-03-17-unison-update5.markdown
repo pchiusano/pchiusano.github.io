@@ -32,6 +32,7 @@ The editor interprets `view source blah` as the usual source rendering of `blah`
 
 Now I'll make a controversial claim, which is that the ability to define 'reactive' values like this puts us on our way to making the Unison editor a richer, more powerful replacement for spreadsheets. We're missing a few things, namely a declaration layer, which lets us define and edit more than just a single expression, and also a richer layout library. But with these things in place, this reactivity gives us many of the tools we need to reproduce modern 'applications' with a Unison panel. Obviously, at this early stage, the Excel and Google sheets developers shouldn't be too worried, but with time, the ability of Unison to replicate functionality of these applications will grow quite rapidly.
 
+<a id="why-spreadsheets"/>
 Programmers like to scoff at spreadsheets, but they're extremely popular among nonprogrammers. Why is that? Here are just a few reasons:
 
 * Spreadsheets have a largely nonsymbolic representation of programs. The only symbolic representation used is the simple expression language, which people can easily learn as consists only of constants and function application. Of course, every spreadsheet program has some ad hoc language for defining new formula, but that's outside the usual spreadsheet model and gets used very rarely.
