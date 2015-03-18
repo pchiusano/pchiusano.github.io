@@ -6,7 +6,7 @@ title: Unison update 5&#58; a better spreadsheet
 
 Here's a video of the latest progress. In this video, I create the term `view reactive (1 + 1)`, which displays in the editor as `2`. This might not seem like much, but the ability to define reactive views like this is the first step in allowing Unison panels to be used much like a spreadsheet, where the user fills in values and other parts of the panel are updated in response. There's also a few other things shown which I'll talk through below:
 
-<iframe src="/unison/unison-update5-movie.html" width="475" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="/unison/unison-update5-movie.html" width="485" height="510" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ### What's going on?
 
