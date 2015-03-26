@@ -27,7 +27,7 @@ Not shown:
 
 I think there's a lot more work that could be done to improve fluidity, but already, it feels pretty nice!
 
-#### Remarks
+#### <a id="remarks"/> Remarks
 
 When the explorer shows terms which are ill-typed but which match the query, this is the closest we get to a 'compile error' when writing code in Unison. When your compiler is run in batch mode, the question of what information to display in the compile errors is very important. What if we miss giving some information that's relevant to fixing the error? Thus compilers like GHC will often dump out a screenful of text for even very simple errors. There's also entire lines of research devoted to the question of how to minimize error messages, make them maximally informative (see type error slicing), and so on.
 
