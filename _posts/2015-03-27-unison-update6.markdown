@@ -1,0 +1,35 @@
+---
+layout: post
+categories: [fp, unison]
+title: Unison update 6&#58; refactoring, technical debt, and motivation
+---
+
+No new screencasts to show this week. I'm in the middle of doing some much-needed refactoring. What happened? As of [the last update](/2015-03-17/unison-update5.html), I had a decent  _expression_ editor. The missing final piece was adding a declaration layer to the editor, allowing a Unison panel to be edited much like a module in a regular programming language.
+
+Unfortunately, when I started working on this, I found I just couldn't take another step. All the crappy Elm code I'd written out of a singleminded desire to maintain _velocity, velocity, velocity,_ had finally caught up to me. I'd been ignoring what turned out to be some bad architecture choices I'd made early on and the code was getting uglier and uglier with each feature I added (never a good sign). The thought of adding yet more ugly code to the pile seemed pointless and unmotivating. It was time to pay down the technical debt.
+
+So I'm currently in the process of rewriting parts of the editor. I've discovered a nicer way of organizing my Elm code that avoids some of the problems with [the Elm architecture](https://github.com/evancz/elm-architecture-tutorial). I'll write that up in detail in a separate post.
+
+There's also one other thing I have planned which is to change the language representation to use [abstract binding trees](http://semantic-domain.blogspot.co.uk/2015/03/abstract-binding-trees.html) (ABTs). At the moment, the Unison language has only one binding form, lambda, and I am using manual (untyped) De Bruijn indices. Besides being error prone (I have to remember to weaken variables in all the right places), this doesn't scale very well to adding other forms of binding like pattern matching and let bindings. ABTs scale well to arbitrary binding forms, and for my use case they are a better fit than a [bound](https://hackage.haskell.org/package/bound)-like approach. I'll also try to do a writeup of this at some point.
+
+Until then, there probably won't be much (visible) progress, but I hope to have some more interesting updates in a couple weeks.
+
+### <a id="technical-debt"/> When does it make sense to pay down technical debt?
+
+This all got me thinking a bit more about the concept of technical debt. Given the choice of paying back technical debt or adding more features and functionality, which makes the most sense? That depends. In paying back debt, you (definitely) lose some velocity in the short term in exchange for an (uncertain, but presumed) longer-term increase in velocity when the code is in better shape. In effect, you are making an investment in future productivity. Whether this investment is rational very much depends on the [time value of the new functionality](http://en.wikipedia.org/wiki/Time_value_of_money), one's risk tolerance, and on the expected likelihood that the refactoring will indeed increase future productivity. Best to illustrate with some examples:
+
+* A startup about to run out of money looking to raise another round of funding very soon may rationally decide to accumulate more technical debt in order to get some features out the door in the window before potential funders decide whether to invest. For them at this time, there is a huge cost to any short-term delays in velocity. They can make investments in future productivity _after_ getting funding, and their doors are still open.
+* An established company may also decide not to invest in paying down technical debt, because of uncertainty around whether or not these investments will in fact lead to future productivity. A programmer tells you (or you tell yourself) that refactoring or rewriting some code will increase future productivity, but there is always uncertainty around this, typically moreso than just building on what's already there. A decisionmaker with less risk tolerance may reasonably choose the surer bet. They are not exactly being irrational in doing so. As another example, consider the choice between receiving $500 right now or a 60% chance of $2000 a year from now. How about a million dollars now vs a 60% chance of 3 million dollars a year from now? Of course, these choices have different _expected_ values, but also different levels of risk. As in [modern portfolio theory](http://en.wikipedia.org/wiki/Modern_portfolio_theory), there is no concept of _the optimal portfolio_, only the optimal portfolio _for a given level of risk_.
+    * What tends to happen to very conservative decisionmakers is that they wait until the code has gotten so bad that the uncertainty around whether paying down the debt is justified drops below their risk tolerance. But like other forms of debt, technical debt accumulates interest---it is usually less work to pay it down early, and more work the longer you wait. Thus, perpetually delaying leads to accumulating debt and productivity on the codebase crawls to a standstill. Features that 'seem simple' now take weeks, months, or years. Eventually it becomes rational to simply declare bankruptcy (rewrite the code). Projects rarely have the courage or capacity to do this, but eventually a competitor will.
+* A well-run startup or established business is planning to stick around. Investments in future productivity are thus critical to growth and survival, and any short term accumulations of technical debt will generally be paid quickly, lest they accumulate interest and hamper future productivity.
+
+Of course, the people making decisions about these things aren't usually so rational about it. But it's always good to have a decisionmaking framework that lets you explore aspects of a decision in a more methodical way.
+
+... except it's not that simple. There's one factor I've completely ignored, and that is programmer motivation. Working on code you know is shitty is demoralizing. I would say that different programmers can tolerate different amounts of technical debt before it substantially affects motivation, but it is definitely true that working on high-quality code is exciting and empowering.
+
+Pretending that engineers are emotionless machine parts that operate with the same efficiency no matter where they are plugged in doesn't change the reality that programmers are human beings. Even if we were purely interested in the productivity of the overall business, decisions _must_ factor in the happiness and motivation of the people doing the work. When you factor this in, the full costs of accumulating technical debt become more apparent:
+
+* Programmers lose motivation and productivity drops, well beyond the level merely caused by the technical debt itself.
+* Hiring and turnover becomes a problem. Programmers start leaving, and perhaps the company even develops a reputation externally for having a bad codebase. The company may need to pay higher salaries to attract and retain candidates of the same quality.
+
+Also see [I hate type errors!](/2015-03-26/type-errors.html), which talks more about programmer motivation.
