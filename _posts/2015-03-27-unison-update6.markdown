@@ -31,5 +31,6 @@ Pretending that engineers are emotionless machine parts that operate with the sa
 
 * Programmers lose motivation and productivity drops, well beyond the level merely caused by the technical debt itself.
 * Hiring and turnover becomes a problem. Programmers start leaving, and perhaps the company even develops a reputation externally for having a bad codebase. The company may need to pay higher salaries to attract and retain candidates of the same quality.
+* If you're an open source project, it becomes impossible to recruit volunteers. Who wants to work on a crappy codebase in their free time? I think this is part of the reason why open source projects tend to be higher quality in many ways---unlike a business, an open source project can't get away with just paying people money to put up with bad code, they actually have to make the codebase something people will enjoy working on.
 
 Also see [I hate type errors!](/2015-03-26/type-errors.html), which talks more about programmer motivation.
