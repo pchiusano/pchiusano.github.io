@@ -6,7 +6,7 @@ title: Unison update 4&#58; more editor interactions
 
 Here's a video of the latest progress. Watch me write the expression `1 + 1`, then evaluate it!! Further explanation below.
 
-<iframe src="/unison/unison-update4-movie.html" width="420" height="570" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="/resources/unison/unison-update4-movie.html" width="420" height="570" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 There are a number of additional editor interactions shown here:
 

@@ -14,13 +14,13 @@ This probably doesn't make much sense, so I'm hoping a few demonstrations will c
 
 __Aside:__ This perspective, of the program as UI, is something Conal Elliott also talks about in [his work on Tangible Functional Programming](http://www.youtube.com/watch?v=faJ8N0giqzw).
 
-First, let's look at [this page](/unison/demo-swatch-raw.html). This is a semantic layout of a Unison expression. As before, try shrinking the width of the page down until the expression no longer fits horizontally---the expression will automatically rewrap. Parentheses are inserted automatically where needed, and you can also manipulate the selection with the mouse or the arrow keys. Notice the text below, which shows a representation of the current selected _path_. That is a path into a Unison expression. The exact representation of paths isn't important; what is important is that these paths give us all we need to be able to make edits to our expression.
+First, let's look at [this page](/resources/unison/demo-swatch-raw.html). This is a semantic layout of a Unison expression. As before, try shrinking the width of the page down until the expression no longer fits horizontally---the expression will automatically rewrap. Parentheses are inserted automatically where needed, and you can also manipulate the selection with the mouse or the arrow keys. Notice the text below, which shows a representation of the current selected _path_. That is a path into a Unison expression. The exact representation of paths isn't important; what is important is that these paths give us all we need to be able to make edits to our expression.
 
-Something that's rather unfortunate about this view is that we have a portion of our program which describes a color, `Color.rgba 230 126 34 1`, but we can't actually see what that color is! We could write a separate program to render this color for us, but it would be nice to just _change how the expression of type `Color` is rendered_. Take a look at [this page](/unison/demo-swatch.html), which renders the color as a little square swatch of the specified color. Notice that the path information is still tracked as before.
+Something that's rather unfortunate about this view is that we have a portion of our program which describes a color, `Color.rgba 230 126 34 1`, but we can't actually see what that color is! We could write a separate program to render this color for us, but it would be nice to just _change how the expression of type `Color` is rendered_. Take a look at [this page](/resources/unison/demo-swatch.html), which renders the color as a little square swatch of the specified color. Notice that the path information is still tracked as before.
 
 So far, this is only a little interesting. For any _closed_ expression (one without any free variables), it's easy to imagine how we can select an alternate rendering that interprets the expression in some graphical way. Being able to embed these graphical views in our program rendering while retaining editability is snazzy, and sometimes helpful, but it still feels like regular programming.
 
-Going a step further, we can control not just how closed expressions are rendered, but also how _function application_ is rendered. Have a look at [this page](/unison/demo-42.html). What are we looking at? Well, it's a normal (albeit ugly) web page. It's also a rendering of the expression `answer 42`, where answer is perhaps defined as:
+Going a step further, we can control not just how closed expressions are rendered, but also how _function application_ is rendered. Have a look at [this page](/resources/unison/demo-42.html). What are we looking at? Well, it's a normal (albeit ugly) web page. It's also a rendering of the expression `answer 42`, where answer is perhaps defined as:
 
 ```Haskell
 answer 42 = True
@@ -42,7 +42,7 @@ h1 : Style
 ...
 ```
 
-And here's roughly how this API is used to produce [the page linked above](/unison/demo-42.html).
+And here's roughly how this API is used to produce [the page linked above](/resources/unison/demo-42.html).
 
 ```Haskell
 answer : Int -> Bool
@@ -53,10 +53,10 @@ visualAnswer : Int -> Bool
 visualAnswer =
   let msg = "The Answer to The Ultimate Question of Life, the Universe, and Everything..."
   in cell
-    (function1 (arg -> vertical [ panel (text h1) msg, arg])) 
+    (function1 (arg -> vertical [ panel (text h1) msg, arg]))
     answer
 
-visualAnswer 42 -- renders as /unison/demo-42.html  
+visualAnswer 42 -- renders as /resources/unison/demo-42.html
 ```
 
 The `cell` special form, together with `function1`, give us a way of annotating the syntax tree to control how function application is rendered. This means, for instance, that the user can be presented with a normal looking web form, which, in fact, as it is filled in by the user (with type-directed editing support), is filling in values of a Unison expression. The user of such a form is quite literally programming, they just don't need to know it! What they do notice is that the page provides extremely helpful autocomplete whenever they encounter a field that needs filling in.
