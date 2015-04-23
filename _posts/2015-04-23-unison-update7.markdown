@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: [fp,unison]
-title: Unison update 7: structured refactoring sessions
+title: Unison update 7&#58; structured refactoring sessions
 ---
 
 As I mentioned in [update 6](/2015-01-30/unison-update6.html), I've been spending the last few weeks doing some much-needed refactoring. Here's an update on the progress:
