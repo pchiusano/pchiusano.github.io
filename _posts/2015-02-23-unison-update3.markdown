@@ -22,7 +22,7 @@ Conceptually, the explorer is just providing a very structured way of selecting 
 
 The current type and the admissible type can coincide, though it will always be the case that the admissible type is a subtype of the current type. But, for instance, when replacing the body of the lambda `x -> 42`, since nothing else constrains what the lambda must return, the admissible type is `forall a . a` (or unconstrained). If we had a type annotation that was being pushed down into our expression, or if our lambda were named and used elsewhere in a way that constrained its output type, that information would be reflected in the admissible type.
 
-#### Some notes on global search and import boilerplate
+#### <a id="import-boilerplate"/> Some notes on global search and import boilerplate
 
 [Last week](/2015-02-13/unison-update2.html) I gave a proposed interaction for how to search for terms at more global scope. I suggested that if the explorer is open, adding a `?` to the front the the search string will increase the search to include global scope. And we could imagine having some other syntax to control the scope of search, to, say, only terms defined in the current _panel_, or constrained to some _package_, where a package is just some metadata which points to a bag of terms.
 
