@@ -8,7 +8,7 @@ Twitter has a problem with abuse. Everyone knows this. I'll explain the core iss
 
 Here's the core issue:
 
-> Anyone on Twitter can cause a tweet to arrive in my notifications, just by mentioning my Twitter handle. And related to this, anyone viewing my timeline or following me can see these tweets, assuming they are replies to tweets I've made.
+_Anyone on Twitter can cause a tweet to arrive in my notifications, just by mentioning my Twitter handle. And related to this, anyone viewing my timeline or following me can see these tweets, assuming they are replies to tweets I've made._
 
 So, if some hateful nutjob decides they don't like me, they can tweet at me, and I'll have to see it or at least know it's there, and people who expand the thread under each of my tweets can see it also. I haven't granted this person the capability to contact me, yet Twitter allows it by default. If a mob of hateful nutjobs get together to abuse someone via Twitter, there is no real way to prevent it. The person being abused can block individual accounts, can report individual accounts, but that's really unsatisfactory:
 
@@ -17,7 +17,7 @@ So, if some hateful nutjob decides they don't like me, they can tweet at me, and
 
 All right, now here's a simple solution. I'll make a few tweaks to it below, but this is the basic idea:
 
-> Twitter should expose a setting which prevents Tweets from "untrusted" people from arriving in my notification timeline, _or being visible to people who follow me_.
+_Twitter should expose a setting which prevents Tweets from "untrusted" people from arriving in my notification timeline, or being visible to people who follow me._
 
 It would be up to each Twitter user to define their "trusted" set of people. Here are some suggestions:
 
@@ -29,11 +29,11 @@ It would be up to each Twitter user to define their "trusted" set of people. Her
 * People whose account has been active for more than 6 months and have more than 400 followers
 * Etc
 
-You get the idea. Rather than just trusting everyone with the authority to write to your notification timeline, which is about as sensible as giving everyone on the planet your home address and a key to your house, you instead assign trust more explicitly.
+You get the idea. Rather than just blindly trusting everyone with the authority to write to your notification timeline (about as sensible as giving everyone on the planet your home address and a key to your house) you instead assign trust more explicitly.
 
 Let's see how this plays out:
 
-* Suppose Bob The Abuser decides he'd like to send an abusive message to Alice. Having experienced some abuse before, Alice's trust level is a bit more restricted (perhaps it is one of the options I gave above). Bob, or random sockpuppet accounts that Bob creates, are not trusted by Alice by default, so Bob has no way of contacting Alice.
+* Suppose Bob The Abuser decides he'd like to send an abusive message to Alice. Having experienced some abuse before, Alice's trust level is a bit more restricted (perhaps it is one of the options I gave above, 2 following hops away). Bob, or random sockpuppet accounts that Bob creates, are not trusted by Alice by default, so Bob has no way of contacting Alice.
 * Likewise, if Carol is following Alice and expands any of her tweets, she won't see Bob's replies there, either. 
   * _Only_ if Carol is following Bob explicitly will she see any tweets that mention Alice in her _regular timeline_.
   * _Only_ if Carol is explicitly following Bob can she click on Bob's 'tweets and replies' section and see tweets that mention Alice explicitly 
@@ -54,6 +54,6 @@ My response to this is that we should encourage public officials and the like to
 
 Another objection is that if this gets implemented, Twitter would get used less because fewer messages are being delivered and thus fewer conversations are taking place. To me this doesn't seem like a problem, since the messages that aren't being delivered are the messages that _users have explicitly indicated they don't want delivered_. If some good messages get missed, why is this such a bad thing? Unless you spend all your time on Twitter, you miss some good messages anyway because the signal to noise ratio is so low!
 
-Furthermore, the fact that Twitter provides such a rampant abuse vector has a very chilling effect. People avoid joining the platform, or speaking their mind, or participating in conversations out of concern that some people will respond in a nasty way.
+Furthermore, the fact that Twitter provides such a rampant abuse vector has a very chilling effect. People avoid joining the platform, speaking their mind, or participating in conversations out of concern that that they'll be exposed to nasty response.
 
 But honestly, I don't really care whether this feature improves or hurts Twitter's bottom line. I think it's just the right thing to do.
