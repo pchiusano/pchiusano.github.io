@@ -36,12 +36,12 @@ Let's see how this plays out:
 * Suppose Bob The Abuser decides he'd like to send an abusive message to Alice. Having experienced some abuse before, Alice's trust level is a bit more restricted (perhaps it is one of the options I gave above, 2 following hops away). Bob, or random sockpuppet accounts that Bob creates, are not trusted by Alice by default, so Bob has no way of contacting Alice.
 * Likewise, if Carol is following Alice and expands any of her tweets, she won't see Bob's replies there, either. 
   * _Only_ if Carol is following Bob explicitly will she see any tweets that mention Alice in her _regular timeline_.
-  * _Only_ if Carol is explicitly following Bob can she click on Bob's 'tweets and replies' section and see tweets that mention Alice explicitly 
-* It is as Bob and his angry mob of abusers are communicating in a totally separate universe which has no way of reaching Alice or any of her followers.
+  * _Only_ if Carol is explicitly following Bob can she click on Bob's 'tweets and replies' section and see tweets that mention Alice explicitly.
+* Thus, it is as if Bob and his angry mob of abusers are communicating in a totally separate universe which has no way of reaching Alice or any of her followers!
 
 I have a couple improvements to this scheme:
 
-* Bob is notified in realtime that neither Alice nor her followers will see the Tweet (a simple check of the Twitter handles in the message being composed can do this). Some abusers derive satisfaction from simply _knowing that their abusive message was delivered_, even if they don't get a response. Better to notify them ahead of time that their actions really are pointless. Hopefully they just won't bother.
+* Bob is notified in realtime that neither Alice nor her followers will see the Tweet he is composing (a simple check of the Twitter handles in the message being composed can do this). Some abusers derive satisfaction from simply _knowing that their abusive message was delivered_, even if they don't get a response. Better to notify them ahead of time that their actions really are pointless. Hopefully they just won't bother.
 * Alice can appoint _delegates_ to view untrusted notifications. A delegate is just a Twitter account who Alice grants the authority to view notifications sent to Alice that Alice herself won't see due to her trust settings. That is, while Alice appreciates not having to see or process the abuse that might be directed at her, if it is occuring, she might like to have _somebody_ do something about it (maybe some loyal followers she trusts). The delegates can see these untrusted Tweets directed at Alice, and can process them (likely by reporting them to Twitter and/or appropriate authorities). If a delegate came across a credible threat to Alice, he/she could notify Alice.
 
 Without the ability to communicate with their victims, Twitter is no longer an easy vector for abuse. I won't say that it's impossible, but the costs of perpetrating abuse have become higher, and it's easier to combat. If Twitter implemented something like this, I believe it would have a huge positive effect.
