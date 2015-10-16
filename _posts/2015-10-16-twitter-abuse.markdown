@@ -54,6 +54,6 @@ My response to this is that we should encourage public officials and the like to
 
 Another objection is that if this gets implemented, Twitter would get used less because fewer messages are being delivered and thus fewer conversations are taking place. To me this doesn't seem like a problem, since the messages that aren't being delivered are the messages that _users have explicitly indicated they don't want delivered_. If some good messages get missed, why is this such a bad thing? Unless you spend all your time on Twitter, you miss some good messages anyway because the signal to noise ratio is so low!
 
-Furthermore, the fact that Twitter provides such a rampant abuse vector has a very chilling effect. People avoid joining the platform, speaking their mind, or participating in conversations out of concern that that they'll be exposed to nasty response.
+Furthermore, the fact that Twitter provides such a rampant abuse vector has a very chilling effect. People avoid joining the platform, speaking their mind, or participating in conversations out of concern that that they'll be exposed to nasty responses.
 
 But honestly, I don't really care whether this feature improves or hurts Twitter's bottom line. I think it's just the right thing to do.
