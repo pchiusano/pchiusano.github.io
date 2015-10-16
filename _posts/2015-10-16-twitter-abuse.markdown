@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: [tech]
-title: How Twitter could easily solve its rampant abuse problem
+title: How Twitter could easily address its rampant abuse problem
 ---
 
 Twitter has a problem with abuse. Everyone knows this. I'll explain the core issue, and then explain one way to fix it. 
