@@ -1,0 +1,54 @@
+---
+layout: post
+categories: [fp]
+title: When is it NOT preferable to specify your types first?
+---
+
+Very often when functional programming we specify the types first. Then once that's done, we implement the term. Writing some tricky code? First, write out the type! By announcing (some) aspect of our intent to the compiler, we get an "accountability partner" that will verify we've remained true to our declared intent. That's one part of it. But as Conor McBride likes to emphasize, types aren't just about policing errors or checking: 
+
+* Haskell's typeclasses are essentially a limited form of program inference, directed by type information. They automatically derive rather uninteresting plumbing code that would otherwise require manual specification by the programmer. 
+* In better programming environments (like what many dependently-typed languages offer), type information we specify gets "pushed down" into our expression, and the editor uses it to _do more of our work for us_ or _offer more helpful suggestions and information_.
+
+I'm going to call this mode of programming, of writing types first then specifying terms "top-down". I like this modality, but here I want to discuss situations where it is preferable to specify terms "bottom-up"---by writing the term _first_, and letting _type inference_ work to infer the type.
+
+_Sometimes the type is more information than the term it characterizes!_
+
+Specifying the type first, then specifying the "remaining information" left unspecified by the type, is a kind of compression scheme. Like any compression scheme, there will be inputs for which the "compressed representation" requires more bits than some more naive, direct encoding. Actually, the right way to think of this is that _all_ ways of specifying a program are a compression scheme / encoding (including writing out the text of the term we want in a text editor), and there will never be a single way of specifying programs that is optimal for every case! 
+
+Thus, forcing the user to specify all type information first is sometimes less efficient than just letting them write the term they want, which they can check has a reasonable or expected inferred type.
+
+Let's see an amusing real-world example: 
+
+```Haskell
+wrapDomEvent' :: forall e event a (m :: * -> *) t (h :: * -> *).
+                 (Reflex t, MonadSample t m, HasPostGui t h m,
+                  Reflex.Host.Class.MonadReflexCreateTrigger t m, MonadIO m) =>
+                 (e -> EventM.EventM event e () -> IO (IO ()))
+                 -> EventM.EventM event e a -> e -> m (Event t a)
+wrapDomEvent' onEvent getResult e = wrapDomEvent e onEvent getResult
+```
+
+That type is pretty horrifying, but it makes it obvious that having to specify that type to the compiler _first_ is inefficient. Look how short the term is compared to the type! This actually happens quite a lot. You're writing a function, and the implementation of the function is already known to you, perhaps because it's very simple or because you arrived at it via other reasoning principles (see below). You now want to specify this term to the computer, using the minimum amount of information. Writing in a bottom-up style might well be minimal, as it is here.
+
+Another interesting aspect of this example is you can imagine the thought process of the author: "I just want the `wrapDomEvent` function with the arguments in a different order". Programmers use this style of reasoning quite a lot, even in typeful languages. Refactorings like switching the order of arguments, pulling a subexpression out into a let binding, abstracting a subterm into a function parameter, beta or eta-reducing an expression, and many other program transformations can be conceived of without really considering types at all.
+
+Let's dive into this a bit further. Suppose you've just written a function, specialized to some concrete types:
+
+```
+wrangle :: Foo f => f [Employee] -> Bar x 
+wrangle xs = ...
+```
+
+Later, you decide to abstract over one of the concrete functions being called in `wrangle`, and your implementation becomes:
+
+```
+wrangle raiseSalary xs = ...
+```
+
+I've actually omitted the type here, because you can imagine performing this refactoring without thinking primarily about how it affects the type of `wrangle`. And in fact, it might affect the type of `wrangle` in complex ways---perhaps `Foo` is no longer the constraint, and the return type is something other than `Bar`. But it's sometimes easy to conceive of the refactoring (which can be done mechanically) without having to anticipate in advance (or specify to the compiler) exactly how the type of `wrangle` will be affected.
+
+More generally, when you _abstract over parts of your implementation_, you aren't necessarily reasoning primarily in terms of how this will affect types. You may be primarily reasoning in terms of _where you want information to be specified_. Abstracting over a concrete value being used in a term is a way of altering where that information is specified, and the programmer conceives of it primarily as such. Yes, moving around where information is specified affects the types of functions along the chain of dependencies, but this is actually _less interesting to the programmer_ and not the focus of their attention.
+
+Neither top-down nor bottom-up is superior. I see the ideal is a kind of conversation with the language editor. The human programmer offers some information, whatever information our limited brains can muster up to narrow the scope of possibilities. Perhaps it's a type or type fragment. Perhaps it's a term or term fragement. Perhaps it's a more general query--"I know the program I want uses the function `foo` in some way, and `[Text]` appears in the type _somewhere_."
+
+The editor then kindly responds by doing _as much as possible with this information_, prompting the user to specify more where needed. "Here's some existing functions that use `foo` somewhere and mention `[Text]`, is it one of these? There are hundreds more. Maybe you could tell me some further information..."
