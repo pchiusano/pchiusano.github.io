@@ -14,7 +14,7 @@ This post looks at the question from just one angle. Is it better for survival t
 
 The situation is pretty nuanced. Let's put aside any talk of beginners or experts for a moment and think in terms of _learning curves_. Every technology has a learning curve. The x-axis is "time spent learning". Let's call the y-axis "productivity", basically tracking how much you can accomplish with the tool. Disclaimer: I won't claim any of these are new ideas, this is more an exercise in clarifying how we think about things.
 
-A tool you already know how to use has a learning curve which is a flat line. You already know anything about the tool, and your productivity with the tool doesn't go up with time: (DANGER: bad ascii art graphs to follow!!)
+A tool you already know how to use has a learning curve which is a flat line. You already know everything about the tool, and your productivity with the tool doesn't go up with time: (DANGER: bad ascii art graphs to follow!!)
 
                  |
                  |
