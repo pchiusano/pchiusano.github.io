@@ -175,4 +175,4 @@ Also see:
 * [What is usability?](/2015-04-23/unison-update7.html#usability) dives into the concept of usability and usability comparisons.
 * Want specifics? The [Unison project](http://unisonweb.org) is a new programming platform I'm working on that adopts this philosophy. Powerful programming models can be made much more accessible with a richer, more structured editor, and some radical assumptions that lets us solve [big problems once, at the level of the whole platform](http://unisonweb.org/2015-06-02/distributed-evaluation.html).
 * [Good teaching makes long-term investments in the learner](/2014-10-23/learning.html), talks about the importance of investing in future productivity, not just the immediate task facing a learner.
-* [Why spreadsheets](http://unisonweb.org/2015-06-02/distributed-evaluation.html#post-start) explains why spreadsheets are so popular, despite being much-maligned by programmers.
+* [Why spreadsheets](http://pchiusano.github.io/2015-03-17/unison-update5.html#why-spreadsheets) explains why spreadsheets are so popular, despite being much-maligned by programmers.
