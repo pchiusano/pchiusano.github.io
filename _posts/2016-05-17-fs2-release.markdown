@@ -1,0 +1,20 @@
+---
+layout: post
+categories: [fp]
+title: Upcoming release of FS2 (formerly scalaz-stream)
+---
+
+[FS2: Functional Streams for Scala](http://fs2.co) is nearing the 0.9 release finally, and the first 0.9 milestone release came out this week!
+
+This release was a near total redesign and reimplementation, drawing on all the good ideas (and learning from past mistakes) from years of work on streaming libraries. Some highlights:
+
+* Zero dependencies 
+* Hugely increased expressiveness when pulling from one or more streams, including better support for concurrency and asynchronous processing
+* Much better support for chunking, support for working with unboxed chunks of primitives and preserving chunkiness throughout a multistage pipeline
+* A simpler core set of primitives, in terms of which all library functionality is defined as regular 'userspace' code
+* Careful attention to preserving resource safety, even in code that allocates resources asynchronously. This is extremely tricky to support, but FS2 takes care of all the heavy lifting for you!
+* Lots more
+
+[The README](http://fs2.co) has more info, and be sure to check out [the new user guide](http://fs2.co/docs/guide.md). I expect the library API to be quite stable going forward and hope it will become one of the bedrock libraries of the Scala ecosystem.
+
+Lastly, a quick shoutout: In addition to the other FS2 contributors, I've been working closely with [Mike Pilquist](http://mpilquist.github.io/) on this. Mike's company, CCAD, has very generously sponsored a lot of my work on it and is using the library heavily. Mike and the rest of the team there have been great to work with, so if you like this sort of thing and are looking for a job, [get in touch with Mike](mailto:mpilquist@ccadllc.us).
