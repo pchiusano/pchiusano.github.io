@@ -12,12 +12,12 @@ _Aside:_ This general technique unfortunately is not as well known as it should 
 
 Here is one possible encoding, for a simple, typed DSL in which there are only two types of expressions, `readLine` and `printLine`:
 
-~~~ Scala
+``` Scala
 trait ConsoleAlg[F[_]] {
   def readLine: F[Option[String]]
   def printLine(line: String): F[Unit]
 }
-~~~
+```
 
 If we were doing this with case classes, we'd have a `Console` type that looked something like:
 
