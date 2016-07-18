@@ -29,7 +29,7 @@ _Not to mention, while I'm trashing this code, who decided to call those functio
 Five minutes later, I'd settled on this: if you really insist on splitting up the queue into two types, how about these names:
 
 ```Haskell
-newChan :: IO (Enqueue a, Dequeue a)
+newQueue :: IO (Enqueue a, Dequeue a)
 
 enqueue :: Enqueue a -> a -> IO a
 dequeue :: Dequeue a -> IO a
