@@ -31,7 +31,7 @@ Five minutes later, I'd settled on this: if you really insist on splitting up th
 ```Haskell
 newQueue :: IO (Enqueue a, Dequeue a)
 
-enqueue :: Enqueue a -> a -> IO a
+enqueue :: Enqueue a -> a -> IO ()
 dequeue :: Dequeue a -> IO a
 ```
 
