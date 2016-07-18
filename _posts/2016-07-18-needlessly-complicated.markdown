@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: [fp, programming, haskell]
+categories: [fp, tech]
 title: Needlessly confusing names 
 ---
 
