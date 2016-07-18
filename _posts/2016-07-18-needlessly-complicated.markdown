@@ -44,6 +44,6 @@ Summary:
 * Don't tolerate the complexity apologists who claim these mental speed bumps are "no big deal", or who say things like:
   * "just RTFM"
   * "fool, I just read the type signatures, ignore all names, and am enlightened"
-  * "we're all professionals here; stop whining and get on with writing MOAR codez!!1".
+  * "we're all professionals here; stop whining and get on with writing MOAR codez!!1"
 
 Also see this section of [design for experts; accomodate beginners](http://pchiusano.github.io/2016-02-25/tech-adoption.html#alternatives). 
