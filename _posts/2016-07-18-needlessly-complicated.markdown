@@ -22,7 +22,7 @@ readChan :: OutChan a -> IO a
 
 _WTF!!?! What kind of idiot would---oh, wait, maybe that does make sense. I'm probably just being dense here. Calm down, Paul. Let's think about this, do you read from the `InChan` or the `OutChan`? Obviously I should read from the `InChan`... but AHA! From the perspective of the producer, the `InChan` IS the `OutChan`. But from the perspective of the consumer, it's the reverse! This is so fucking confusing! What the hell was I even doing? I've forgotten by now..._ 
 
-_(After a moment of realization). You know, it's completely arbitrary whether the `InChan` is from the perspective of a queue writer or a queue _reader_, so these names are just confusing as hell. Calling these two types `WootChan` and `Woot2Chan` would have been MORE INFORMATIVE, since it would not have tempted me to start writing code based on my assumed understanding of the meaning of `In` and `Out` without checking the type signatures!_ 
+_(After a moment of realization). You know, it's completely arbitrary whether the `InChan` is from the perspective of a queue writer or a queue reader, so these names are just confusing as hell. Calling these two types `WootChan` and `Woot2Chan` would have been MORE INFORMATIVE, since it would not have tempted me to start writing code based on my assumed understanding of the meaning of `In` and `Out` without checking the type signatures!_ 
 
 _Not to mention, while I'm trashing this code, who decided to call those functions `readChan` and `writeChan`? Where exactly are we writing to / reading from? Is this a stack or a queue? How about `enqueue` and `dequeue`, which is more appropriately suggestive of what's happening?_
 
