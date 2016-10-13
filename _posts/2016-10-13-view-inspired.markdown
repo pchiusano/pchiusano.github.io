@@ -10,7 +10,9 @@ This post advocates a design philosophy I'm calling _view-inspired, model-driven
 
 Good task tracking and project management is based on 1 important principle:
 
-_By default, the user should only have to look at the tasks that are *currently* relevant to them. This sounds kind of obvious, but it's amazing how poorly existing productivity and task-tracking apps facilitate this. More on that later._
+_By default, the user should only have to look at the tasks that are __currently__ relevant to them._
+
+This sounds kind of obvious, but it's amazing how poorly existing productivity and task-tracking apps facilitate this. More on that later.
 
 A task might not be relevant now because:
 
