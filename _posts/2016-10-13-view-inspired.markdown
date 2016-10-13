@@ -68,7 +68,7 @@ We are seeing here the deficiencies of a "view-first" design philosophy. The app
 
 I advocate a design style I call "view-inspired; model-driven". It's fine to use views as inspiration for an application, since we are often driven to design applications by thinking of a possible end user experience. But these ideas should just be taken as inspiration to drive development of a clean, general model that can express both the views you think of now *and the ones you (or your users) might think of later*.
 
-## A model for a task management system
+### A model for a task management system
 
 I hesitate to call this a model for a task management system, because it's actually something more general-purpose. But it can certainly be used for task management. The model is simple and consists of two parts.
 
