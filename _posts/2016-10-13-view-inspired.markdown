@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: [tech, programming]
-title: The design failures of 'view-first'
+title: The design failures of view-first
 ---
 
 This post advocates a design philosophy I'm calling _view-inspired, model-driven_. We'll look at a domain, task-tracking and project management, and examine the failure of an alternate philosophy, 'view-first', using Trello as the case study. I don't mean to pick on Trello specifically, because once you are on the lookout for it, you can see the symptoms of view-first design in many applications.
