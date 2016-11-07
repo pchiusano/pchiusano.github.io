@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: [tech, programming]
-title: Help wanted: chat with me about your experience building in the cloud
+title: Help wanted&#58; chat with me about your experience building in the cloud
 ---
 
 I'd like to learn more about people's experiences building larger backend software systems (say > 5 nodes), either atop some public cloud (like AWS, Google, or Azure) or atop private cloud infrastructure. Having done work myself in these areas, I know that it can sometimes be painful and/or complicated, and there are lots of different technologies aimed at making it easier. 
