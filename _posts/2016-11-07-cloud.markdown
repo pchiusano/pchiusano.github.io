@@ -1,0 +1,13 @@
+---
+layout: post
+categories: [tech, programming]
+title: Help wanted: chat with me about your experience building in the cloud
+---
+
+I'd like to learn more about people's experiences building larger backend software systems (say > 5 nodes), either atop some public cloud (like AWS, Google, or Azure) or atop private cloud infrastructure. Having done work myself in these areas, I know that it can sometimes be painful and/or complicated, and there are lots of different technologies aimed at making it easier. 
+
+If you've worked on building these sorts of software systems I'd be very interested to set up an in-person or video chat interview to learn more about your experiences. I've got nothing to sell here and basically just want to learn more about how other people do things, what problems you've encountered and how you / your company currently solve them, etc. I can fill in more details when we talk.
+
+[Email me](mailto:paul.chiusano@gmail.com) if you fit the above profile and have some time to chat. In your email, it would be helpful if you could tell me a couple bullet points about your current tech stack since I'd like to try to hear from a variety of people.
+
+Hope to talk to people soon!
