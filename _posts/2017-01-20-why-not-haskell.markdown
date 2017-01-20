@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: [fp, programming]
-title: If Haskell is so great, why hasn't it taken over the world? And the curious case of Go.
+title: If Haskell is so great, why hasn&apos;t it taken over the world? And the curious case of Go.
 ---
 
 Programming is all about managing complexity. Without good tools to manage it, the complexity of programs becomes mentally intractable for our limited brains and we'd lose control and understanding of our programs (imagine writing a big software system entirely in assembly language).
