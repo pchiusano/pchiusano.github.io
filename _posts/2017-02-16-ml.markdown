@@ -1,0 +1,25 @@
+---
+title: Compositional machine learning
+categories: [tech]
+layout: post
+---
+
+Some random notes I wrote for myself.
+
+If you give a person a bunch of abstract images or videos, they can probably place them into some sort of categories with no supervision. The brain has a certain level of domain-agnostic raw signal processing and classification ability. Kind of interesting, though not magical.
+
+Then there is also some further feedback---humans go out into the world, and then act based on these categorizations. Depending on outcomes, we then refine these categorizations. For instance, we might "naturally" put two items in different categories, but various forms of feedback from the world encourages us to place these items in the same category. (Think: a face during the day and at night is "the same" face) You could call this a form of "supervised learning", but not exactly. Traditional supervised learning is too "clean". In the real world, humans learn from much smaller and badly-labeled "training sets"---the feedback from the world isn't "this assigned label was wrong" and the world certainly doesn't tell us what categories there are in advance. It's more like: "you put these things in the same category. Then XYZ happened. Now what?" Your brain does something useful.
+
+Also, feedback from the world may encourage the brain to further distinguish among items given the same label. "Both these inputs are 'a face'" needs further refinement and becomes "This is Alice" and "This is Bob".
+
+And theres's quite a bit of fluidity here. The brain can switch between different means of categorizing the same inputs. We can adapt granularity "this is a face" vs "this is Alice" and also categorize according to different dimensions. "These pictures are taken at night" and "These pictures are taken during the day" (for the same pictures).
+
+Lastly, the brain's organization seems highly compositional. You learn one categorization task, and the next one becomes that much easier. Certainly in the obvious ways----if you learn one written language, much of the classification logic of the brain seems to get recycled is able to be used for learning another written language. You learn one programming language, and you recycle most of this when learning another. It seems that "higher layers" of different networks are shared. But even in less obvious ways, rather abstract forms of reasoning get learned and recycled across classification tasks.
+
+So the brute force approach to machine learning, where we build one neural net, train it for one task using a giant pile of data, then throw it out and use a completely different huge pile of data to train for what humans recognize as a similar task... it does not seem very practical. I suppose if you are Google or Facebook and can assemble these enormous training sets from user data for one narrow task like face recognition, well then that's great, but it probably doesn't teach us much about algorithms for supporting more general intelligence.
+
+Part of the problem here is that a trained neural net is a black box. We wouldn't even know how to reuse some parts of it meaningfully for some other task.
+
+Any form of machine learning which starts with anything other than raw bits as input feels like "cheating" and teaches us less about how the brain works. By starting with something other than raw bits, we aren't necessarily forced to understand the most general form of the brain's compositional structure, and we aren't forced to discover algorithms that learn this compositional structure. Instead, you can just feature engineering until your starting point is so close to the finish line that it almost doesn't matter what learning algorithms you use.
+
+If our brain starts with essentially raw bits as input and derives all these high-level classifications, with almost no supervision whatsoever, only various forms of feedback from the world, then our artificial systems ought to be able to the same. And getting an artificial system like this to do anything useful at all would probably teach us more.
