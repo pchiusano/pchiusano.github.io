@@ -4,9 +4,9 @@ categories: [science]
 title: The Fermi paradox, and is "intelligence" the inevitable byproduct of any long-running evolutionary process?
 ---
 
-I read a [fascinating book recently](https://www.amazon.com/Universe-Teeming-Aliens-WHERE-EVERYBODY/dp/3319132350/ref=dp_ob_title_bk) on the [Fermi Paradox](https://en.wikipedia.org/wiki/Fermi_paradox), which asks the question: if there are supposedly millions of other civilizations in the galaxy, why haven't we detected any real evidence of their existence? One class of solutions says: what happened on Earth is a fluke. We're alone in the galaxy. Gosh, that would be disappointing.
+I read a [fascinating book recently](https://www.amazon.com/Universe-Teeming-Aliens-WHERE-EVERYBODY/dp/3319132350/ref=dp_ob_title_bk) on the [Fermi Paradox](https://en.wikipedia.org/wiki/Fermi_paradox), which asks the question: if there are supposedly millions of other civilizations in the galaxy, why haven't we detected any real evidence of their existence? One class of solutions says: what happened on Earth is a fluke. We're alone in the galaxy. Gosh, that would be disappointing! Let's have a closer look at one piece of the puzzle.
 
-One of the terms of [the Drake equation](https://en.wikipedia.org/wiki/Drake_equation) is "the probability that _intelligent_ life arises on a planet where life exists". Put another way, does "intelligence", however defined, have any special status in evolution or is it just like any other adaptive trait---no different in principle than, say, spiders evolving to spin webs or fish being able to swim? If there were something special about intelligence, we'd expect it to arise more frequently on any planet where an evolutionary process gets going.
+One of the terms of [the Drake equation](https://en.wikipedia.org/wiki/Drake_equation) is "the probability that _intelligent_ life arises on a planet where life exists". Put another way, does "intelligence", however defined, have any special status in evolution or is it just like any other adaptive trait---no different in principle than, say, spiders evolving to spin webs or fish being able to swim? If it's nothing special, then maybe it is a fluke that intelligence arose on Earth. 
 
 Here I'll present a simple argument as to why evolutionary processes will, if they avoid getting stuck (more on that later), develop toward increasing levels of intelligence:
 
@@ -41,7 +41,7 @@ The way I felt when I was studying evolutionary computation is that our understa
 
 ## Fermi
 
-I don't know how likely it is that Earth's evolutionary process got as far as it did. I suspect there isn't anything special about it. Time and time again, when we look at biological evolution and wonder how it ever assembled some complicated piece of biological machinery, we learn that it found a way (often rediscovering the [same complex structure over and over again](https://en.wikipedia.org/wiki/Evolution_of_the_eye)). Seeing this kind of thing makes me hesitant to conclude that it's a fluke evolution didn't get stuck at the prokaryote stage or someplace else along the way to general intelligence. Perhaps there are things about biological evolution that make it unlikely to get trapped in equilibria, which we don't fully understand yet?
+I don't know how likely it is that Earth's evolutionary process got as far as it did. I suspect there isn't anything special about it. Time and time again, when we look at biological evolution and wonder how it ever assembled some complicated piece of biological machinery, we learn it found a way (often rediscovering the [same complex structure over and over again](https://en.wikipedia.org/wiki/Evolution_of_the_eye)). Seeing this kind of thing makes me hesitant to conclude that it's a fluke evolution didn't get stuck at the prokaryote stage or someplace else along the way to general intelligence. Perhaps there are things about biological evolution that make it unlikely to get trapped in equilibria, which we don't fully understand yet?
 
 I'll close with this quote by Richard Dawkins:
 
