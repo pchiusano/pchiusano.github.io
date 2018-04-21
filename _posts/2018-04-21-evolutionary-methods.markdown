@@ -11,7 +11,7 @@ Evolution is a meta-learning algorithm that discovers its own heuristics and con
 Let's have a closer look:
 
 1. Evolutionary systems not stuck at equilibrium (more on this in a minute) have an important long-term trend: the speed at which species can adapt to change _increases over time_. The result of this long-term trend is what we now call "intelligence". Evolution is deceptive: close up, it seems to find highly specialized, even overfit solutions, but in the long-term, it induces the discovery of quite general solutions. Evolution is an "adaptability" discovery machine.
-2. Biological evolution employs several strategies (often missing from our evolutionary algorithms) to decrease the odds of getting stuck in equilibria. Perhaps the most interesting: it discovers and refine its own heuristics as it learns.
+2. Biological evolution employs several strategies (often missing from our evolutionary algorithms) to decrease the odds of getting stuck in equilibria. Perhaps the most interesting: it discovers and refines its own heuristics as it learns!
 
 ## Part 1: Evolution improves its own adaptability
 
