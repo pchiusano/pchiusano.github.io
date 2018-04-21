@@ -13,7 +13,7 @@ Let's have a closer look:
 1. Evolutionary systems not stuck at equilibrium (more on this in a minute) have an important long-term trend: the speed at which species can adapt to change _increases over time_. The result of this long-term trend is what we now call "intelligence". Evolution is deceptive: close up, it seems to find highly specialized, even overfit solutions, but in the long-term, it induces the discovery of quite general solutions. Evolution is an "adaptability" discovery machine.
 2. Biological evolution employs several strategies (often missing from our evolutionary algorithms) to decrease the odds of getting stuck in equilibria. Perhaps the most interesting: it discovers and refines its own heuristics as it learns!
 
-## Part 1: Evolution improves its own adaptability
+### Part 1: Evolution improves its own adaptability
 
 1. Any evolving ecosystem undergoes regular changes in selection pressure, often due to the coevolving behavior of other organisms. For instance, when a predator evolves new behaviors, the selection pressure on its prey changes.
 2. Thus, speed in adapting to change is selected for, as is the scope of adaptations that can be made by species. A species that can respond to only to a limited number of changes over the course of eons is at a disadvantage to one that can respond to more changes even just a little more quickly. (Example: an organism with only hardwired evolved behaviors cannot respond in time to new behaviors evolved by one of its predators, and is less fit than an organism that can do even a tiny amount of learning to adapt to its predators)
@@ -22,7 +22,7 @@ Let's have a closer look:
 
 This argument can be formalized, but that is the gist: adaptability is selected for (because the rules are changed regularly and species have time to adapt to these changes before going extinct), and this generates a positive feedback loop, where speedier adaptation by one species results in more rapid changes to selection pressure and further increasing the selection pressure on adaptability.
 
-## Part 2: Necessary features of the biosphere's evolutionary algorithm
+### Part 2: Necessary features of the biosphere's evolutionary algorithm
 
 Here's a likely incomplete list of necessary features to replicate the biosphere's unparalleled open-ended evolution:
 
@@ -34,7 +34,7 @@ Here's a likely incomplete list of necessary features to replicate the biosphere
 
 This last point might be the most important. If the variational operators and genotype-phenotype mapping is static, this limitation eventually overwhelms any smoothing effect of multiple niches. Over time, as the products of evolution become more complex, the odds of random change producing anything useful approach zero---we can't put an airplane in a giant blender, pulse it a few times, and hope the output is a fighter jet. We would be lucky if the output even functions as an airplane at all! Biological evolution has become increasingly surgical in its variation, matching the complexity of the species it evolves for whom a much smaller number of changes are even viable.
 
-Many uses of evolutionary algorithms have a hardcoded genotype-phenotype mapping (or no such mapping - the mapping is the identity function). Since this is very limited, people often try to engineer the mapping to get better results. But a human engineering this mapping is just "the human doing the learning", moving the starting line closer to the finish line and just letting the algorithm take the last mile. Perhaps there's something to be said for letting an automated procedure handle the last mile, but most interesting domains, coming up with good genotype-phenotype mappings is exactly the sort of thing we'd like our algorithms to discover for themselves!
+Many uses of evolutionary algorithms have a hardcoded genotype-phenotype mapping (or no such mapping - the mapping is the identity function). Since this is very limited, people often try to engineer the mapping to get better results. But a human engineering this mapping is just "the human doing the learning", moving the starting line closer to the finish line. Perhaps there's something to be said for letting an automated procedure handle the "last mile", but for most interesting domains, coming up with good genotype-phenotype mappings that smooth the search space is exactly the sort of thing we'd like our algorithms to discover for themselves!
 
 The rationalized way of doing something like evolution's meta-search for heuristics might be to: 1) Generate N heuristics for moving through the search space. 2) Allocate computational resources to each heuristic based on performance (total fitness achieved, for instance) 3) Vary the heuristics, perhaps at a much slower rate than the rest of the system. What isn't clear to me is how to represent such heuristics in a way that can also be scaled from the very simple to the very complicated. (I wonder: is evolution using the same tricks to evolve "meta-heuristics", and "meta-meta-heuristics"?)
 
@@ -44,4 +44,4 @@ The features of evolution work in concert, and there are probably other features
 
 There's been a tendency in popular accounts of evolution to give a sense of "we've got this all figured out, it's as simple as Darwin said", so as not to yield any ground to those who would treat every gap in our understanding as evidence that evolution _doesn't work_ and that in fact, "God did it". Unfortunately, responses like these have shaped the common understanding of evolution. The simplistic common understanding is insufficient to explain the biosphere's learning performance (as anyone who has tried building artificial evolutionary systems can attest), but it's what many people know, including researchers in ML who often dismiss evolutionary methods as cargo-cult biomimicry.
 
-Perhaps it's time to give evolutionary methods another closer look.
+Perhaps it's time to give evolutionary methods another closer look!
