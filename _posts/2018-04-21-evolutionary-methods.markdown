@@ -40,7 +40,7 @@ The rationalized way of doing something like evolution's meta-search for heurist
 
 The features of evolution work in concert, and there are probably other features we are missing. But the cartoon versions of evolution we see in EC, even if they are useful algorithms for some problems, probably aren't capturing enough to replicate the power of biological evolution.
 
-## Remarks
+### Remarks
 
 There's been a tendency in popular accounts of evolution to give a sense of "we've got this all figured out, it's as simple as Darwin said", so as not to yield any ground to those who would treat every gap in our understanding as evidence that evolution _doesn't work_ and that in fact, "God did it". Unfortunately, responses like these have shaped the common understanding of evolution. The simplistic common understanding is insufficient to explain the biosphere's learning performance (as anyone who has tried building artificial evolutionary systems can attest), but it's what many people know, including researchers in ML who often dismiss evolutionary methods as cargo-cult biomimicry.
 
