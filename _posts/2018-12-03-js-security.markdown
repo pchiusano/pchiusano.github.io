@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: [fp, tech]
-title: What's really the root cause of event-stream vulnerability?
+title: What is really the root cause of the event-stream vulnerability?
 ---
 
 I was trying to make sense of the [event-stream vulnerability](https://schneid.io/blog/event-stream-vulnerability-explained/). My take:
