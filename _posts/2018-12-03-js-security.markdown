@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: [fp, tech]
+categories: [fp, programming, tech]
 title: What is really the root cause of the event-stream vulnerability?
 ---
 
