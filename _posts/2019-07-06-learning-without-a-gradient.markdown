@@ -30,7 +30,7 @@ The NFL theorems were a pretty explosive result, because up until then people we
 
 A common response to NFL is that: "well, we aren't solving problems randomly chosen from the space of all possible ones; we're solving real world problems which have quite a bit more structure".
 
-But the way I like to understand the NFL results is that _every optimization algorithm must exploit some assumed "structure" to the functions being optimized_. If you can more precisely characterize the structure of the function being optimized, then you can pick the right algorithm for the job, the one that exquisitely and efficiently exploits this structure to find very good solutions quickly.
+But the way I like to understand the NFL results is that _every optimization algorithm must exploit some assumed "structure" to the functions being optimized_. If you can more precisely characterize the structure of the function being optimized, then you can pick the right algorithm for the job, the one that exquisitely exploits this structure to find very good solutions quickly.
 
 ### Next time
 
