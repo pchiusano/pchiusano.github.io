@@ -22,7 +22,7 @@ For instance, in deep learning, when training a network with a gajillion tunable
 
 A takeaway from the above discussion is that any learning algorithm has to make some assumptions about the space it is optimizing, if it is to be effective. For instance, in our blindfolded Everest-finding example, knowing something about how the structure of the earth's surface is helpful.
 
-For instance, the earth's surface altitude may change rapidly at a local scale, but can be quite smooth if we apply a low pass filter and average the altitude of neighboring regions. Mount Everest isn't just a single spike in the middle of a flatlands, it's a huge mass of land which must be supported physically, so it (and any other tall mountain peak) tends to be surrounded by regions of similar altitude.
+For instance, the earth's surface altitude may change rapidly at a local scale, but can be quite smooth if we apply a low pass filter and average the altitude of neighboring regions. Mount Everest isn't just a single spike in the middle of a flatlands, it's a huge mass of land which must be supported physically, so it (and any other tall mountain peak) tends to be surrounded by regions of similar altitude. This property suggests that keeping some "momentum" in a gradient-based search could be effective, so the search is less sensitive to the (noisy) immediate local gradient signal. But then, what parameters do we use for this momentum? 
 
 There's a famous set of theorems, the ["No Free Lunch" (NFL) theorems](https://en.wikipedia.org/wiki/No_free_lunch_theorem), which amount to a formal statement about the need for optimization algorithms to make assumptions about problem structure. The first of the NFL theorems states that "any two optimization algorithms are equivalent when their performance is averaged across all possible problems". So if you consider "all possible problems", all optimization algorithms, including random search, give equivalent performance! My intuition for the NFL results is that for every problem where your fancy optimization algorithm does well, there's another problem (in that huge space of all possible problems) where the assumptions your algorithm makes are actively harmful!
 
@@ -30,7 +30,13 @@ The NFL theorems were a pretty explosive result, because up until then people we
 
 A common response to NFL is that: "well, we aren't solving problems randomly chosen from the space of all possible ones; we're solving real world problems which have quite a bit more structure".
 
-But the way I like to understand the NFL results is that _every optimization algorithm must exploit some assumed "structure" to the functions being optimized_. If you can more precisely characterize the structure of the function being optimized, then you can pick the right algorithm for the job, the one that exquisitely exploits this structure to find very good solutions quickly.
+But the way I like to understand the NFL results is that _every optimization algorithm must exploit some assumed "structure" to the functions being optimized_. If you can more precisely characterize the structure of the function being optimized, then you can pick the right algorithm for the job, the one that exquisitely exploits this structure to find very good solutions quickly. 
+
+As a simple example, in the field of [convex optimization](https://en.wikipedia.org/wiki/Convex_optimization) a set of highly efficient optimization algorithms have developed which exploit precise assumptions about the function being optimized (namely, that it is a convex function over a convex set). 
+
+Of course, many problems of interest aren't convex, but I think what's been done for convex optimization should be the gold standard of any research on learning or optimization algorithms: efficient algorithms along with a well-characterized subset of problems for which the algorithms do well (ideally, along with an algorithm to automatically check if a problem is in the subset). We should expect that for any optimization or learning technique, because the alternative is fumbling around in the dark with empirical tinkering and [playing the hyperparameter slot machine](https://blog.piekniewski.info/2017/03/20/the-meta-parameter-slot-machine/)("I tried algorithm XYZ with hyperparameters ABC on problem P, and it did terribly, then I switched to hyperparameters DEF and it worked great").
+
+> Also related is [star-convexity](https://arxiv.org/abs/1511.04466). It's [been suggested](https://openreview.net/forum?id=BylIciRcYQ) that many deep learning problems are star convex and that this explains the success of stochastic gradient descent.
 
 ### Next time
 
