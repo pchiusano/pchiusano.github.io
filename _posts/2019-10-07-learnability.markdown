@@ -6,7 +6,7 @@ title: Learning how to make a thing learnable is harder than learning it
 
 Here's something pretty crazy: there are around 10^28 atoms in the human body. An astromically tiny percentage of arrangements of 10^28 atoms in 3D space correspond to a viable human. Most arrangements of atoms would just melt into a puddle!
 
-If you were trying to learn something as complex as a human body, with that many parameters, you need to transform the problem to a much simpler one, where the space of possibilities is much much smaller and where more of these possibilities have nonzero fitness. This allows the problem to be learned.
+If you were trying to learn something as complex as a human body, with that many parameters, you'd need to transform the problem to a much simpler one, where the space of possibilities is much much smaller and where more of these possibilities have nonzero fitness. This allows the problem to be learned.
 
 Remarkably, evolution has managed to do this: there is an incredibly complicated mapping from the human genotypes to the human body. Even more crazy, that mapping was itself learned by evolution! This has to be the most impressive thing about evolution - this seemingly dumb process converts what would otherwise be an insanely complex and huge problem space into a much simpler one where that same dumb process can be effective at learning.
 
