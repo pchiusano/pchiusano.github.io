@@ -50,7 +50,7 @@ But with programming artifacts, we aren't quite sure what to make of them. Progr
 
 __Bob:__ I think you've hit the nail on the head here. I'm uncomfortable with this wooly "everyone's perspective is equally valid" take on creative tools. If you are building a skyscraper, you need to choose materials that are up the task and not build it out of toothpicks and marshmallows because just because you like those materials better!!
 
-__Alice:__ Of course. But I'd say programmer culture has this problem that the human expression aspect of programming is barely acknowledged and we thereore feel that decisions MUST be justified in terms of objective and univeral statements of fact. We can't just say "I prefer using XYZ and it makes me happy" once in a while?
+__Alice:__ Of course. But I'd say programmer culture has this problem that the human expression aspect of programming is barely acknowledged and we therefore feel that decisions MUST be justified in terms of objective and univeral statements of fact. We can't just say "I prefer using XYZ and it makes me happy" once in a while?
 
 __Bob:__ Because that way lies madness and vagueness and all that icky liberal arts stuff! Also, how do I justify that to my boss?
 
