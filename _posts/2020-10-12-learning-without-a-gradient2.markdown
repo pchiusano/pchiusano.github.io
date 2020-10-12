@@ -1,7 +1,7 @@
 ---
 title: Learning without a gradient (part 2)
 layout: post
-categories: [machine learning]
+categories: [machine-learning]
 ---
 
 [Part 1](/2019-07-06-learning-without-a-gradient) of this series discussed the difficulties faced by gradient-based approaches to learning: 
