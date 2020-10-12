@@ -1,7 +1,7 @@
 ---
 title: Learning without a gradient (part 1)
 layout: post
-categories: [machine learning]
+categories: [machine-learning]
 ---
 
 Learning using gradient-based methods is a lot like trying to find the top of Mount Everest starting from a random point on earth, __while blindfolded__, by repeatedly sampling only the altitude and slope of the ground you're standing on, and then using that information to decide where to teleport next.
