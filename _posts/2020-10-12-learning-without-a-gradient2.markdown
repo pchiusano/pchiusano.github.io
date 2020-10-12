@@ -4,7 +4,7 @@ layout: post
 categories: [machine-learning]
 ---
 
-[Part 1](/2019-07-06-learning-without-a-gradient) of this series discussed the difficulties faced by gradient-based approaches to learning: 
+[Part 1](2019-07-06/learning-without-a-gradient.html) of this series discussed the difficulties faced by gradient-based approaches to learning: 
 
 > Learning using gradient-based methods is a lot like trying to find the top of Mount Everest starting from a random point on earth, while blindfolded, by repeatedly sampling only the altitude and slope of the ground you’re standing on, and then using that information to decide where to teleport next... the gradient just isn’t a lot to go on. The local slope at a point in Kansas might help you reach the top of the hill near where you started, but it doesn’t help in locating even the general region where Mount Everest is located.
 
