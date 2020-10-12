@@ -7,7 +7,7 @@ layout: none
 		<title>{{ site.name | xml_escape }} - Gaming</title>
 		<description>Posts categorized as 'gaming'</description>
 		<link>{{ site.url }}</link>
-		<atom:link href="{{ site.url }}/feed.econ.xml" rel="self" type="application/rss+xml" />
+		<atom:link href="{{ site.url }}/feed.gaming.xml" rel="self" type="application/rss+xml" />
 		{% for post in site.categories.gaming limit:10 %}
 			<item>
 				<title>{{ post.title | xml_escape }}</title>
