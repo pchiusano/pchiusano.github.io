@@ -10,7 +10,7 @@ categories: [machine-learning]
 
 This fundamental issue of misleading local gradient information arises in higher-dimensional problems too, even though [local minima are a lot less common here](https://twitter.com/pchiusano/status/1181411170672136192).
 
-Let's now look at a class of learning algorithms that don't need gradient information. Gradient-free learning methods are a big deal: they are more widely applicable (many functions of interest are not differentiable, including hyperparameter search for other learning frameworks), and even in cases where differentiability is possible in principle, learning without a gradient means no fancy frameworks just to build up functions in differentiable form. Instead, you can write the functions being optimized using ordinary code in your favorite programming language, then optimize those functions as a black box.
+Let's now look at a class of learning algorithms that don't need gradient information. Gradient-free learning methods are a big deal: they are more widely applicable (many functions of interest are not differentiable, including hyperparameter search for other learning frameworks), they can in theory be used for training recurrent neural nets [where backpropagation is problematic](https://news.ycombinator.com/item?id=24455443) and even in cases where differentiability is possible in principle, learning without a gradient means no fancy frameworks just to build up functions in differentiable form. Instead, you can write the functions being optimized using ordinary code in your favorite programming language, then optimize those functions as a black box.
 
 It might seem like we don't have much to go on if we aren't using gradient information... are we reduced to just random search? Or inefficiently estimating the gradient by sampling the output of "nearby" points, as in [Evolution Strategies](https://openai.com/blog/evolution-strategies/)? No, we actually have a lot to go on. Again to build intuition we'll stick with our original problem of finding the top of Mt. Everest, given only the ability to sample the altitude at any point on the globe.
 
@@ -55,9 +55,9 @@ Here's the algorithm:
 
 __Aside:__ I suspect you can use a finger tree with an interesting monoid to make it logarithmic time to determining if there's a bit position that can be fixed.
 
-So this algorithm learns one bit at a time of an answer, in whatever order is easiest, eventually converging to having all the bits set. It uses only the statistics of different regions of the space. Interestingly, the order of the bits is irrelevant: if we reversed the 128 bits of our input or interleaved the two 64 bit numbers everything works the same.
+So this algorithm learns one bit at a time of an answer, in whatever order is easiest, eventually converging to having all the bits fixed. It uses only the statistics of different regions of the space. Interestingly, the order of the bits is irrelevant: if we reversed the 128 bits of our input or interleaved the two 64 bit numbers everything works the same.
 
-For our running example of finding the top of Mt Everest, it will learn the more significant bits, which roughly pin down regions with higher than average elevation, then learn less significant bits.
+For our running example of finding the top of Mt Everest, it will learn the more significant bits, which roughly pin down regions with higher than average elevation, then learn less significant bits, and so on, until narrowing the region all the way down to a single point.
 
 ## Algorithm 4
 
@@ -71,7 +71,7 @@ This algorithm might not seem all that similar to Algorithm 3, but let's imagine
 
 ## Surprise!
 
-The algorithms discussed here use the same principles as the [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm) (GA), which are believed to work via this process of progressively locking in bits of the solution. See [this paper by Burjorjee on "hyperclimbing" in genetic algorithms](https://arxiv.org/abs/1204.3436).
+The algorithms discussed here use the same principles as the [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm) (GA), which are believed to work via this process of progressively locking in bits of the solution. My old labmate, Keki Burjorjee, dubbed this "hyperclimbing".  See [this paper by him](https://arxiv.org/abs/1204.3436). (Also, thanks Keki for your neat research and some fun discussion and pointers that shaped this post!)
 
 Also see:
 
@@ -84,11 +84,11 @@ In the compact GA, only the % of 1 (or 0) bits at each position is retained (thi
 2. Compare s1 and s2 against the objective function to determine a winner. Move the probabilities some small step toward the winning vector.
 3. Repeat.
 
-One further optimization not mentioned in the paper is that for supervised learning where the objective function is an average of performance over a large training set, comparing two models can be done more efficiently: rather than running each model against the whole training set, instead feed the training set to each model incrementally, stopping as soon as one model is statistically better than the other. And in general, there's more you can do to be sure you make the most of each evaluation--you don't want to spend a lot of evaluations on comparing two models which are quite similar in performance, when it's very easy to find two models in the remaining search space that are quite different in performance.
+One further optimization not mentioned in the compact GA paper is that for supervised learning where the objective function is an average of performance over a large training set, comparing two models can be done more efficiently: rather than running each model against the whole training set, instead feed the training set to each model incrementally, stopping as soon as one model is statistically better than the other. And in general, there's more you can do to be sure you make the most of each evaluation--you don't want to spend a lot of evaluations on comparing two models which are quite similar in performance, when it's very easy to find two models in the remaining search space that are quite different in performance.
 
 ## Discussion 
 
-Could these gradient-free learning algorithms be used for neural network training and other forms of supervised learning? It's quite nice that they don't require any fancy frameworks or differentiability, just a way of representing the function's parameters as a bit vector, which isn't exactly hard.
+Could these gradient-free learning algorithms be used for (recurrent) neural network training and other forms of supervised learning? It's quite nice that they don't require any fancy frameworks or differentiability, just a way of representing the function's parameters as a bit vector, which isn't exactly hard.
 
 While there's been some use of GA-style algorithms for supervised learning (though it's typically for hyperparameter search), the field seems pretty centralized: a few organizations with access to massive compute resources have picked a standard set of techniques and frameworks, and they get the most impressive results. We may not really know what techniques work best, but because some orgs can throw 100x more compute at the problem using their preferred techniques, they get better results, and the techniques they use thus attract more mindshare.
 
